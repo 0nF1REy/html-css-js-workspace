@@ -1,0 +1,196 @@
+:root {
+  --gintama-white: #ffffff;
+  --gintama-bg: #f7f8fa;
+  --gintama-cyan: #2bb3c0;
+  --gintama-dark: #1a1a1b;
+  --gintama-tertiary: #9b9be8;
+  --gintama-glass: rgba(255, 255, 255, 0.85);
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  background-color: var(--gintama-bg);
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+#map {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.search-container {
+  position: absolute;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2000;
+  width: 100%;
+  max-width: 580px;
+  padding: 0 20px;
+}
+
+.search-box {
+  background: var(--gintama-glass);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--gintama-cyan);
+  border-radius: 14px;
+  padding: 8px;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(43, 179, 192, 0.2);
+  align-items: center;
+}
+
+.search-box input {
+  background: transparent;
+  border: none;
+  color: var(--gintama-dark);
+  padding: 10px 15px;
+  flex: 1;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.search-box input::placeholder {
+  color: rgba(26, 26, 27, 0.4);
+}
+
+.search-box input:focus {
+  outline: none;
+}
+
+.btn-search {
+  background: var(--gintama-cyan) !important;
+  color: var(--gintama-white) !important;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 25px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-search:hover {
+  transition: none;
+  background: linear-gradient(
+    90deg,
+    var(--gintama-cyan) 0%,
+    var(--gintama-tertiary) 100%
+  ) !important;
+  color: var(--gintama-white) !important;
+  transform: translateY(-2px) scale(1.05) rotate(-2deg);
+  box-shadow:
+    0 8px 24px 0 rgba(43, 179, 192, 0.25),
+    0 1.5px 8px 0 rgba(155, 155, 232, 0.15);
+  letter-spacing: 2px;
+}
+
+.map-tag {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  z-index: 1000;
+  background: linear-gradient(
+    90deg,
+    var(--gintama-cyan) 0%,
+    var(--gintama-tertiary) 100%
+  );
+  padding: 8px 20px;
+  border-radius: 6px;
+  color: var(--gintama-white);
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  box-shadow:
+    0 8px 24px 0 rgba(43, 179, 192, 0.25),
+    0 1.5px 8px 0 rgba(155, 155, 232, 0.15);
+  transition:
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s;
+}
+
+.leaflet-control-zoom {
+  border: none !important;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+.leaflet-control-zoom-in,
+.leaflet-control-zoom-out {
+  background-color: var(--gintama-white) !important;
+  color: var(--gintama-dark) !important;
+  border: 1px solid #ddd !important;
+  font-weight: bold !important;
+  width: 34px !important;
+  height: 34px !important;
+  line-height: 34px !important;
+  transition:
+    background 0.3s,
+    color 0.3s,
+    box-shadow 0.3s,
+    transform 0.3s,
+    letter-spacing 0.3s;
+}
+
+.leaflet-control-zoom-in:hover,
+.leaflet-control-zoom-out:hover {
+  background: linear-gradient(
+    90deg,
+    var(--gintama-cyan) 0%,
+    var(--gintama-tertiary) 100%
+  ) !important;
+  color: var(--gintama-white) !important;
+  border-color: var(--gintama-cyan) !important;
+  box-shadow:
+    0 8px 24px 0 rgba(43, 179, 192, 0.25),
+    0 1.5px 8px 0 rgba(155, 155, 232, 0.15);
+  transform: scale(1.07) rotate(-2deg);
+  text-shadow: 0 2px 8px rgba(43, 179, 192, 0.25);
+  letter-spacing: 2px;
+}
+
+.leaflet-popup-content-wrapper {
+  background: var(--gintama-white);
+  color: var(--gintama-dark);
+  border: 2px solid var(--gintama-cyan);
+  border-radius: 12px;
+  padding: 5px;
+}
+
+.leaflet-popup-tip {
+  background: var(--gintama-cyan);
+}
+
+.custom-marker {
+  background: var(--gintama-cyan);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  box-shadow: 0 0 15px rgba(43, 179, 192, 0.6);
+  animation: marker-pulse 1.5s infinite;
+}
+
+@keyframes marker-pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(43, 179, 192, 0.7);
+  }
+  70% {
+    transform: scale(1.3);
+    box-shadow: 0 0 0 10px rgba(43, 179, 192, 0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
