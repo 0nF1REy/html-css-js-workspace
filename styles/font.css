@@ -1,12 +1,14 @@
 @font-face {
-    font-family: 'gamelia';
-    src: url('../assets/fonts/gamelia.otf') format('opentype');
+  font-family: "gamelia";
+  src: url("../assets/fonts/gamelia.otf") format("opentype");
 }
+
 @font-face {
-    font-family: 'arca-majora';
-    src: url('../assets/fonts/ArcaMajora3-Bold.otf') format('opentype');
+  font-family: "arca-majora";
+  src: url("../assets/fonts/ArcaMajora3-Bold.otf") format("opentype");
 }
+
 @font-face {
-    font-family: 'schibsted';
-    src: url('../assets/fonts/SchibstedGrotesk.ttf') format('opentype');;
+  font-family: "schibsted";
+  src: url("../assets/fonts/SchibstedGrotesk.ttf") format("opentype");
 }

@@ -3,19 +3,15 @@
   main .card-wrap {
     grid-template-columns: repeat(1, 1fr);
   }
-
   main .card-list:nth-child(1) {
     grid-column: 1 / -1;
   }
-
   main .card-list.card-special:last-child {
     grid-column: 1 / -1;
   }
-
   main .card-special-content {
     align-items: stretch;
   }
-
   main .card-special-link {
     width: 100%;
     margin-bottom: 1rem;
