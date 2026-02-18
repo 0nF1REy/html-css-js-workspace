@@ -48,15 +48,8 @@ body::before {
 }
 
 /* ========= HEADER ========= */
-.logo {
-  display: inline-block;
-  width: auto;
-}
-
 .logo img {
-  height: 120px;
-  width: 250px;
-  display: block;
+  height: 135px;
 }
 
 header h1 {
