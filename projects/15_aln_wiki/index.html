@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <!-- ===== TITLE and META ===== -->
@@ -43,16 +43,21 @@
     <meta name="application-name" content="ALN Wiki" />
     <meta name="msapplication-TileColor" content="#FFFFFF" />
     <!-- ===== CSS ===== -->
-    <link rel="stylesheet" href="./styles/style.css" />
     <link rel="stylesheet" href="./assets/icons/fontawesome/css/all.min.css" />
     <style>
-      /* ==================== RESET and GENERAL ==================== */
+      /* ========= RESET ========= */
       *,
       *::before,
       *::after {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+      }
+
+      /* ========= FONTS ========= */
+      @font-face {
+        font-family: "gamelia";
+        src: url("./assets/fonts/gamelia.otf") format("opentype");
       }
 
       body {
@@ -71,8 +76,10 @@
           #6f7f98
         );
         opacity: 0;
-        transition: background-image 0.5s cubic-bezier(0.4, 0.4, 0, 1),
-          color 0.3s ease, opacity 0.6s cubic-bezier(0.4, 0.4, 0, 1);
+        transition:
+          background-image 0.5s cubic-bezier(0.4, 0.4, 0, 1),
+          color 0.3s ease,
+          opacity 0.6s cubic-bezier(0.4, 0.4, 0, 1);
       }
 
       .article-anim-enter-active {
@@ -142,7 +149,9 @@
 
       body.dark-mode header h1 {
         color: #29abe2;
-        text-shadow: 0 0 30px #29abe2, 0 0 2px #29abe2;
+        text-shadow:
+          0 0 30px #29abe2,
+          0 0 2px #29abe2;
       }
 
       body.dark-mode header p {
@@ -166,16 +175,22 @@
         cursor: pointer;
         border-radius: 100%;
         background-color: #16a085;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          background-color 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
       .dark-mode-toggle:hover {
         background-color: #1e75a1;
-        box-shadow: 0 0 15px #29abe2, 0 0 20px #29abe2;
+        box-shadow:
+          0 0 15px #29abe2,
+          0 0 20px #29abe2;
       }
 
       .dark-mode-toggle i {
-        text-shadow: 0 0 10px #29abe2, 0 0 15px #29abe2;
+        text-shadow:
+          0 0 10px #29abe2,
+          0 0 15px #29abe2;
       }
 
       .dark-mode .dark-mode-toggle {
@@ -184,7 +199,9 @@
 
       .dark-mode .dark-mode-toggle:hover {
         background-color: #1e75a1;
-        box-shadow: 0 0 15px #29abe2, 0 0 20px #29abe2;
+        box-shadow:
+          0 0 15px #29abe2,
+          0 0 20px #29abe2;
       }
 
       /* ==================== HEADER ==================== */
@@ -263,7 +280,9 @@
           #f1f4f9
         );
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transition: background-image 0.3s ease, color 0.3s ease;
+        transition:
+          background-image 0.3s ease,
+          color 0.3s ease;
       }
 
       main article:nth-child(odd) {
@@ -436,12 +455,17 @@
         cursor: pointer;
         opacity: 0.7;
         background-color: #16a085;
-        transition: opacity 0.3s, background-color 0.3s, box-shadow 0.3s;
+        transition:
+          opacity 0.3s,
+          background-color 0.3s,
+          box-shadow 0.3s;
       }
 
       #scrollTopButton:hover {
         background-color: #1e75a1;
-        box-shadow: 0 0 15px #29abe2, 0 0 20px #29abe2;
+        box-shadow:
+          0 0 15px #29abe2,
+          0 0 20px #29abe2;
       }
 
       .dark-mode #scrollTopButton {
@@ -450,7 +474,9 @@
 
       .dark-mode #scrollTopButton:hover {
         background-color: #1e75a1;
-        box-shadow: 0 0 15px #29abe2, 0 0 20px #29abe2;
+        box-shadow:
+          0 0 15px #29abe2,
+          0 0 20px #29abe2;
       }
 
       #scrollTopButton i {
@@ -562,11 +588,15 @@
         border-radius: 100%;
         outline: none;
         background: #16a085;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          background-color 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
       .close-popup:hover {
-        box-shadow: 0 0 15px #29abe2, 0 0 20px #29abe2;
+        box-shadow:
+          0 0 15px #29abe2,
+          0 0 20px #29abe2;
       }
 
       .dark-mode .close-popup {
@@ -625,7 +655,9 @@
         cursor: pointer;
         border-radius: 5px;
         background-color: #16a085;
-        transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          background-color 0.3s ease,
+          box-shadow 0.3s ease;
       }
 
       .filter-btn:hover,
@@ -657,7 +689,9 @@
         border: 1px solid #ddd;
         border-radius: 5px;
         width: 260px;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        transition:
+          border-color 0.3s ease,
+          box-shadow 0.3s ease;
         outline: none;
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         padding-left: 30px;
@@ -1622,7 +1656,7 @@
         // Remove classes de animação antigas (se existirem)
         artigo.classList.remove(
           "article-anim-enter-active",
-          "article-anim-leave-active"
+          "article-anim-leave-active",
         );
 
         // Adiciona a classe de entrada
@@ -1685,7 +1719,7 @@
       if (window.innerWidth > 768) {
         let visibleIndex = 0;
         const articles = document.querySelectorAll(
-          'article:not([style*="display: none"])'
+          'article:not([style*="display: none"])',
         );
         articles.forEach((article) => {
           if (visibleIndex % 2 === 0) {
@@ -1697,7 +1731,7 @@
         });
       } else {
         const articles = document.querySelectorAll(
-          'article:not([style*="display: none"])'
+          'article:not([style*="display: none"])',
         );
         articles.forEach((article) => {
           article.style.flexDirection = "column";
@@ -1737,7 +1771,7 @@
           // Only show the button if the filter is "all" AND there are more than 4 articles
           //Also hide the button is there are more than 4 articles
           let visibleArticleCount = document.querySelectorAll(
-            'article[style*="display: flex"]'
+            'article[style*="display: flex"]',
           ).length;
 
           if (filter === "all") {
@@ -1844,12 +1878,12 @@
       searchTerm = searchTerm.toLowerCase();
 
       let visibleArticleCount = document.querySelectorAll(
-        'article[style*="display: flex"]'
+        'article[style*="display: flex"]',
       ).length;
       if (currentFilter === "all") {
         verMaisBtn.style.display = "block";
         let visibleArticleCount = document.querySelectorAll(
-          'article[style*="display: flex"]'
+          'article[style*="display: flex"]',
         ).length;
         if (visibleArticleCount <= 4) {
           verMaisBtn.style.display = "none";
@@ -1884,7 +1918,7 @@
       if (currentFilter === "all") {
         verMaisBtn.style.display = "block";
         let visibleArticleCount = document.querySelectorAll(
-          'article[style*="display: flex"]'
+          'article[style*="display: flex"]',
         ).length;
         if (visibleArticleCount <= 4) {
           verMaisBtn.style.display = "none";
