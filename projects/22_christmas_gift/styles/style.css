@@ -177,6 +177,7 @@ div#sea {
   /*top:50%;
   width: 100%;*/
   height: auto;
+  z-index: 30;
   transform: translateY(10px) rotate(-20deg);
 }
 
