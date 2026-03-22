@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <title>Hello World!</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Refresh" content="25; ../../01_estudo_html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      /* --- VARIÁVEIS GINTAMA CORE --- */
+      :root {
+        --gintama-black: #0a0a0b;
+        --gintama-dark-gray: #1a1a1b;
+        --gintama-cyan: #4ca6b8;
+        --gintama-silver: #f3f4f6;
+        --gintama-glass: rgba(255, 255, 255, 0.03);
+        --gintama-border: rgba(76, 166, 184, 0.2);
+      }
+
+      /* --- RESET & BASE --- */
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 40px 20px;
+        background-color: var(--gintama-black);
+        color: var(--gintama-silver);
+        font-family: "Inter", system-ui, sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      /* --- TÍTULO & BOTÃO --- */
+      #title {
+        font-size: 2.5rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        color: var(--gintama-silver);
+        margin-bottom: 2rem;
+        text-shadow: 0 0 15px rgba(76, 166, 184, 0.3);
+      }
+
+      #btn {
+        background: transparent;
+        border: 1px solid var(--gintama-cyan);
+        color: var(--gintama-cyan);
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        margin-bottom: 3rem;
+      }
+
+      #btn:hover {
+        background: var(--gintama-cyan);
+        color: var(--gintama-black);
+        box-shadow: 0 0 20px rgba(76, 166, 184, 0.4);
+        transform: translateY(-2px);
+      }
+
+      #btn:active {
+        transform: scale(0.95);
+      }
+
+      /* --- CONTAINER & CARDS (Injetados via JS) --- */
+      #container {
+        width: 100%;
+        max-width: 600px;
+        animation: fadeIn 0.8s ease-out;
+      }
+
+      .company-card {
+        background: var(--gintama-glass);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--gintama-border);
+        border-radius: 20px;
+        padding: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      /* Efeito de luz no card da empresa */
+      .company-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--gintama-cyan),
+          transparent
+        );
+      }
+
+      .company-card h2 {
+        color: var(--gintama-cyan);
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-top: 0;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+        border-bottom: 1px solid var(--gintama-border);
+        padding-bottom: 10px;
+      }
+
+      .company-card p {
+        font-size: 0.95rem;
+        margin: 10px 0;
+        color: rgba(243, 244, 246, 0.7);
+      }
+
+      .company-card strong {
+        color: var(--gintama-silver);
+        font-weight: 600;
+      }
+
+      /* --- LISTA DE FUNCIONÁRIOS --- */
+      h3 {
+        font-size: 1.1rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        opacity: 0.8;
+      }
+
+      #employees-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+      }
+
+      .employee-item {
+        background: rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 15px;
+        border-radius: 12px;
+        transition: border-color 0.3s ease;
+      }
+
+      .employee-item:hover {
+        border-color: var(--gintama-cyan);
+      }
+
+      .employee-item p {
+        margin: 5px 0;
+        font-size: 0.85rem;
+      }
+
+      /* Estilo para "É Desenvolvedor?" */
+      .employee-item p:last-child {
+        font-weight: bold;
+        color: var(--gintama-cyan);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+
+      /* --- ANIMAÇÃO --- */
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsividade */
+      @media (max-width: 500px) {
+        #employees-list {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="title">Hello World!</h1>
+    <button id="btn">Carregar Dados da Empresa</button>
+
+    <div id="container"></div>
+
+    <script id="json-data" type="application/json">
+      {
+        "name": "Yorozuya Gin-chan",
+        "clients": 0,
+        "isTech": false,
+        "foundedIn": "2003-12-08",
+        "founders": ["Gintoki Sakata", "Otose"],
+        "employees": [
+          {
+            "name": "Kagura",
+            "age": 14,
+            "isDev": false
+          },
+          {
+            "name": "Shinpachi Shimura",
+            "age": 16,
+            "isDev": true
+          }
+        ],
+        "chave": "leite de morango"
+      }
+    </script>
+
+    <script>
+      const button = document.getElementById("btn");
+      const container = document.getElementById("container");
+
+      button.addEventListener("click", () => {
+        const jsonString = document.getElementById("json-data").textContent;
+
+        console.log("String pura do JSON:", jsonString);
+
+        const data = JSON.parse(jsonString);
+
+        container.innerHTML = `
+          <div class="company-card">
+            <h2>Empresa: ${data.name}</h2>
+            <p><strong>Fundadores:</strong> ${data.founders.join(", ")}</p>
+            <p><strong>Fundada em:</strong> ${data.foundedIn}</p>
+            <p><strong>Especialidade:</strong> ${data.chave}</p>
+            
+            <h3>Funcionários:</h3>
+            <div id="employees-list">
+              ${data.employees
+                .map(
+                  (emp) => `
+                <div class="employee-item">
+                  <p>Nome: ${emp.name}</p>
+                  <p>Idade: ${emp.age}</p>
+                  <p>É Desenvolvedor? ${emp.isDev ? "Sim" : "Não"}</p>
+                </div>
+              `,
+                )
+                .join("")}
+            </div>
+          </div>
+        `;
+      });
+    </script>
+  </body>
+</html>
