@@ -1,29 +1,12 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help list open add status sync git-context \
+.PHONY: help add status sync git-context
 
 help: ## Mostra os comandos disponíveis
 	@echo "Comandos disponíveis:"
 	@grep -E '^[a-zA-Z_-]+:.*?## ' $(MAKEFILE_LIST) | \
 	awk 'BEGIN {FS = ":.*?## "}; {printf "  %-10s %s\n", $$1, $$2}'
 	@echo ""
-	@printf "Atalhos disponíveis:\n"
-	@for project in $(PROJECTS); do printf "  - %s\n" "$$project"; done
-
-list: ## Lista os projetos disponíveis
-	@printf "Projetos disponiveis:\n"
-	@for project in $(PROJECTS); do printf " - %s\n" "$$project"; done
-
-open: ## Abre o workspace de um projeto (use p=<nome-do-projeto>)
-	@if [ -z "$(p)" ]; then \
-		echo "Erro: use 'make open p=nome-do-projeto'"; \
-		exit 1; \
-	fi
-	@if [ ! -f "$(WORKSPACE_DIR)/$(p)/$(p).code-workspace" ]; then \
-		echo "Workspace nao encontrado para '$(p)'"; \
-		exit 1; \
-	fi
-	@code "$(WORKSPACE_DIR)/$(p)/$(p).code-workspace"
 
 add: ## Adiciona todas as mudanças ao stage
 	@git add .
