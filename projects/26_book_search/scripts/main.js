@@ -1,6 +1,3 @@
-// https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg
-// https://via.placeholder.com/150x200?text=No+Image
-
 const searchInput = document.getElementById("search-input");
 const searchButton = document.getElementById("search-button");
 const resultsContainer = document.getElementById("results");
@@ -13,7 +10,7 @@ async function fetchBooks(query) {
   const apiUrl = `https://openlibrary.org/search.json?q=${encodeURIComponent(query)}`;
   try {
     const response = await fetch(apiUrl);
-    if (!response.ok) throw new Error("Failed to fetch data");
+    if (!response.ok) throw new Error("Não foi possível obter os dados");
     const data = await response.json();
     booksData = data.docs;
     currentPage = 1;
@@ -22,4 +19,30 @@ async function fetchBooks(query) {
   } catch (error) {
     resultsContainer.innerHTML = `<p>Error: ${error.message}</p>`;
   }
+}
+
+function displayBooks() {
+  resultsContainer.innerHTML = "";
+  const start = (currentPage - 1) * booksPerPage;
+  const end = start + booksPerPage;
+  const booksToShow = booksData.slice(start, end);
+
+  if (booksToShow.length === 0) {
+    resultsContainer.innerHTML = "<p>Nenhum livro encontrado</p>";
+    return;
+  }
+
+  booksToShow.forEach((book) => {
+    const bookCover = book.cover_i
+      ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
+      : "https://via.placeholder.com/150x200?text=No+Image";
+    const bookElement = document.createElement("div");
+    bookElement.className = "book-card";
+    bookElement.innerHTML = `
+    <img src = "${bookCover}" alt="Book Cover">
+    <h3>${book.title}</h3>
+    <p>${book.author_name ? book.author_name.join(", ") : "Autor Desconhecido"}</p>
+    `;
+    resultsContainer.appendChild(bookElement);
+  });
 }
