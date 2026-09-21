@@ -39,10 +39,19 @@ function displayBooks() {
     const bookElement = document.createElement("div");
     bookElement.className = "book-card";
     bookElement.innerHTML = `
-    <img src = "${bookCover}" alt="Book Cover">
+    <img src = "${bookCover}" alt="Capa do Livro">
     <h3>${book.title}</h3>
     <p>${book.author_name ? book.author_name.join(", ") : "Autor Desconhecido"}</p>
     `;
     resultsContainer.appendChild(bookElement);
   });
 }
+
+searchButton.addEventListener("click", () => {
+  const query = searchInput.value.trim();
+  if (!query) {
+    resultsContainer.innerHTML = "<p>Digite o que deseja buscar.</p>";
+    return;
+  }
+  fetchBooks(query);
+});
