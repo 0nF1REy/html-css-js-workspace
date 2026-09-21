@@ -74,6 +74,18 @@ function displayPagination() {
     });
     paginationContainer.appendChild(pageButton);
   }
+
+  const nextButton = document.createElement("button");
+  nextButton.textContent = "Próximo";
+  nextButton.disabled = currentPage === totalPages;
+  nextButton.addEventListener("click", () => {
+    if (currentPage < totalPages) {
+      currentPage++;
+      displayBooks();
+      displayPagination();
+    }
+  });
+  paginationContainer.appendChild(nextButton);
 }
 
 searchButton.addEventListener("click", () => {
