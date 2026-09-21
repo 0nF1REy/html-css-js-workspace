@@ -6,9 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/style.css" />
-    <title>26 - Busca de Livros</title>
+    <title>26 - Busca Literária</title>
   </head>
   <body>
-    <div>Hello World!</div>
+    <div class="header">
+      <h1>Busca Literária</h1>
+    </div>
+    <div class="container">
+      <div class="search-bar">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Pesquise livros por título ou autor..."
+        />
+        <button id="search-button">Buscar</button>
+      </div>
+
+      <div class="results" id="results"></div>
+
+      <div class="pagination" id="pagination"></div>
+    </div>
   </body>
 </html>
