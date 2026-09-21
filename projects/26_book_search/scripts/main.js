@@ -47,6 +47,35 @@ function displayBooks() {
   });
 }
 
+function displayPagination() {
+  const totalPages = Math.ceil(booksData.length / booksPerPage);
+  const paginationContainer = document.getElementById("pagination");
+  paginationContainer.innerHTML = "";
+
+  const prevButton = document.createElement("button");
+  prevButton.textContent = "Anterior";
+  prevButton.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      displayBooks();
+      displayPagination();
+    }
+  });
+  paginationContainer.appendChild(prevButton);
+
+  for (let i = 1; i <= totalPages; i++) {
+    const pageButton = document.createElement("button");
+    pageButton.textContent = i;
+    pageButton.disabled = i === currentPage;
+    pageButton.addEventListener("click", () => {
+      currentPage = i;
+      displayBooks();
+      displayPagination;
+    });
+    paginationContainer.appendChild(pageButton);
+  }
+}
+
 searchButton.addEventListener("click", () => {
   const query = searchInput.value.trim();
   if (!query) {
