@@ -35,7 +35,7 @@ function displayBooks() {
   booksToShow.forEach((book) => {
     const bookCover = book.cover_i
       ? `https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`
-      : "https://via.placeholder.com/150x200?text=No+Image";
+      : "https://placehold.co/150x200?text=Sem+capa";
     const bookElement = document.createElement("div");
     bookElement.className = "book-card";
     bookElement.innerHTML = `
