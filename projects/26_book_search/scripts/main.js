@@ -54,6 +54,7 @@ function displayPagination() {
 
   const prevButton = document.createElement("button");
   prevButton.textContent = "Anterior";
+  prevButton.disabled = currentPage === 1;
   prevButton.addEventListener("click", () => {
     if (currentPage > 1) {
       currentPage--;
@@ -70,7 +71,7 @@ function displayPagination() {
     pageButton.addEventListener("click", () => {
       currentPage = i;
       displayBooks();
-      displayPagination;
+      displayPagination();
     });
     paginationContainer.appendChild(pageButton);
   }
