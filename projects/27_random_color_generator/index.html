@@ -6,10 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/style.css" />
-    <title>26 - Busca Literária</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+    />
+    <title>27 - Gerador de Cores Aleatórias</title>
   </head>
   <body>
-    <div>Hello World!</div>
+    <div class="container">
+      <h1>Gerador de Cores Aleatórias</h1>
+
+      <select name="color-format" id="color-format">
+        <option value="hex">HEX</option>
+        <option value="rgb">RGB</option>
+        <option value="hsl">HSL</option>
+      </select>
+
+      <div class="color-box">
+        <span id="color-code">#FFFFFF</span>
+
+        <button id="copy-btn" type="button" aria-label="Copiar código da cor">
+          <i class="fa-regular fa-copy"></i>
+        </button>
+      </div>
+
+      <button id="generate-btn" type="button">Gerar cor</button>
+    </div>
+
     <script src="./scripts/script.js"></script>
   </body>
 </html>
