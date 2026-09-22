@@ -101,14 +101,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const icon = copyBtn.querySelector("i");
 
     navigator.clipboard.writeText(colorCode.textContent).then(() => {
-      icon.classList.remove("fa-copy");
-      icon.classList.add("fa-check");
+      icon.classList.remove("fa-copy", "fa-regular");
+      icon.classList.add("fa-solid", "fa-check");
 
       copyBtn.setAttribute("aria-label", "Código copiado");
 
       setTimeout(() => {
-        icon.classList.remove("fa-check");
-        icon.classList.add("fa-copy");
+        icon.classList.remove("fa-check", "fa-solid");
+        icon.classList.add("fa-regular", "fa-copy");
 
         copyBtn.setAttribute("aria-label", "Copiar código da cor");
       }, 1500);
