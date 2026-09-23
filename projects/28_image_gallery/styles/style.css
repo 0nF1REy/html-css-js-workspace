@@ -18,7 +18,7 @@ body {
   gap: 15px;
   width: 600px;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 150px 150px 150px;
+  grid-template-rows: 150px 150px 150px 150px;
   grid-template-areas:
     "img1 img3 img4"
     "img1 img3 img6"
