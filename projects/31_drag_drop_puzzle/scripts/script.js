@@ -8,8 +8,17 @@ function allowDrop(event) {
 
 function drop(event) {
   event.preventDefault();
-  let data = event.dataTransfer.getData("text");
-  event.target.appendChild(document.getElementById(data));
+
+  const dropBox = event.currentTarget;
+
+  if (dropBox.children.length > 0) {
+    return;
+  }
+
+  const data = event.dataTransfer.getData("text");
+  const piece = document.getElementById(data);
+
+  dropBox.appendChild(piece);
 }
 
 onload = function () {
