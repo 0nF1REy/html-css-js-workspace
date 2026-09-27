@@ -25,6 +25,7 @@ function drop(event) {
 
 function checkPuzzle() {
   const dropBoxes = document.querySelectorAll(".dropBox");
+  const board = document.querySelector(".board");
 
   let correct = true;
 
@@ -37,6 +38,7 @@ function checkPuzzle() {
   });
 
   if (correct) {
+    board.classList.add("completed");
     alert("Parabéns! Você completou o quebra-cabeça!");
   }
 }
