@@ -1,352 +1,514 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
 
-<head>
+<html lang="pt-BR">
+  <head>
     <title>18 - Cartão de Visita | Alan Ryan</title>
-    <meta name="Author" content="Alan Ryan da Silva Domingues">
-    <meta name="description" content="Esta página foi criada para estudo HTML">
-    <meta name="keywords" content="Cartão de visita,HTML,CSS,JS">
+
+    <meta charset="UTF-8" />
+    <meta name="Author" content="Alan Ryan da Silva Domingues" />
+    <meta name="description" content="Cartão de visita digital de Alan Ryan." />
+    <meta name="keywords" content="Cartão de visita, HTML, CSS, JavaScript" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Refresh" content="25; ../19_carrossel_imagens" />
-    <meta charset="UTF-8">
 
-    <!--Ícones-->
-    <link rel="stylesheet" href="./assets/icons/fontawesome/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="./assets/icons/fontawesome/css/brands.min.css" />
-    <link rel="stylesheet" href="./assets/icons/fontawesome/css/solid.min.css" />
-    <!---------------------------------------->
-    <link rel="stylesheet" href="./styles/style.css">
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="./assets/icons/fontawesome/css/fontawesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/icons/fontawesome/css/brands.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/icons/fontawesome/css/solid.min.css"
+    />
+
+    <!-- Favicon -->
     <link rel="icon" type="image/webp" href="./assets/images/card-alan.webp" />
+
     <style>
-        #container {
-            flex-wrap: nowrap;
-            background-color: #9cd0db;
-            background-image: url(./assets/images/1600w-2VpU8y-CW7I.webp);
-            background-repeat: round;
-            height: 100vh;
-            display: flex;
-            flex-direction: row;
-            padding: 15px;
-            justify-content: center;
-            align-items: center;
-        }
+      /* ========= RESET ========= */
 
-        #box-main {
-            width: 40%;
-            height: 400px;
-            padding: 10px;
-            margin: 15px;
-            background-color: #0b4655;
-            flex-direction: row;
-            display: flex;
-            justify-content: space-between;
-            border-radius: 20px;
-            cursor: url(./assets/cur/llx-aero-black-blue/Normal\ Select.cur), default;
-            border: 4px solid #38a19c;
-            box-shadow: 0 0 15px #000000, 0 0 30px rgba(105, 115, 255, 0.5);
-        }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-        #box-esquerdo,
-        #box-direito {
-            padding: 10px;
-            margin: 10px;
-        }
+      /* ========= VARIABLES ========= */
 
-        #box-esquerdo {
-            padding: 10px;
-            margin: 10px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+      :root {
+        --color-background: #071a1f;
+        --color-surface: #0d2930;
+        --color-surface-light: #123943;
+        --color-primary: #38a19c;
+        --color-primary-light: #5cb7d0;
+        --color-text: #f1f7f8;
+        --color-text-muted: #9bb6bc;
+        --color-border: rgba(56, 161, 156, 0.45);
+        --color-shadow: rgba(0, 0, 0, 0.45);
+      }
 
-        #box-eu {
-            text-align: center;
-            border-radius: 25px;
-            width: 65%;
-            height: 45%;
-            box-shadow: inset 2px 2px 6px #198daa;
+      /* ========= BASE ========= */
 
-        }
+      html {
+        scroll-behavior: smooth;
+      }
 
-        #box-direito {
-            flex-direction: column;
-            align-content: end;
-        }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
 
-        #box-detalhes,
-        #box-redes-sociais {
-            background-color: #021b21;
-            border-radius: 20px;
-            padding: 10px;
-            margin-bottom: 20px
-        }
+        font-family: Arial, sans-serif;
+        color: var(--color-text);
 
-        #box-redes-sociais span {
-            word-spacing: 85px;
-        }
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(56, 161, 156, 0.15),
+            transparent 35%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(92, 183, 208, 0.1),
+            transparent 35%
+          ),
+          var(--color-background);
+      }
 
-        #box-detalhes b {
-            display: block;
-            background-color: #E0F7FA08;
-            font-size: 25px;
-        }
+      a {
+        color: inherit;
+      }
 
-        #box-lateral-e,
-        #box-lateral-d {
-            width: 3%;
-            background-color: #021b21;
-            border-radius: 70%;
-            box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.7), inset -2px -2px 6px rgba(255, 255, 255, 0.2);
-        }
+      /* ========= HEADER ========= */
 
-        #box-frente {
-            width: 40%;
-            height: 420px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #021b21;
-            border-radius: 20px;
-            box-shadow: 0 0 15px #000000;
-            border: 4px solid #38a19c;
-            cursor: url(./assets/cur/llx-aero-black-blue/Normal\ Select.cur), default;
-        }
+      header {
+        padding: 24px 16px;
+        text-align: center;
 
-        #box-redes-sociais a:hover {
-            zoom: 120%;
-        }
+        border-bottom: 1px solid var(--color-border);
+        background: rgba(7, 26, 31, 0.85);
+      }
 
-        #box-eu:hover {
-            background-color: #021b21;
-        }
+      .header-title {
+        color: var(--color-primary-light);
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        font-weight: bold;
+        letter-spacing: 0.12rem;
+        text-transform: uppercase;
+      }
 
-        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Hedvig+Letters+Serif:opsz@12..24&display=swap');
+      /* ========= MAIN ========= */
 
-        @font-face {
-            font-family: Fenix;
-            src: url('./assets/fonts/Fenix-Regular.ttf');
-        }
+      main {
+        width: 100%;
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        * {
-            font-family: 'Fenix', sans-serif;
-        }
+        padding: 60px 20px;
+      }
 
-        td {
-            color: #198daa;
-            padding: 5px;
-            vertical-align: top;
-        }
+      .business-card {
+        width: min(100%, 900px);
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border-spacing: 0;
-            margin: 0;
-            padding: 0;
-            background-color: #021b21;
-        }
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
 
-        .azul {
-            color: #5CB7D0;
-        }
+        overflow: hidden;
 
-        .minha-foto {
-            height: 130px;
-            width: 140px;
-            border: 1px solid #198daa;
-            border-radius: 100%;
-            margin-bottom: 15px;
-        }
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 24px;
 
-        .cor-impar {
-            background-color: #E0F7FA08;
-        }
+        box-shadow:
+          0 20px 50px var(--color-shadow),
+          0 0 30px rgba(56, 161, 156, 0.08);
+      }
 
-        .cor-par {
-            background-color: #198DAA08;
-        }
+      /* ========= PROFILE ========= */
 
-        td:hover {
-            border: #021b21 solid 1px;
-        }
+      .profile {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
-        .meio {
-            border: 1px solid #38a19c;
-            border-radius: 20px;
-            align-self: center;
-            height: 50%;
-        }
+        padding: 50px 30px;
 
-        .meu-icone {
-            height: 400px;
-            width: 400px;
-        }
+        text-align: center;
 
-        @media (max-width: 768px) {
-            .minha-foto {
-                height: 100px;
-                width: auto;
-            }
+        background: linear-gradient(
+          145deg,
+          var(--color-surface-light),
+          var(--color-surface)
+        );
 
-            td {
-                padding: 10px;
-            }
-        }
+        border-right: 1px solid var(--color-border);
+      }
 
-        body {
-            background-color: var(--cor-fundo-1);
-        }
+      .profile-icon {
+        width: 120px;
+        height: 120px;
 
-        :root {
-            /*Cores*/
-            --cor-principal: #f0e68c;
-            --cor-secundaria: #adff2f;
-            /*Cor-fundo*/
-            --cor-fundo-1: #263f70;
-            --cor-fundo-2: #000000;
-        }
+        margin-bottom: 25px;
 
-        footer,
-        header {
-            text-align: center;
-            color: var(--cor-secundaria);
-            background-color: var(--cor-fundo-2);
-        }
+        object-fit: contain;
 
-        .cabecalho-1 {
-            text-decoration: underline;
-            font-size: 25px;
-            word-spacing: 10px;
-        }
+        filter: drop-shadow(0 8px 15px rgba(0, 0, 0, 0.4));
+      }
 
+      .profile-photo {
+        width: 130px;
+        height: 130px;
+
+        margin-bottom: 20px;
+
+        object-fit: cover;
+
+        border: 3px solid var(--color-primary);
+        border-radius: 50%;
+
+        box-shadow:
+          0 0 0 6px rgba(56, 161, 156, 0.1),
+          0 10px 25px rgba(0, 0, 0, 0.35);
+
+        transition:
+          transform 0.3s ease,
+          border-color 0.3s ease;
+      }
+
+      .profile-photo:hover {
+        transform: scale(1.05);
+        border-color: var(--color-primary-light);
+      }
+
+      .profile-name {
+        margin-bottom: 8px;
+
+        color: var(--color-primary-light);
+
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      .profile-role {
+        color: var(--color-text-muted);
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .profile-code {
+        margin-top: 25px;
+
+        color: var(--color-primary);
+        font-size: 2rem;
+      }
+
+      /* ========= INFORMATION ========= */
+
+      .information {
+        padding: 40px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        margin-bottom: 20px;
+
+        color: var(--color-primary-light);
+
+        font-size: 1.4rem;
+      }
+
+      .details {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .details tr {
+        border-bottom: 1px solid rgba(56, 161, 156, 0.15);
+      }
+
+      .details tr:last-child {
+        border-bottom: none;
+      }
+
+      .details td {
+        padding: 14px 8px;
+        vertical-align: top;
+      }
+
+      .details td:first-child {
+        width: 35%;
+
+        color: var(--color-text-muted);
+        font-weight: bold;
+      }
+
+      .details td:last-child {
+        color: var(--color-text);
+      }
+
+      .details i {
+        margin-left: 6px;
+        color: var(--color-primary);
+      }
+
+      /* ========= SOCIAL ========= */
+
+      .social {
+        margin-top: 35px;
+        padding-top: 25px;
+
+        border-top: 1px solid var(--color-border);
+      }
+
+      .social-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+
+        list-style: none;
+      }
+
+      .social-links a {
+        width: 46px;
+        height: 46px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        color: var(--color-text);
+        background: var(--color-surface-light);
+
+        border: 1px solid var(--color-border);
+        border-radius: 50%;
+
+        text-decoration: none;
+
+        transition:
+          transform 0.3s ease,
+          background-color 0.3s ease,
+          color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        transform: translateY(-4px);
+
+        color: var(--color-background);
+        background: var(--color-primary);
+      }
+
+      .social-links i {
+        font-size: 1.2rem;
+      }
+
+      /* ========= FOOTER ========= */
+
+      footer {
+        padding: 20px;
+
+        color: var(--color-text-muted);
+
+        text-align: center;
+
+        border-top: 1px solid var(--color-border);
+        background: #051317;
+      }
+
+      footer small {
+        font-size: 0.8rem;
+      }
+
+      /* ========= RESPONSIVE ========= */
+
+      @media (max-width: 768px) {
         main {
-            border: solid 8px #ff4500ff;
+          padding: 40px 16px;
         }
 
-        section {
-            border: solid 8px #ff450088;
+        .business-card {
+          grid-template-columns: 1fr;
         }
 
-        i:hover {
-            color: #5b28bbf9;
+        .profile {
+          border-right: none;
+          border-bottom: 1px solid var(--color-border);
         }
 
-        .minha-foto:hover {
-            border: solid 3px #021b21;
+        .information {
+          padding: 30px 24px;
         }
+      }
+
+      @media (max-width: 480px) {
+        .profile {
+          padding: 40px 20px;
+        }
+
+        .information {
+          padding: 25px 18px;
+        }
+
+        .profile-name {
+          font-size: 1.7rem;
+        }
+
+        .details td {
+          padding: 12px 5px;
+          font-size: 0.9rem;
+        }
+
+        .details td:first-child {
+          width: 30%;
+        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <!-- Cabeçalho -->
+  <body>
     <header>
-        <span class="cabecalho-1">Cartão de Visita </span>
+      <span class="header-title">Cartão de Visita</span>
     </header>
-    <!-- Cartão de visita -->
-    <main>
-        <section>
-            <div id="container">
-                <div id="box-frente">
-                    <img src="./assets/images/aln-icone.png" alt="alan icone" class="meu-icone">
-                </div>
-                <div id="box-main">
-                    <div id="box-lateral-e"></div>
-                    <div id="box-esquerdo">
-                        <img class="minha-foto" src="./assets/images/alan-ryan-2024.jpg"
-                            alt="Minha foto" />
-                        <div id="box-eu">
-                            <b class="azul"
-                                style="font-size: 25px; text-decoration: underline; text-shadow: rgb(8, 35, 190) 1px 0 10px; word-spacing: 10px;">Alan
-                                Ryan </b>
-                            </p>
-                            <i style="color: #198daa; text-shadow: rgb(8, 35, 190) 1px 0 10px;">Técnico em
-                                Desenvolvimento de Sistemas</i>
-                            <p>
-                                <i style="font-size: 32px; color: #5CB7D0; text-shadow: rgb(8, 35, 190) 1px 0 10px;"
-                                    class="fa-solid fa-code"></i>
-                            </p>
-                        </div>
-                    </div>
-                    <span class="meio"></span>
-                    <div id="box-direito">
-                        <div id="box-detalhes">
-                            <b class="azul">Detalhes <i class="fa-regular fa-id-card"></i></b>
-                            <table style="font-size: 20px;">
-                                <tr class="cor-par">
-                                    <td>Nome:</td>
-                                    <td>Alan Ryan <i class="fa-solid fa-user"></i></td>
-                                </tr>
-                                <tr class="cor-impar">
-                                    <td>Idade:</td>
-                                    <td>20 <i class="fa-solid fa-face-laugh-beam"></i></td>
-                                </tr>
-                                <tr class="cor-par">
-                                    <td>Profissão:</td>
-                                    <td>Técnico em Desenvolvimento de Sistemas <i class="fa-solid fa-code"></i></td>
-                                </tr>
-                                <tr class="cor-impar">
-                                    <td>Telefone:</td>
-                                    <td>+55 15 996209364 <i class="fa-solid fa-phone"></i></td>
-                                </tr>
-                                <tr class="cor-par">
-                                    <td>Email:</td>
-                                    <td>alanryan619@gmail.com <i class="fa-regular fa-envelope"></i> </td>
-                                </tr>
-                                <tr class="cor-impar">
-                                    <td>Cidade:</td>
-                                    <td>Itapeva,SP <i class="fa-solid fa-earth-americas"></i></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div id="box-redes-sociais">
-                            <b class="azul" style="font-size: 25px;">Redes Sociais <i
-                                    class="fa-solid fa-link"></i></b>
-                            <hr style="border: #38a19c 1px solid;">
-                            <span>
-                                <a target="_blank" href="https://www.reddit.com/user/0nF1REy/saved/">
-                                    <i style="font-size: 27px; color: #FF5700;" class="fa-brands fa-reddit"></i></a>
-                                <a target="_blank" href="https://www.linkedin.com/in/alan-ryan-b115ba228/">
-                                    <i style="font-size: 27px; color: #0e76a8;" class="fa-brands fa-linkedin"></i></a>
-                                <a target="_blank" href="https://github.com/0nF1REy">
-                                    <i style="font-size: 27px; color: #ffffff;" class="fa-brands fa-github"></i></a>
-                                <a target="_blank" href="https://dev.to/0nf1rey">
-                                    <i style="font-size: 27px; color: #000000;" class="fa-brands fa-dev"></i></a>
-                            </span>
-                        </div>
-                    </div>
-                    <div id="box-lateral-d"></div>
-                </div>
-            </div>
-        </section>
-    </main>
-    <!-- Rodapé -->
-    <footer>
-        <small>
-            ©2024 Alan Ryan
-        </small>
-    </footer>
-    <script>
-        window.onload = function () {
-            const alertBox = document.createElement("div");
-            alertBox.innerText = "Feliz Halloween, gostosuras ou travessuras ! ";
-            alertBox.style.position = "fixed";
-            alertBox.style.top = "20px";
-            alertBox.style.right = "20px";
-            alertBox.style.padding = "15px";
-            alertBox.style.backgroundColor = "#ff4500";
-            alertBox.style.color = "#ffffff";
-            alertBox.style.fontSize = "20px";
-            alertBox.style.borderRadius = "5px";
-            alertBox.style.border = "2px groove #ff0000";
-            alertBox.style.boxShadow = "0px 0px 10px rgba(0, 0, 0, 0.5)";
-            document.body.appendChild(alertBox);
-            setTimeout(() => {
-                alertBox.remove();
-            }, 2500);
-        };
-    </script>
-</body>
 
+    <main>
+      <article class="business-card">
+        <section class="profile">
+          <img
+            class="profile-icon"
+            src="./assets/images/aln-icone.png"
+            alt="Ícone de Alan Ryan"
+          />
+
+          <img
+            class="profile-photo"
+            src="./assets/images/alan-ryan-2024.jpg"
+            alt="Foto de Alan Ryan"
+          />
+
+          <h1 class="profile-name">Alan Ryan</h1>
+
+          <p class="profile-role">Técnico em Desenvolvimento de Sistemas</p>
+
+          <i class="fa-solid fa-code profile-code"></i>
+        </section>
+
+        <section class="information">
+          <h2 class="section-title">
+            Detalhes
+            <i class="fa-regular fa-id-card"></i>
+          </h2>
+
+          <table class="details">
+            <tr>
+              <td>Nome</td>
+              <td>
+                Alan Ryan
+                <i class="fa-solid fa-user"></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Profissão</td>
+              <td>
+                Técnico em Desenvolvimento de Sistemas
+                <i class="fa-solid fa-code"></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Telefone</td>
+              <td>
+                +55 15 99620-9364
+                <i class="fa-solid fa-phone"></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>E-mail</td>
+              <td>
+                alanryan619@gmail.com
+                <i class="fa-regular fa-envelope"></i>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Cidade</td>
+              <td>
+                Itapeva, SP
+                <i class="fa-solid fa-location-dot"></i>
+              </td>
+            </tr>
+          </table>
+
+          <div class="social">
+            <h2 class="section-title">
+              Redes Sociais
+              <i class="fa-solid fa-link"></i>
+            </h2>
+
+            <ul class="social-links">
+              <li>
+                <a
+                  href="https://www.reddit.com/user/0nF1REy/saved/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Reddit"
+                >
+                  <i class="fa-brands fa-reddit"></i>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/alan-ryan-b115ba228/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                >
+                  <i class="fa-brands fa-linkedin"></i>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://github.com/0nF1REy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub"
+                >
+                  <i class="fa-brands fa-github"></i>
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="https://dev.to/0nf1rey"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="DEV Community"
+                >
+                  <i class="fa-brands fa-dev"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </article>
+    </main>
+
+    <footer>
+      <small> © 2025 Alan Ryan. Todos os direitos reservados. </small>
+    </footer>
+  </body>
 </html>
