@@ -31,7 +31,14 @@ let boxes = document.querySelectorAll(".box");
 
 function scrollTrigger() {
   boxes.forEach((boxxx) => {
-    if (boxxx.getBoundingClientRect().top < window.scrollY) {
+    let boxPosition =
+      boxxx.offsetTop +
+      document.querySelector(".container").getBoundingClientRect().top +
+      window.scrollY;
+
+    let triggerPoint = window.scrollY + window.innerHeight * 0.85;
+
+    if (boxPosition < triggerPoint) {
       boxxx.classList.add("active");
     } else {
       boxxx.classList.remove("active");
@@ -40,3 +47,4 @@ function scrollTrigger() {
 }
 
 window.addEventListener("scroll", scrollTrigger);
+scrollTrigger();
