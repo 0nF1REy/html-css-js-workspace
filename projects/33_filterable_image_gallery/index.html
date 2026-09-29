@@ -1,16 +1,65 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
+    <title>33 - Galeria de Imagens Filtrável</title>
     <meta charset="UTF-8" />
     <meta name="Author" content="Alan Ryan da Silva Domingues" />
     <!-- <meta http-equiv="Refresh" content="25; ../00_hello_world/v1" /> -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/style.css" />
-    <title>33 - Galeria de Imagens Filtrável</title>
+    <link rel="stylesheet" href="./icons/css/all.min.css" />
   </head>
   <body>
-    <div>Hello World!</div>
+    <div class="wrapper">
+      <nav>
+        <div class="items">
+          <span class="item active" data-name="all">Todos</span>
+          <span class="item" data-name="book">Livros</span>
+          <span class="item" data-name="garment">Roupas</span>
+          <span class="item" data-name="laptop">Notebook</span>
+          <span class="item" data-name="mobile">Celulares</span>
+          <span class="item" data-name="watch">Relógios</span>
+          <span class="item" data-name="led">LED</span>
+        </div>
+      </nav>
+
+      <div class="gallery">
+        <div class="image" data-name="book">
+          <span><img src="./assets/images/img1.png" alt="Livro" /></span>
+        </div>
+        <div class="image" data-name="laptop">
+          <span><img src="./assets/images/img2.png" alt="Notebook" /></span>
+        </div>
+        <div class="image" data-name="mobile">
+          <span><img src="./assets/images/img3.png" alt="Celular" /></span>
+        </div>
+        <div class="image" data-name="led">
+          <span><img src="./assets/images/img4.png" alt="LED" /></span>
+        </div>
+        <div class="image" data-name="mobile">
+          <span><img src="./assets/images/img5.png" alt="Celular" /></span>
+        </div>
+        <div class="image" data-name="watch">
+          <span><img src="./assets/images/img6.png" alt="Relógio" /></span>
+        </div>
+        <div class="image" data-name="garment">
+          <span><img src="./assets/images/img7.png" alt="Roupa" /></span>
+        </div>
+        <div class="image" data-name="garment">
+          <span><img src="./assets/images/img8.png" alt="Roupa" /></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="preview-box">
+      <div class="details">
+        <span class="icon fas fa-times"></span>
+      </div>
+      <div class="image-box"><img src="" alt="" /></div>
+    </div>
+
+    <div class="shadow"></div>
 
     <script src="./scripts/script.js"></script>
   </body>
