@@ -2,6 +2,8 @@ const filterItem = document.querySelector(".items");
 
 const filterImg = document.querySelectorAll(".gallery .image");
 
+shuffleImages();
+
 window.onload = () => {
   filterItem.onclick = (selectedItem) => {
     if (selectedItem.target.classList.contains("item")) {
@@ -51,4 +53,17 @@ function preview(element) {
 
   closeIcon.onclick = closePreview;
   shadow.onclick = closePreview;
+}
+
+function shuffleImages() {
+  const gallery = document.querySelector(".gallery");
+  const images = Array.from(gallery.querySelectorAll(".image"));
+
+  for (let i = images.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+
+    [images[i], images[randomIndex]] = [images[randomIndex], images[i]];
+  }
+
+  images.forEach((image) => gallery.appendChild(image));
 }
