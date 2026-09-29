@@ -34,6 +34,12 @@ const previewBox = document.querySelector(".preview-box"),
   closeIcon = previewBox.querySelector(".icon"),
   shadow = document.querySelector(".shadow");
 
+function closePreview() {
+  previewBox.classList.remove("show");
+  shadow.classList.remove("show");
+  document.querySelector("body").style.overflow = "auto";
+}
+
 function preview(element) {
   let selectedPrevImg = element.querySelector("img").src;
 
@@ -43,9 +49,6 @@ function preview(element) {
   shadow.classList.add("show");
   document.querySelector("body").style.overflow = "hidden";
 
-  closeIcon.onclick = () => {
-    previewBox.classList.remove("show");
-    shadow.classList.remove("show");
-    document.querySelector("body").style.overflow = "auto";
-  };
+  closeIcon.onclick = closePreview;
+  shadow.onclick = closePreview;
 }
