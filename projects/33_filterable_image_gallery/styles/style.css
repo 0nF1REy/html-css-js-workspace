@@ -106,14 +106,17 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0.9);
-  background: #fff;
-  max-width: 900px;
-  width: 100%;
+  background: transparent;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
   z-index: 5;
   opacity: 0;
   pointer-events: none;
   border-radius: 3px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  overflow: visible;
+  box-shadow: none;
 }
 
 .preview-box.show {
@@ -124,9 +127,6 @@ body {
 }
 
 .preview-box .details {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   position: relative;
 }
 
@@ -145,17 +145,21 @@ body {
   top: 20px;
   right: 20px;
 }
-
 .preview-box .image-box {
-  width: 100%;
+  width: auto;
+  max-width: 90vw;
+  max-height: 90vh;
   display: flex;
+  justify-content: center;
 }
 
 .image-box img {
-  width: 100%;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
   height: auto;
   display: block;
-  border-radius: 0 0 3px 3px;
+  border-radius: 3px;
 }
 
 .shadow {
