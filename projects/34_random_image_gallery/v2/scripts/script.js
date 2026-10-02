@@ -5,17 +5,15 @@ const imageCount = 8;
 
 const imageSizes = [
   [500, 500],
-  [600, 400],
-  [400, 600],
   [600, 450],
-  [450, 600],
-  [700, 450],
-  [450, 700],
+  [600, 500],
+  [700, 500],
+  [600, 400],
+  [500, 600],
 ];
 
 function getRandomSize() {
   const randomIndex = Math.floor(Math.random() * imageSizes.length);
-
   return imageSizes[randomIndex];
 }
 
@@ -27,6 +25,8 @@ function createImage() {
 
   imageEl.src = `https://picsum.photos/${width}/${height}?random=${randomId}`;
   imageEl.alt = "Imagem aleatória";
+  imageEl.width = width;
+  imageEl.height = height;
   imageEl.loading = "lazy";
 
   return imageEl;
@@ -43,5 +43,3 @@ function addNewImages() {
 }
 
 btnEl.addEventListener("click", addNewImages);
-
-addNewImages();
