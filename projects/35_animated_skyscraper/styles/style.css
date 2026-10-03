@@ -16,199 +16,202 @@ body {
 }
 
 .scene {
-  position: relative;
   width: 100%;
   height: 100%;
   display: grid;
   place-items: center;
-  perspective: 1800px;
-  perspective-origin: center center;
+  perspective: 1400px;
+  overflow: hidden;
 }
 
 .city {
   position: relative;
   width: 200px;
-  height: 600px;
+  height: 500px;
   transform-style: preserve-3d;
-  transform: scale(0.65) rotateX(-30deg);
-  animation: city-rotation 12s linear infinite;
-}
-
-.city::before {
-  content: "";
-  position: absolute;
-  width: 1800px;
-  height: 1800px;
-  left: 50%;
-  top: 100%;
-  transform: translate(-50%, -50%) rotateX(90deg);
-  transform-origin: center;
-  background: linear-gradient(135deg, #833434, #064667);
-  border-radius: 50%;
+  transform: scale(0.75) rotateX(-25deg);
+  animation: rotate-city 16s linear infinite;
+  will-change: transform;
 }
 
 .building {
   position: absolute;
-  width: 200px;
-  height: 600px;
+  width: 100px;
+  height: 300px;
   transform-style: preserve-3d;
-  transform-origin: center bottom;
+  transform-origin: bottom center;
 }
 
-.building-face {
+.building span {
   position: absolute;
-  width: 200px;
-  height: 600px;
-  top: 0;
-  left: 0;
-  backface-visibility: visible;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
-  background:
-    linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 46%,
-      rgba(255, 255, 255, 0.5) 47%,
-      rgba(255, 255, 255, 0.5) 52%,
-      transparent 53%
-    ),
-    linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.2) 0,
-      rgba(0, 0, 0, 0.2) 48%,
-      transparent 49%,
-      transparent 100%
-    );
-  background-size: 100% 80px, 50px 100%;
+  display: block;
+  width: 100px;
+  height: 100%;
+  backface-visibility: hidden;
 }
 
 .front {
-  transform: translateZ(100px);
-}
-
-.right {
-  transform: rotateY(90deg) translateZ(100px);
+  transform: translateZ(50px);
 }
 
 .back {
-  transform: rotateY(180deg) translateZ(100px);
+  transform: rotateY(180deg) translateZ(50px);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(50px);
 }
 
 .left {
-  transform: rotateY(-90deg) translateZ(100px);
+  transform: rotateY(-90deg) translateZ(50px);
 }
 
-.building-top,
-.building-bottom {
-  position: absolute;
-  left: 0;
-  width: 200px;
-  height: 200px;
-  background: inherit;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.25);
+.top {
+  width: 100px !important;
+  height: 100px !important;
+  transform: rotateX(90deg) translateZ(50px);
 }
 
-.building-top {
-  top: 0;
-  transform: rotateX(90deg) translateZ(100px);
+.building span:not(.top) {
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0 8px,
+      rgba(0, 0, 0, 0.25) 8px 10px,
+      transparent 10px 28px
+    ),
+    linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.45) 0 45%,
+      rgba(0, 0, 0, 0.12) 45% 48%,
+      rgba(255, 255, 255, 0.3) 48% 100%
+    );
+  background-size: 100% 28px, 100% 100%;
 }
 
-.building-bottom {
-  bottom: 0;
-  transform: rotateX(-90deg) translateZ(100px);
+.top {
+  background: rgba(255, 255, 255, 0.55);
 }
 
 .building-1 {
-  --building-color: #eeeeee;
-  transform: translate3d(0, 0, 0);
+  left: 50px;
+  bottom: 0;
+  height: 300px;
+  --color: #eeeeee;
 }
 
 .building-2 {
-  --building-color: #ffd3e0;
-  transform: translate3d(-300px, 0, -100px) scaleY(1.25);
+  left: -110px;
+  bottom: 0;
+  height: 230px;
+  transform: translateZ(-100px);
+  --color: #ffd3e0;
 }
 
 .building-3 {
-  --building-color: #d3ffe4;
-  transform: translate3d(-300px, 0, -400px) scaleY(0.9);
+  left: -150px;
+  bottom: 0;
+  height: 180px;
+  transform: translateZ(-300px);
+  --color: #d3ffe4;
 }
 
 .building-4 {
-  --building-color: #d6c7ff;
-  transform: translate3d(300px, 0, 50px) scaleY(1.15);
+  left: 150px;
+  bottom: 0;
+  height: 250px;
+  transform: translateZ(50px);
+  --color: #d6c7ff;
 }
 
 .building-5 {
-  --building-color: #fdffd3;
-  transform: translate3d(100px, 0, -300px) scaleY(1.75);
+  left: 100px;
+  bottom: 0;
+  height: 350px;
+  transform: translateZ(-300px);
+  --color: #fdffd3;
 }
 
 .building-6 {
-  --building-color: #bdfff6;
-  transform: translate3d(100px, 0, 500px) scaleY(1.25);
+  left: 100px;
+  bottom: 0;
+  height: 250px;
+  transform: translateZ(350px);
+  --color: #bdfff6;
 }
 
 .building-7 {
-  --building-color: #feffa0;
-  transform: translate3d(500px, 0, 300px) scaleY(0.7);
+  left: 280px;
+  bottom: 0;
+  height: 150px;
+  transform: translateZ(250px);
+  --color: #feffa0;
 }
 
 .building-8 {
-  --building-color: #d8e9ff;
-  transform: translate3d(500px, 0, -350px) scaleY(1.1);
+  left: 280px;
+  bottom: 0;
+  height: 220px;
+  transform: translateZ(-250px);
+  --color: #d8e9ff;
 }
 
 .building-9 {
-  --building-color: #ffe9d3;
-  transform: translate3d(-500px, 0, 400px) scaleY(1.4);
+  left: -180px;
+  bottom: 0;
+  height: 280px;
+  transform: translateZ(300px);
+  --color: #ffe9d3;
 }
 
-.building-face,
-.building-top,
-.building-bottom {
-  background-color: var(--building-color);
+.building span {
+  background-color: var(--color);
 }
 
-@keyframes city-rotation {
-  from {
-    transform: scale(0.65) rotateX(-30deg) rotateY(0deg);
+@keyframes rotate-city {
+  0% {
+    transform: scale(0.75) rotateX(-25deg) rotateY(0deg);
   }
 
-  to {
-    transform: scale(0.65) rotateX(-30deg) rotateY(360deg);
+  100% {
+    transform: scale(0.75) rotateX(-25deg) rotateY(360deg);
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
   .city {
-    transform: scale(0.5) rotateX(-30deg);
+    transform: scale(0.6) rotateX(-25deg);
   }
 
-  @keyframes city-rotation {
-    from {
-      transform: scale(0.5) rotateX(-30deg) rotateY(0deg);
+  @keyframes rotate-city {
+    0% {
+      transform: scale(0.6) rotateX(-25deg) rotateY(0deg);
     }
 
-    to {
-      transform: scale(0.5) rotateX(-30deg) rotateY(360deg);
+    100% {
+      transform: scale(0.6) rotateX(-25deg) rotateY(360deg);
     }
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .city {
-    transform: scale(0.38) rotateX(-30deg);
+    transform: scale(0.45) rotateX(-25deg);
   }
 
-  @keyframes city-rotation {
-    from {
-      transform: scale(0.38) rotateX(-30deg) rotateY(0deg);
+  @keyframes rotate-city {
+    0% {
+      transform: scale(0.45) rotateX(-25deg) rotateY(0deg);
     }
 
-    to {
-      transform: scale(0.38) rotateX(-30deg) rotateY(360deg);
+    100% {
+      transform: scale(0.45) rotateX(-25deg) rotateY(360deg);
     }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .city {
+    animation: none;
   }
 }
