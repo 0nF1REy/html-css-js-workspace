@@ -1,184 +1,214 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
   overflow: hidden;
-  background: linear-gradient(45deg, #833434, #064667);
+  background: linear-gradient(135deg, #833434, #064667);
 }
 
-#city {
+.scene {
   position: relative;
-  transform-style: preserve-3d;
-  animation: animate 10s linear infinite;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  perspective: 1800px;
+  perspective-origin: center center;
 }
 
-@keyframes animate {
-  0% {
-    transform: rotateX(-30deg) rotateY(360deg);
-  }
-  100% {
-    transform: rotateX(-30deg) rotateY(0deg);
-  }
-}
-
-#city::before {
-  content: "";
-  position: absolute;
-  top: -150vh;
-  left: 0;
-  width: 400vh;
-  height: 400vh;
-  background: linear-gradient(45deg, #833434, #064667);
-  transform: translate(-50%, 250px) rotateX(90deg);
-}
-
-.skyscraper {
+.city {
   position: relative;
   width: 200px;
   height: 600px;
   transform-style: preserve-3d;
+  transform: scale(0.65) rotateX(-30deg);
+  animation: city-rotation 12s linear infinite;
 }
 
-.skyscraper .top {
+.city::before {
+  content: "";
   position: absolute;
+  width: 1800px;
+  height: 1800px;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -50%) rotateX(90deg);
+  transform-origin: center;
+  background: linear-gradient(135deg, #833434, #064667);
+  border-radius: 50%;
+}
+
+.building {
+  position: absolute;
+  width: 200px;
+  height: 600px;
+  transform-style: preserve-3d;
+  transform-origin: center bottom;
+}
+
+.building-face {
+  position: absolute;
+  width: 200px;
+  height: 600px;
   top: 0;
+  left: 0;
+  backface-visibility: visible;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.25);
+  background:
+    linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 46%,
+      rgba(255, 255, 255, 0.5) 47%,
+      rgba(255, 255, 255, 0.5) 52%,
+      transparent 53%
+    ),
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.2) 0,
+      rgba(0, 0, 0, 0.2) 48%,
+      transparent 49%,
+      transparent 100%
+    );
+  background-size: 100% 80px, 50px 100%;
+}
+
+.front {
+  transform: translateZ(100px);
+}
+
+.right {
+  transform: rotateY(90deg) translateZ(100px);
+}
+
+.back {
+  transform: rotateY(180deg) translateZ(100px);
+}
+
+.left {
+  transform: rotateY(-90deg) translateZ(100px);
+}
+
+.building-top,
+.building-bottom {
+  position: absolute;
   left: 0;
   width: 200px;
   height: 200px;
-  background: var(--clr);
+  background: inherit;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.25);
+}
+
+.building-top {
+  top: 0;
   transform: rotateX(90deg) translateZ(100px);
-  box-shadow:
-    inset 0 0 50px rgba(0, 0, 0, 0.35),
-    inset 0 0 5px rgba(0, 0, 0, 0.25);
 }
 
-.skyscraper div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
+.building-bottom {
+  bottom: 0;
+  transform: rotateX(-90deg) translateZ(100px);
 }
 
-.skyscraper div span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: #fff;
-  height: 100%;
-  box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.25);
+.building-1 {
+  --building-color: #eeeeee;
+  transform: translate3d(0, 0, 0);
 }
 
-.skyscraper div span:nth-child(1) {
-  transform: rotateY(0deg) translate3d(0, 0, 100px);
-  background:
-    linear-gradient(to bottom, transparent 50%, var(--clr) 50%),
-    linear-gradient(to right, #999 50%, var(--clr) 50%);
-  background-size: 6px 6px;
+.building-2 {
+  --building-color: #ffd3e0;
+  transform: translate3d(-300px, 0, -100px) scaleY(1.25);
 }
 
-.skyscraper div span:nth-child(2) {
-  transform: rotateY(90deg) translate3d(0, 0, 100px);
-  background: linear-gradient(to right, #999 50%, var(--clr) 50%);
-  background-size: 6px 6px;
+.building-3 {
+  --building-color: #d3ffe4;
+  transform: translate3d(-300px, 0, -400px) scaleY(0.9);
 }
 
-.skyscraper div span:nth-child(3) {
-  transform: rotateY(180deg) translate3d(0, 0, 100px);
-  background:
-    linear-gradient(to bottom, transparent 50%, var(--clr) 50%),
-    linear-gradient(to right, #999 50%, var(--clr) 50%);
-  background-size: 6px 6px;
+.building-4 {
+  --building-color: #d6c7ff;
+  transform: translate3d(300px, 0, 50px) scaleY(1.15);
 }
 
-.skyscraper div span:nth-child(4) {
-  transform: rotateY(270deg) translate3d(0, 0, 100px);
-  background: linear-gradient(to right, #999 50%, var(--clr) 50%);
-  background-size: 6px 6px;
+.building-5 {
+  --building-color: #fdffd3;
+  transform: translate3d(100px, 0, -300px) scaleY(1.75);
 }
 
-.skyscraper .bottom {
-  position: absolute;
-  left: -25px;
-  width: 250px;
-  height: 250px;
-  background: var(--clr);
-  transform: rotateX(90deg) translateZ(-480px);
-  border: 4px solid var(--clr);
+.building-6 {
+  --building-color: #bdfff6;
+  transform: translate3d(100px, 0, 500px) scaleY(1.25);
 }
 
-.skyscraper.two {
-  position: absolute;
-  top: 0;
-  left: -300px;
-  transform-origin: bottom;
-  transform: translateZ(-100px) scaleY(1.25);
+.building-7 {
+  --building-color: #feffa0;
+  transform: translate3d(500px, 0, 300px) scaleY(0.7);
 }
 
-.skyscraper.three {
-  position: absolute;
-  top: 0;
-  left: -300px;
-  transform-origin: bottom;
-  transform: translateZ(-400px) scaleX(0.5);
+.building-8 {
+  --building-color: #d8e9ff;
+  transform: translate3d(500px, 0, -350px) scaleY(1.1);
 }
 
-.skyscraper.four {
-  position: absolute;
-  top: 0;
-  left: 300px;
-  transform-origin: bottom;
-  transform: translateZ(50px) scaleY(1.15);
+.building-9 {
+  --building-color: #ffe9d3;
+  transform: translate3d(-500px, 0, 400px) scaleY(1.4);
 }
 
-.skyscraper.five {
-  position: absolute;
-  top: 0;
-  left: 100px;
-  transform-origin: bottom;
-  transform: translateZ(-300px) scaleY(1.75);
+.building-face,
+.building-top,
+.building-bottom {
+  background-color: var(--building-color);
 }
 
-.skyscraper.six {
-  position: absolute;
-  top: 0;
-  left: 100px;
-  transform-origin: bottom;
-  transform: translateZ(600px) scaleY(1.25);
+@keyframes city-rotation {
+  from {
+    transform: scale(0.65) rotateX(-30deg) rotateY(0deg);
+  }
+
+  to {
+    transform: scale(0.65) rotateX(-30deg) rotateY(360deg);
+  }
 }
 
-.skyscraper.seven {
-  position: absolute;
-  top: 0;
-  left: 500px;
-  transform-origin: bottom;
-  transform: translateZ(400px) scaleY(0.5);
+@media (max-width: 900px) {
+  .city {
+    transform: scale(0.5) rotateX(-30deg);
+  }
+
+  @keyframes city-rotation {
+    from {
+      transform: scale(0.5) rotateX(-30deg) rotateY(0deg);
+    }
+
+    to {
+      transform: scale(0.5) rotateX(-30deg) rotateY(360deg);
+    }
+  }
 }
 
-.skyscraper.eight {
-  position: absolute;
-  top: 0;
-  left: 500px;
-  transform-origin: bottom;
-  transform: translateZ(-400px) scaleX(2);
-}
+@media (max-width: 600px) {
+  .city {
+    transform: scale(0.38) rotateX(-30deg);
+  }
 
-.skyscraper.nine {
-  position: absolute;
-  top: 0;
-  left: -500px;
-  transform-origin: bottom;
-  transform: translateZ(450px) scaleY(1);
+  @keyframes city-rotation {
+    from {
+      transform: scale(0.38) rotateX(-30deg) rotateY(0deg);
+    }
+
+    to {
+      transform: scale(0.38) rotateX(-30deg) rotateY(360deg);
+    }
+  }
 }
