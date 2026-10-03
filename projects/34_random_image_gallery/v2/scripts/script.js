@@ -1,4 +1,5 @@
 const imageContainerEl = document.querySelector(".image-container");
+
 const btnEl = document.querySelector(".btn");
 
 const imageCount = 8;
@@ -46,19 +47,26 @@ function createImage() {
   imageEl.height = height;
   imageEl.loading = "lazy";
 
+  imageEl.addEventListener("error", () => {
+    imageEl.remove();
+    imageContainerEl.appendChild(createImage());
+  });
+
   return imageEl;
 }
 
-function addNewImages() {
+function addNewImages(count = imageCount) {
   const fragment = document.createDocumentFragment();
 
-  for (let index = 0; index < imageCount; index++) {
+  for (let index = 0; index < count; index++) {
     fragment.appendChild(createImage());
   }
 
   imageContainerEl.appendChild(fragment);
 }
 
-btnEl.addEventListener("click", addNewImages);
+btnEl.addEventListener("click", () => {
+  addNewImages();
+});
 
 addNewImages();
