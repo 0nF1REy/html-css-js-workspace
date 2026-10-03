@@ -1,15 +1,15 @@
 <!doctype html>
-
 <html lang="pt-BR">
   <head>
-    <title>34 - v2 - Galeria de Imagens Aleatórias</title>
+    <title>34 - v3 - Galeria de Imagens Aleatórias</title>
     <meta charset="UTF-8" />
     <meta name="Author" content="Alan Ryan da Silva Domingues" />
-    <meta http-equiv="Refresh" content="25; ../v3" />
+    <meta http-equiv="Refresh" content="25; ../../00_hello_world/v1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./styles/style.css" />
   </head>
+
   <body>
     <header class="header">
       <div class="header-content">
@@ -25,18 +25,13 @@
       <section class="gallery-section" aria-labelledby="gallery-title">
         <div class="section-heading">
           <h2 id="gallery-title">Galeria</h2>
-          <p>Novas imagens são adicionadas a cada carregamento.</p>
+          <p>Novas imagens são adicionadas automaticamente.</p>
         </div>
 
         <div class="image-container"></div>
-
-        <button class="btn" type="button">Carregar Mais Imagens</button>
+        <div class="gallery-loader" aria-hidden="true"></div>
       </section>
     </main>
-
-    <footer class="footer">
-      <p>&copy; 2026 Galeria de Imagens Aleatórias</p>
-    </footer>
 
     <script src="./scripts/script.js"></script>
   </body>
