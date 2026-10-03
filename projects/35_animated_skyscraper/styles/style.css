@@ -115,6 +115,70 @@ body {
   width: 250px;
   height: 250px;
   background: var(--clr);
-  transform: rotateX(90deg) translateZ(-400px);
+  transform: rotateX(90deg) translateZ(-480px);
   border: 4px solid var(--clr);
+}
+
+.skyscraper.two {
+  position: absolute;
+  top: 0;
+  left: -300px;
+  transform-origin: bottom;
+  transform: translateZ(-100px) scaleY(1.25);
+}
+
+.skyscraper.three {
+  position: absolute;
+  top: 0;
+  left: -300px;
+  transform-origin: bottom;
+  transform: translateZ(-400px) scaleX(0.5);
+}
+
+.skyscraper.four {
+  position: absolute;
+  top: 0;
+  left: 300px;
+  transform-origin: bottom;
+  transform: translateZ(50px) scaleY(1.15);
+}
+
+.skyscraper.five {
+  position: absolute;
+  top: 0;
+  left: 100px;
+  transform-origin: bottom;
+  transform: translateZ(-300px) scaleY(1.75);
+}
+
+.skyscraper.six {
+  position: absolute;
+  top: 0;
+  left: 100px;
+  transform-origin: bottom;
+  transform: translateZ(600px) scaleY(1.25);
+}
+
+.skyscraper.seven {
+  position: absolute;
+  top: 0;
+  left: 500px;
+  transform-origin: bottom;
+  transform: translateZ(400px) scaleY(0.5);
+}
+
+.skyscraper.eight {
+  position: absolute;
+  top: 0;
+  left: 500px;
+  transform-origin: bottom;
+  transform: translateZ(-400px) scaleX(2);
+}
+
+.skyscraper.nine {
+  position: absolute;
+  top: 0;
+  left: -500px;
+  transform-origin: bottom;
+  transform: translateZ(450px) scaleY(1);
 }
