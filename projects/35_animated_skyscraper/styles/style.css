@@ -82,8 +82,10 @@ body {
 .building span:not(.top):not(.ground) {
   background:
     linear-gradient(to bottom, transparent 50%, var(--color) 50%),
-    linear-gradient(to right, #59636d 50%, var(--color) 50%);
+    linear-gradient(to right, rgba(70, 80, 90, 0.55) 50%, var(--color) 50%);
+
   background-size: 6px 6px;
+
   box-shadow:
     inset 10px 0 20px rgba(255, 255, 255, 0.04),
     inset -10px 0 20px rgba(0, 0, 0, 0.25);
@@ -91,38 +93,18 @@ body {
 
 .front {
   transform: translateZ(50px);
-  background:
-    linear-gradient(to bottom, transparent 50%, var(--color) 50%),
-    linear-gradient(to right, #59636d 50%, var(--color) 50%) !important;
-  background-size: 6px 6px !important;
 }
 
 .back {
   transform: rotateY(180deg) translateZ(50px);
-  background:
-    linear-gradient(to bottom, transparent 50%, var(--color) 50%),
-    linear-gradient(to right, #59636d 50%, var(--color) 50%) !important;
-  background-size: 6px 6px !important;
 }
 
 .right {
   transform: rotateY(90deg) translateZ(50px);
-  background: linear-gradient(
-    to right,
-    #59636d 50%,
-    var(--color) 50%
-  ) !important;
-  background-size: 6px 6px !important;
 }
 
 .left {
   transform: rotateY(-90deg) translateZ(50px);
-  background: linear-gradient(
-    to right,
-    #59636d 50%,
-    var(--color) 50%
-  ) !important;
-  background-size: 6px 6px !important;
 }
 
 .top {
