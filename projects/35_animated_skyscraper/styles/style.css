@@ -81,27 +81,32 @@ body {
 
 .building span:not(.top):not(.ground) {
   background:
-    linear-gradient(
-      to bottom,
-      rgba(255, 255, 255, 0.18) 0 2px,
-      transparent 2px 18px,
-      rgba(0, 0, 0, 0.22) 18px 20px,
-      transparent 20px 28px
-    ),
-    linear-gradient(
+    repeating-linear-gradient(
       to right,
-      rgba(255, 255, 255, 0.2) 0 43%,
-      rgba(0, 0, 0, 0.2) 43% 47%,
-      rgba(255, 255, 255, 0.08) 47% 100%
+      rgba(75, 85, 95, 0.55) 0,
+      rgba(75, 85, 95, 0.55) 2px,
+      transparent 2px,
+      transparent 24px
     ),
+    repeating-linear-gradient(
+      to bottom,
+      rgba(75, 85, 95, 0.5) 0,
+      rgba(75, 85, 95, 0.5) 2px,
+      transparent 2px,
+      transparent 28px
+    ),
+    linear-gradient(to right, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.18)),
     var(--color);
+
   background-size:
+    24px 100%,
     100% 28px,
     100% 100%,
     100% 100%;
+
   box-shadow:
-    inset 12px 0 20px rgba(255, 255, 255, 0.08),
-    inset -12px 0 20px rgba(0, 0, 0, 0.18);
+    inset 10px 0 20px rgba(255, 255, 255, 0.06),
+    inset -10px 0 20px rgba(0, 0, 0, 0.25);
 }
 
 .front {
