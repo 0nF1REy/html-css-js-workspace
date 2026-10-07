@@ -151,6 +151,28 @@ body {
   }
 }
 
+.head {
+  position: absolute;
+  top: -460px;
+  left: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  z-index: 2;
+  animation: animateFour 2s linear infinite;
+  background: #fff;
+}
+
+@keyframes animateFour {
+  0%,
+  100% {
+    transform: rotate(10deg) translateY(0);
+  }
+  50% {
+    transform: rotate(10deg) translateY(-20px);
+  }
+}
+
 .road {
   position: absolute;
   bottom: 0;
