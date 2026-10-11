@@ -71,6 +71,14 @@ section:hover {
   color: aqua;
 }
 
+section.active {
+  max-width: 300px;
+  background-color: #004466 !important;
+  box-shadow: 0 0 20px #0ff !important;
+  transform: scale(1.1) !important;
+  color: #0ff !important;
+}
+
 section h2,
 section h3,
 section h4,
