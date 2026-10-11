@@ -1,0 +1,92 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #121212, #1e1e3f);
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h2.cabecalho-1 {
+  font-size: 2.5rem;
+  color: #0ff;
+  text-shadow: 0 0 10px #0ff;
+  margin-bottom: 8px;
+}
+
+header .cabecalho-2 {
+  font-size: 1rem;
+  font-style: italic;
+  color: #88d8f7;
+}
+
+hr.linha {
+  border: none;
+  height: 2px;
+  width: 50%;
+  margin: 15px auto;
+  background: linear-gradient(90deg, #0ff, #00f);
+  border-radius: 5px;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  flex-grow: 1;
+}
+
+section {
+  background-color: #0a0a33;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+  padding: 20px;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+  cursor: pointer;
+  flex: 1 1 200px;
+  max-width: 255px;
+  text-align: center;
+}
+
+section:hover {
+  background-color: #002244;
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 255, 255, 0.7);
+  color: aqua;
+}
+
+section h2,
+section h3,
+section h4,
+section h5,
+section h6 {
+  color: inherit;
+  transition: color 0.3s ease;
+  user-select: none;
+}
+
+footer {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 30px;
+  border-top: 1px solid #222;
+  padding-top: 10px;
+  font-style: italic;
+}
