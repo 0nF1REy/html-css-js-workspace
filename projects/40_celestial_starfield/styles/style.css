@@ -149,26 +149,31 @@ body {
   top: 20%;
   left: 15%;
 }
+
 .spark--two {
   top: 65%;
   left: 25%;
   animation-delay: -1s;
 }
+
 .spark--three {
   top: 25%;
   right: 17%;
   animation-delay: -2s;
 }
+
 .spark--four {
   bottom: 18%;
   left: 35%;
   animation-delay: -0.5s;
 }
+
 .spark--five {
   bottom: 25%;
   right: 27%;
   animation-delay: -1.5s;
 }
+
 .spark--six {
   top: 60%;
   right: 12%;
@@ -186,15 +191,6 @@ body {
     box-shadow:
       0 0 50px #d3adffeb,
       0 0 140px #a168ff80;
-  }
-}
-
-@keyframes wing-flutter {
-  from {
-    transform: rotate(-8deg) scaleY(0.95);
-  }
-  to {
-    transform: rotate(8deg) scaleY(1.05);
   }
 }
 
