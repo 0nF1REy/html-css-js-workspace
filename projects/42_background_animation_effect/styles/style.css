@@ -1,1 +1,24 @@
-/* Empty */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+h2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: consolas;
+  font-size: 10em;
+  z-index: 10000;
+  color: #fff;
+  mix-blend-mode: difference;
+}
