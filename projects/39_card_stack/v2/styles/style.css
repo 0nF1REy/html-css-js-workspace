@@ -28,7 +28,13 @@ body {
   font-weight: 700;
   -webkit-text-stroke: 2px #3cbdb1;
   color: transparent;
+  cursor: pointer;
+  transition: 0.5s;
+}
 
+.box:hover {
+  color: #3cbdb177;
+  transform: translate(-60px, -60px);
   box-shadow:
     10px 10px 20px rgba(0, 0, 0, 0.15),
     40px 40px 0 #fff,
