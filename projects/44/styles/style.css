@@ -22,3 +22,39 @@ section {
     filter: hue-rotate(360deg);
   }
 }
+
+svg {
+  position: relative;
+  width: 90px;
+  height: 90px;
+  z-index: 1000;
+}
+
+svg circle {
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke-width: 10;
+  stroke: #25e6ff;
+  stroke-linecap: round;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 250;
+  stroke-dashoffset: 249;
+  animation: animate 2s ease-in-out infinite;
+}
+
+@keyframes animate {
+  0%,
+  2% {
+    stroke-dashoffset: 249;
+  }
+
+  50% {
+    stroke-dashoffset: 125;
+  }
+
+  98%,
+  100% {
+    stroke-dashoffset: 249;
+  }
+}
