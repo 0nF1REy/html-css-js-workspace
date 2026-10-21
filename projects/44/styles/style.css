@@ -28,6 +28,22 @@ svg {
   width: 90px;
   height: 90px;
   z-index: 1000;
+  animation: fixAnimation 2s ease-in-out infinite;
+}
+
+@keyframes fixAnimation {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  50% {
+    transform: rotateY(0deg);
+  }
+
+  50.0000000001%,
+  100% {
+    transform: rotateY(180deg);
+  }
 }
 
 svg circle {
@@ -56,6 +72,20 @@ svg circle {
   98%,
   100% {
     stroke-dashoffset: 249;
+  }
+}
+
+.loader {
+  animation: positionX 2s linear infinite;
+}
+
+@keyframes positionX {
+  0% {
+    transform: rotate(180deg) translateX(-40px);
+  }
+
+  100% {
+    transform: rotate(180deg) translateX(40px);
   }
 }
 
