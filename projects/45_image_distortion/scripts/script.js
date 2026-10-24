@@ -28,6 +28,7 @@ const animation = createTimeline({
     ease: "inOutExpo",
   },
   loop: true,
+  autoplay: false,
   delay: stagger(10, { start: 50 }),
 });
 
@@ -46,3 +47,7 @@ animation
     rotate: 0,
     duration: () => utils.random(500, 3000),
   });
+
+setTimeout(() => {
+  animation.play();
+}, 1500);
