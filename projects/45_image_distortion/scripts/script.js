@@ -1,3 +1,6 @@
+
+const { createTimeline, stagger, utils } = anime;
+
 const container = document.querySelector(".container");
 
 const columns = 20;
@@ -10,32 +13,34 @@ for (let i = 0; i < columns * rows; i++) {
   const column = i % columns;
   const row = Math.floor(i / columns);
 
-  block.style.backgroundPosition = `-${column * 5}vw -${row * 5}vw`;
+  block.style.backgroundPosition =
+    `-${column * 5}vw -${row * 5}vw`;
 
   container.appendChild(block);
 }
 
 const blocks = document.querySelectorAll(".block");
 
-const animation = anime.timeline({
-  targets: blocks,
-  easing: "easeInOutExpo",
+const animation = createTimeline({
+  defaults: {
+    ease: "inOutExpo",
+  },
   loop: true,
-  delay: anime.stagger(10, { start: 50 }),
+  delay: stagger(10, { start: 50 }),
 });
 
 animation
-  .add({
+  .add(blocks, {
     scale: 0,
-    translateX: () => anime.random(360, 2100),
-    translateY: () => anime.random(360, -2100),
-    rotate: () => anime.random(-360, 360),
-    duration: () => anime.random(500, 3000),
+    translateX: () => utils.random(360, 2100),
+    translateY: () => utils.random(-2100, 360),
+    rotate: () => utils.random(-360, 360),
+    duration: () => utils.random(500, 3000),
   })
-  .add({
+  .add(blocks, {
     scale: 1,
     translateX: 0,
     translateY: 0,
     rotate: 0,
-    duration: () => anime.random(500, 3000),
+    duration: () => utils.random(500, 3000),
   });
