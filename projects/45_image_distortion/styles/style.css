@@ -23,7 +23,7 @@ body {
   position: relative;
   width: 5vw;
   height: 5vw;
-  background-image: url("../assets/images/car.jpeg");
+  background-image: url("../assets/images/initial-d.jpg");
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
   transform-style: preserve-3d;
