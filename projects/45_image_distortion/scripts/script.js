@@ -28,6 +28,7 @@ const animation = createTimeline({
     ease: "inOutExpo",
   },
   loop: true,
+  loopDelay: 1500,
   autoplay: false,
   delay: stagger(10, { start: 50 }),
 });
