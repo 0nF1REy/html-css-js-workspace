@@ -7,13 +7,14 @@
 body {
   min-height: 100vh;
   overflow: hidden;
-  background: #000;
+  background: #fff;
 }
 
 .container {
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(20, 5vw);
+  grid-template-rows: repeat(20, 5vw);
   transform-style: preserve-3d;
   perspective: 1000px;
 }
@@ -22,11 +23,8 @@ body {
   position: relative;
   width: 5vw;
   height: 5vw;
-  background: url(bg.jpg);
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center;
-  /* border: 1px solid #111; */
-  /* box-sizing: border-box; */
+  background-image: url("../assets/images/car.jpeg");
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
   transform-style: preserve-3d;
 }
