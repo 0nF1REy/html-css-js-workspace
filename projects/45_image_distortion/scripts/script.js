@@ -1,5 +1,8 @@
-
-const { createTimeline, stagger, utils } = anime;
+import {
+  createTimeline,
+  stagger,
+  utils,
+} from "https://cdnjs.cloudflare.com/ajax/libs/animejs/4.5.0/anime.esm.min.js";
 
 const container = document.querySelector(".container");
 
@@ -13,8 +16,7 @@ for (let i = 0; i < columns * rows; i++) {
   const column = i % columns;
   const row = Math.floor(i / columns);
 
-  block.style.backgroundPosition =
-    `-${column * 5}vw -${row * 5}vw`;
+  block.style.backgroundPosition = `-${column * 5}vw -${row * 5}vw`;
 
   container.appendChild(block);
 }
