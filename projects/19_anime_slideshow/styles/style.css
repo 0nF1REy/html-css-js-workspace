@@ -1,0 +1,139 @@
+:root {
+  --animation-speed: 1s;
+  --primary-color: #fff;
+  --secondary-color: #000;
+  --dot-color: #bbb;
+  --dot-active-color: #717171;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+li {
+  list-style-type: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+.slideshow-container {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slides {
+  height: 100%;
+  width: 100%;
+}
+
+.slide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  transition: opacity var(--animation-speed) ease-in-out;
+}
+
+.slide[data-active] {
+  opacity: 1;
+  z-index: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.slide-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  color: var(--primary-color);
+  z-index: 2;
+  transform: translateY(100%);
+  transition: transform var(--animation-speed) ease-in-out;
+}
+
+.slide[data-active] .slide-caption {
+  transform: translateY(0);
+}
+
+.slide-caption h3 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.slide-caption p {
+  font-size: 1.2rem;
+}
+
+.previous-button,
+.next-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+}
+
+.previous-button:hover,
+.next-button:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.previous-button {
+  left: 20px;
+}
+
+.next-button {
+  right: 20px;
+}
+
+.dots-container {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  gap: 10px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--dot-color);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: var(--dot-active-color);
+}
