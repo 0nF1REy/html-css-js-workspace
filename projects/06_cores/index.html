@@ -1,155 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
-    <meta charset="UTF-8" />
+    <title>06 - Cores</title>
     <meta name="Author" content="Alan Ryan da Silva Domingues" />
     <meta
       name="description"
-      content="Esta página foi criada para estudo HTML"
+      content="Explore o sistema de cores RGB, seus canais vermelho, verde e azul e a combinação de cores na tela."
     />
-    <meta name="keywords" content="HTML,CSS,RGB" />
+    <meta
+      name="keywords"
+      content="RGB, cores, sistema de cores, vermelho, verde, azul, HTML, CSS, JavaScript"
+    />
     <meta http-equiv="Refresh" content="25; ../07_formatacao_tabelas" />
-    <title>06 - Cores</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      body {
-        background-color: #263f70;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        color: #f0f0f0;
-        padding: 20px;
-      }
-
-      h1 {
-        color: khaki;
-        text-decoration: underline;
-        text-align: center;
-        margin-bottom: 10px;
-        animation: pulse 3s infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.05);
-        }
-      }
-
-      span.autor {
-        display: block;
-        color: greenyellow;
-        text-align: center;
-        margin-bottom: 20px;
-        font-weight: bold;
-      }
-
-      hr {
-        border: none;
-        height: 2px;
-        background-color: paleturquoise;
-        margin-bottom: 20px;
-      }
-
-      section {
-        background-color: #000;
-        padding: 20px;
-        border-radius: 15px;
-        box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
-      }
-
-      section h2 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-
-      .rgb-label span {
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .rgb-bars,
-      .rgb-blocks {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        margin: 20px 0;
-      }
-
-      .bar,
-      .block {
-        border-radius: 8px;
-        transition: transform 0.3s;
-      }
-
-      .bar:hover,
-      .block:hover {
-        transform: scale(1.05);
-      }
-
-      .bar {
-        width: 30%;
-        height: 188px;
-      }
-
-      .block {
-        width: 30%;
-        height: 700px;
-      }
-
-      .r {
-        background-color: #ff0000;
-      }
-      .g {
-        background-color: #00ff00;
-      }
-      .b {
-        background-color: #0000ff;
-      }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090d18" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script src="./scripts/script.js" defer></script>
   </head>
   <body>
-    <h1>Módulo de HTML</h1>
-    <span class="autor"
-      >Realizado por Alan Ryan na data 15 de setembro de 2024.</span
-    >
-    <hr />
+    <header class="hero">
+      <p class="eyebrow">HTML · CSS · FUNDAMENTOS</p>
+      <h1>O universo das <span>cores</span></h1>
+      <p class="hero-description">
+        Três canais, infinitas possibilidades. Descubra como o vermelho, o verde
+        e o azul formam as cores que vemos nas telas.
+      </p>
+      <a class="hero-link" href="#rgb-lab"
+        >Explorar RGB <span aria-hidden="true">↓</span></a
+      >
+    </header>
 
-    <section>
-      <h2 class="rgb-label">
-        <span style="color: #8b0d0d">Sistema de cores: </span>
-        <span style="color: #ff0000">R</span>
-        <span style="color: #00ff00">G</span>
-        <span style="color: #0000ff">B</span>
-      </h2>
+    <main>
+      <section class="rgb-section" aria-labelledby="rgb-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">01 / FUNDAMENTOS</p>
+            <h2 id="rgb-title">Os três canais</h2>
+          </div>
+          <p class="section-description">
+            RGB significa Red, Green e Blue: vermelho, verde e azul.
+          </p>
+        </div>
 
-      <div class="rgb-bars">
-        <div class="bar r"></div>
-        <div class="bar g"></div>
-        <div class="bar b"></div>
-      </div>
+        <div class="channel-grid">
+          <article class="channel-card channel-red">
+            <div class="channel-top">
+              <span class="channel-letter">R</span>
+              <span class="channel-number">01</span>
+            </div>
+            <div class="color-preview" aria-hidden="true"></div>
+            <h3>Red <span>· Vermelho</span></h3>
+            <p>O primeiro canal do modelo RGB.</p>
+            <code>#FF0000</code>
+            <div class="channel-scale" aria-label="Vermelho no valor máximo">
+              <span></span>
+            </div>
+            <p class="channel-value">R: 255 · G: 0 · B: 0</p>
+          </article>
 
-      <div class="rgb-blocks">
-        <div class="block r"></div>
-        <div class="block g"></div>
-        <div class="block b"></div>
-      </div>
-    </section>
+          <article class="channel-card channel-green">
+            <div class="channel-top">
+              <span class="channel-letter">G</span>
+              <span class="channel-number">02</span>
+            </div>
+            <div class="color-preview" aria-hidden="true"></div>
+            <h3>Green <span>· Verde</span></h3>
+            <p>O segundo canal do modelo RGB.</p>
+            <code>#00FF00</code>
+            <div class="channel-scale" aria-label="Verde no valor máximo">
+              <span></span>
+            </div>
+            <p class="channel-value">R: 0 · G: 255 · B: 0</p>
+          </article>
 
-    <script>
-      document.querySelector("h1").addEventListener("mouseover", () => {
-        document.body.style.backgroundColor = "#1a2c50";
-      });
+          <article class="channel-card channel-blue">
+            <div class="channel-top">
+              <span class="channel-letter">B</span>
+              <span class="channel-number">03</span>
+            </div>
+            <div class="color-preview" aria-hidden="true"></div>
+            <h3>Blue <span>· Azul</span></h3>
+            <p>O terceiro canal do modelo RGB.</p>
+            <code>#0000FF</code>
+            <div class="channel-scale" aria-label="Azul no valor máximo">
+              <span></span>
+            </div>
+            <p class="channel-value">R: 0 · G: 0 · B: 255</p>
+          </article>
+        </div>
+      </section>
 
-      document.querySelector("h1").addEventListener("mouseout", () => {
-        document.body.style.backgroundColor = "#263f70";
-      });
-    </script>
+      <section class="mixer-section" id="rgb-lab" aria-labelledby="mixer-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">02 / EXPERIMENTO</p>
+            <h2 id="mixer-title">Misture as cores</h2>
+          </div>
+          <p class="section-description">
+            Ajuste os canais e observe o resultado em tempo real.
+          </p>
+        </div>
+
+        <div class="mixer-layout">
+          <div class="mixer-controls">
+            <label class="slider-control" for="red">
+              <span class="slider-heading">
+                <span class="slider-name"
+                  ><span class="slider-dot red-dot"></span> Vermelho</span
+                >
+                <output id="red-value" for="red">128</output>
+              </span>
+              <input
+                id="red"
+                name="red"
+                type="range"
+                min="0"
+                max="255"
+                value="128"
+              />
+            </label>
+
+            <label class="slider-control" for="green">
+              <span class="slider-heading">
+                <span class="slider-name"
+                  ><span class="slider-dot green-dot"></span> Verde</span
+                >
+                <output id="green-value" for="green">128</output>
+              </span>
+              <input
+                id="green"
+                name="green"
+                type="range"
+                min="0"
+                max="255"
+                value="128"
+              />
+            </label>
+
+            <label class="slider-control" for="blue">
+              <span class="slider-heading">
+                <span class="slider-name"
+                  ><span class="slider-dot blue-dot"></span> Azul</span
+                >
+                <output id="blue-value" for="blue">128</output>
+              </span>
+              <input
+                id="blue"
+                name="blue"
+                type="range"
+                min="0"
+                max="255"
+                value="128"
+              />
+            </label>
+
+            <button class="reset-button" id="reset-color" type="button">
+              Restaurar valores
+            </button>
+          </div>
+
+          <div class="color-result">
+            <div
+              class="result-preview"
+              id="color-preview"
+              role="img"
+              aria-label="Prévia da cor RGB atual"
+            ></div>
+            <div class="result-details">
+              <div>
+                <span class="result-label">HEX</span>
+                <output id="hex-value">#808080</output>
+              </div>
+              <button class="copy-button" id="copy-color" type="button">
+                Copiar HEX
+              </button>
+            </div>
+            <p class="rgb-output" id="rgb-value">rgb(128, 128, 128)</p>
+            <p class="copy-status" id="copy-status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="theory-section" aria-labelledby="theory-title">
+        <p class="eyebrow">03 / CONCEITO</p>
+        <h2 id="theory-title">Como funciona o RGB?</h2>
+        <p>
+          O RGB é um modelo de cores aditivo utilizado em telas. Cada canal pode
+          assumir um valor de 0 a 255. A combinação dos três canais determina a
+          cor exibida.
+        </p>
+
+        <div class="theory-grid">
+          <article>
+            <span class="theory-symbol">0</span>
+            <h3>Valor mínimo</h3>
+            <p>Um canal com valor zero não contribui com luz para a mistura.</p>
+          </article>
+          <article>
+            <span class="theory-symbol">255</span>
+            <h3>Valor máximo</h3>
+            <p>
+              Um canal no máximo representa a intensidade mais alta daquele
+              componente.
+            </p>
+          </article>
+          <article>
+            <span class="theory-symbol">+</span>
+            <h3>Mistura aditiva</h3>
+            <p>
+              A combinação máxima de vermelho, verde e azul resulta em branco.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Projeto 06 · Fundamentos de HTML e CSS</p>
+      <p>Desenvolvido por Alan Ryan da Silva Domingues</p>
+    </footer>
   </body>
 </html>
