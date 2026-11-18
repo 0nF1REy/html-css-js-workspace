@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="pt-BR">
   <head>
-    <title>07 - Table Styling</title>
+    <meta charset="UTF-8" />
     <meta name="author" content="Alan Ryan da Silva Domingues" />
     <meta
       name="description"
@@ -11,28 +11,39 @@
       name="keywords"
       content="HTML, Tabelas, Formatação de Tabelas, CSS, Classes CSS, Estilização, Organização de Dados, Design Responsivo"
     />
-    <meta name="theme-color" content="#101014" />
+    <meta name="theme-color" content="#101c2b" />
     <meta http-equiv="refresh" content="25; ../08_links" />
-    <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>07 - Table Styling</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
     <style>
       :root {
         color-scheme: dark;
+
         --background: #101c2b;
         --surface: #17283b;
         --surface-light: #20364d;
         --surface-hover: #29445d;
+
         --border: #34516a;
+
         --text: #e8f1f8;
         --text-muted: #9aafc2;
+
         --accent: #36a9e8;
         --accent-light: #75d0ff;
-        --primary: #b9e8ff;
+
+        --radius: 10px;
+        --shadow: 0 12px 30px rgb(0 0 0 / 22%);
       }
 
       * {
@@ -44,11 +55,10 @@
         min-width: 320px;
         min-height: 100vh;
         margin: 0;
-        padding: 0;
         background:
           radial-gradient(
             ellipse at 50% 0%,
-            rgb(42 112 159 / 20%),
+            rgb(42 112 159 / 18%),
             transparent 55%
           ),
           var(--background);
@@ -56,39 +66,40 @@
       }
 
       header {
-        position: relative;
-        overflow: hidden;
-        padding: 45px 20px 35px;
-        background:
-          linear-gradient(120deg, rgb(16 37 58 / 96%), rgb(25 65 94 / 94%)),
-          var(--surface);
+        padding: 35px 20px 28px;
+        background: linear-gradient(
+          120deg,
+          rgb(16 37 58 / 96%),
+          rgb(25 65 94 / 94%)
+        );
         border-bottom: 2px solid var(--accent);
         text-align: center;
-        box-shadow: 0 8px 30px rgb(0 0 0 / 30%);
+        box-shadow: 0 8px 25px rgb(0 0 0 / 25%);
       }
 
       .cabecalho-1 {
         margin: 0;
         color: var(--accent-light);
-        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-size: clamp(1.4rem, 3vw, 1.9rem);
         font-weight: 800;
-        letter-spacing: 0.12em;
+        letter-spacing: 0.1em;
         text-transform: uppercase;
         text-shadow: 0 0 18px rgb(54 169 232 / 30%);
       }
 
       .cabecalho-2 {
         display: block;
-        margin-top: 12px;
+        margin-top: 10px;
         color: var(--text-muted);
-        font-size: 0.8rem;
+        font-size: 0.75rem;
         font-weight: 500;
+        line-height: 1.6;
       }
 
-      hr.linha {
-        width: min(80%, 700px);
+      .linha {
+        width: min(75%, 550px);
         height: 2px;
-        margin: 24px auto 0;
+        margin: 20px auto 0;
         border: none;
         background: linear-gradient(
           to right,
@@ -97,117 +108,162 @@
           var(--accent-light),
           transparent
         );
-        box-shadow: 0 0 12px rgb(54 169 232 / 45%);
       }
 
-      section {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: flex-start;
-        gap: 35px;
-        padding: 55px 24px;
+      main {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        width: min(100% - 40px, 1100px);
+        margin: 0 auto;
+        padding: 38px 0;
+      }
+
+      .tabela-card {
+        min-width: 0;
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition:
+          transform 250ms ease,
+          border-color 250ms ease,
+          box-shadow 250ms ease;
+      }
+
+      .tabela-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent);
+        box-shadow: 0 16px 35px rgb(0 0 0 / 30%);
+      }
+
+      .tabela-card--completa {
+        grid-column: 1 / -1;
+      }
+
+      .tabela-wrapper {
+        width: 100%;
+        overflow-x: auto;
       }
 
       table {
-        min-width: 300px;
+        width: 100%;
         border-collapse: collapse;
-        overflow: hidden;
-        background: var(--surface);
         color: var(--text);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        box-shadow: 0 12px 35px rgb(0 0 0 / 25%);
-        transition:
-          transform 250ms ease,
-          box-shadow 250ms ease,
-          border-color 250ms ease;
       }
 
-      table:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent);
-        box-shadow: 0 18px 40px rgb(0 0 0 / 35%);
-      }
-
+      th,
       td {
-        padding: 12px 17px;
+        padding: 12px 14px;
         border: 1px solid var(--border);
         text-align: center;
-        font-size: 0.82rem;
-        transition:
-          background 200ms ease,
-          color 200ms ease;
+        font-size: 0.78rem;
+        line-height: 1.5;
       }
 
-      td:hover {
-        background-color: var(--surface-hover);
+      th {
+        background: var(--surface-light);
         color: var(--accent-light);
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
       }
 
       .titulo-1 {
-        padding: 17px;
+        padding: 15px;
         background: linear-gradient(110deg, #12618c, #218fc2);
         color: #ffffff;
-        font-size: 1.05rem;
+        font-size: 0.95rem;
         font-weight: 800;
         font-style: italic;
         letter-spacing: 0.04em;
         text-align: center;
-        text-shadow: 0 1px 5px rgb(0 0 0 / 25%);
-      }
-
-      .titulo-2 {
-        background-color: #243e56;
-        color: var(--accent-light);
-        font-size: 0.7rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
       }
 
       .colaborador {
-        background-color: #17283b;
-        color: #e8f1f8;
+        background: var(--surface);
+        color: var(--text);
         font-weight: 600;
       }
 
       .salario {
-        background-color: #1d3045;
-        color: #75d0ff;
+        background: #1d3045;
+        color: var(--accent-light);
         font-variant-numeric: tabular-nums;
       }
 
       .funcao {
-        background-color: #192c40;
+        background: #192c40;
         color: #b1c4d5;
       }
 
-      @media (max-width: 700px) {
-        section {
-          flex-direction: column;
-          align-items: center;
-          gap: 30px;
-          padding: 35px 16px;
+      tbody tr {
+        transition: background 200ms ease;
+      }
+
+      tbody tr:hover td {
+        background-color: var(--surface-hover);
+        color: var(--accent-light);
+      }
+
+      .tabela-card--completa table {
+        min-width: 900px;
+      }
+
+      .tabela-card--completa th,
+      .tabela-card--completa td {
+        padding: 13px 12px;
+        font-size: 0.75rem;
+      }
+
+      .tabela-card--completa td {
+        overflow-wrap: break-word;
+      }
+
+      @media (max-width: 760px) {
+        main {
+          grid-template-columns: 1fr;
+          width: min(100% - 32px, 540px);
+          gap: 22px;
+          padding: 28px 0;
         }
 
-        table {
-          width: 100%;
-          min-width: 0;
-          font-size: 0.75rem;
+        .tabela-card--completa {
+          grid-column: auto;
         }
 
+        th,
         td {
-          padding: 10px 8px;
+          padding: 10px 9px;
           font-size: 0.72rem;
         }
 
         .titulo-1 {
-          font-size: 0.95rem;
+          padding: 13px;
+          font-size: 0.88rem;
+        }
+      }
+
+      @media (max-width: 420px) {
+        header {
+          padding: 28px 15px 22px;
+        }
+
+        main {
+          width: calc(100% - 24px);
+          gap: 18px;
+        }
+
+        th,
+        td {
+          padding: 9px 6px;
+          font-size: 0.65rem;
         }
 
         .cabecalho-2 {
-          line-height: 1.7;
+          font-size: 0.68rem;
         }
       }
 
@@ -219,7 +275,7 @@
           transition-duration: 0.01ms !important;
         }
 
-        table:hover {
+        .tabela-card:hover {
           transform: none;
         }
       }
@@ -228,131 +284,216 @@
 
   <body>
     <header>
-      <h2 class="cabecalho-1">Módulo de HTML</h2>
+      <h1 class="cabecalho-1">Módulo de HTML</h1>
+
       <span class="cabecalho-2">
         Realizado por Alan Ryan na data de 20 de setembro de 2024.
       </span>
+
       <hr class="linha" />
     </header>
 
-    <section>
-      <table>
-        <tr>
-          <td colspan="3" class="titulo-1">Tabela de Colaboradores</td>
-        </tr>
-        <tr>
-          <td class="titulo-2">Colaborador</td>
-          <td class="titulo-2">Salário</td>
-          <td class="titulo-2">Profissão</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Arthur</td>
-          <td class="salario">R$ 3.500,00</td>
-          <td class="funcao">Minerador</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Beatriz</td>
-          <td class="salario">R$ 8.900,00</td>
-          <td class="funcao">Advogada</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Carlos</td>
-          <td class="salario">R$ 7.800,00</td>
-          <td class="funcao">Engenheiro Civil</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Eduardo</td>
-          <td class="salario">R$ 9.642,00</td>
-          <td class="funcao">Piloto de Avião</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Layla</td>
-          <td class="salario">R$ 5.340,00</td>
-          <td class="funcao">Designer</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Mariana</td>
-          <td class="salario">R$ 4.200,00</td>
-          <td class="funcao">Enfermeira</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Ricardo</td>
-          <td class="salario">R$ 6.500,00</td>
-          <td class="funcao">Analista de TI</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Sarah</td>
-          <td class="salario">R$ 2.850,00</td>
-          <td class="funcao">Assistente Social</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Valentina</td>
-          <td class="salario">R$ 3.800,00</td>
-          <td class="funcao">Arquiteta</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Yuna</td>
-          <td class="salario">R$ 5.000,00</td>
-          <td class="funcao">Psicóloga</td>
-        </tr>
-      </table>
+    <main>
+      <article class="tabela-card">
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="3" class="titulo-1">Tabela de Colaboradores</th>
+              </tr>
+              <tr>
+                <th>Colaborador</th>
+                <th>Salário</th>
+                <th>Profissão</th>
+              </tr>
+            </thead>
 
-      <table>
-        <tr>
-          <td colspan="3" class="titulo-1">Tabela de Artistas</td>
-        </tr>
-        <tr>
-          <td class="titulo-2">Artista</td>
-          <td class="titulo-2">Grupo</td>
-          <td class="titulo-2">Gravadora</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Baby Consuelo</td>
-          <td class="salario">Os Novos Baianos</td>
-          <td class="funcao">Atlantic</td>
-        </tr>
-        <tr>
-          <td colspan="2" class="colaborador">Chico Buarque</td>
-          <td class="funcao">Philips</td>
-        </tr>
-        <tr>
-          <td colspan="2" class="colaborador">Elvis Presley</td>
-          <td class="funcao">RCA Victor</td>
-        </tr>
-        <tr>
-          <td colspan="2" class="colaborador">Frank Sinatra</td>
-          <td class="funcao">Columbia</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Joan Jett</td>
-          <td class="salario">Joan Jett &amp; The Blackhearts</td>
-          <td class="funcao">Blackheart Records</td>
-        </tr>
-        <tr>
-          <td colspan="2" class="colaborador">Nara Leão</td>
-          <td class="funcao">Philips</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Nena Kerner</td>
-          <td class="salario">Nena</td>
-          <td class="funcao">CBS</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Noel Rosa</td>
-          <td class="salario">Bando De Tangarás</td>
-          <td class="funcao">Victor</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Rita Lee</td>
-          <td class="salario">Os Mutantes</td>
-          <td class="funcao">Som Livre</td>
-        </tr>
-        <tr>
-          <td class="colaborador">Suzi Quatro</td>
-          <td class="salario">The Pleasure Seekers</td>
-          <td class="funcao">RAK</td>
-        </tr>
-      </table>
-    </section>
+            <tbody>
+              <tr>
+                <td class="colaborador">Arthur</td>
+                <td class="salario">R$ 3.500,00</td>
+                <td class="funcao">Minerador</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Beatriz</td>
+                <td class="salario">R$ 8.900,00</td>
+                <td class="funcao">Advogada</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Carlos</td>
+                <td class="salario">R$ 7.800,00</td>
+                <td class="funcao">Engenheiro Civil</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Eduardo</td>
+                <td class="salario">R$ 9.642,00</td>
+                <td class="funcao">Piloto de Avião</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Layla</td>
+                <td class="salario">R$ 5.340,00</td>
+                <td class="funcao">Designer</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Mariana</td>
+                <td class="salario">R$ 4.200,00</td>
+                <td class="funcao">Enfermeira</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Ricardo</td>
+                <td class="salario">R$ 6.500,00</td>
+                <td class="funcao">Analista de TI</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Sarah</td>
+                <td class="salario">R$ 2.850,00</td>
+                <td class="funcao">Assistente Social</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Valentina</td>
+                <td class="salario">R$ 3.800,00</td>
+                <td class="funcao">Arquiteta</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Yuna</td>
+                <td class="salario">R$ 5.000,00</td>
+                <td class="funcao">Psicóloga</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="tabela-card">
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="3" class="titulo-1">Tabela de Artistas</th>
+              </tr>
+              <tr>
+                <th>Artista</th>
+                <th>Grupo</th>
+                <th>Gravadora</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="colaborador">Baby Consuelo</td>
+                <td class="salario">Os Novos Baianos</td>
+                <td class="funcao">Atlantic</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="colaborador">Chico Buarque</td>
+                <td class="funcao">Philips</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="colaborador">Elvis Presley</td>
+                <td class="funcao">RCA Victor</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="colaborador">Frank Sinatra</td>
+                <td class="funcao">Columbia</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Joan Jett</td>
+                <td class="salario">Joan Jett &amp; The Blackhearts</td>
+                <td class="funcao">Blackheart Records</td>
+              </tr>
+              <tr>
+                <td colspan="2" class="colaborador">Nara Leão</td>
+                <td class="funcao">Philips</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Nena Kerner</td>
+                <td class="salario">Nena</td>
+                <td class="funcao">CBS</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Noel Rosa</td>
+                <td class="salario">Bando De Tangarás</td>
+                <td class="funcao">Victor</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Rita Lee</td>
+                <td class="salario">Os Mutantes</td>
+                <td class="funcao">Som Livre</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Suzi Quatro</td>
+                <td class="salario">The Pleasure Seekers</td>
+                <td class="funcao">RAK</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="tabela-card tabela-card--completa">
+        <div class="tabela-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="8" class="titulo-1">Tabela de Bandas</th>
+              </tr>
+              <tr>
+                <th>Band</th>
+                <th>Vocal</th>
+                <th>Guitar</th>
+                <th>Bass</th>
+                <th>Drums</th>
+                <th>Album</th>
+                <th>Producer</th>
+                <th>Year</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="colaborador">Aphrodite's Child</td>
+                <td class="funcao">Demis Roussos, Lucas Sideras</td>
+                <td class="funcao">Silver Koulouris</td>
+                <td class="funcao">Demis Roussos, Harris Chalkitis</td>
+                <td class="funcao">Lucas Sideras, Harris Chalkitis</td>
+                <td class="salario">666</td>
+                <td class="funcao">Gérard Fallec</td>
+                <td class="salario">1972</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Scorpions</td>
+                <td class="funcao">Klaus Meine</td>
+                <td class="funcao">Rudolf Schenker</td>
+                <td class="funcao">Lothar Heimberg</td>
+                <td class="funcao">Wolfgang Dziony</td>
+                <td class="salario">Lonesome Crow</td>
+                <td class="funcao">Conny Plank</td>
+                <td class="salario">1972</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Thin Lizzy</td>
+                <td class="funcao">Phil Lynott</td>
+                <td class="funcao">Eric Bell</td>
+                <td class="funcao">Phil Lynott</td>
+                <td class="funcao">Brian Downey</td>
+                <td class="salario">Shades Of A Blue Orphanage</td>
+                <td class="funcao">Brian Dee</td>
+                <td class="salario">1972</td>
+              </tr>
+              <tr>
+                <td class="colaborador">Yes</td>
+                <td class="funcao">Jon Anderson</td>
+                <td class="funcao">Steve Howe</td>
+                <td class="funcao">Chris Squire</td>
+                <td class="funcao">Bill Bruford</td>
+                <td class="salario">Close To The Edge</td>
+                <td class="funcao">Eddy Offord</td>
+                <td class="salario">1972</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </main>
   </body>
 </html>
