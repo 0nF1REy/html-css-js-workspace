@@ -1,134 +1,241 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="author" content="Alan Ryan da Silva Domingues" />
-    <meta name="description" content="Estudo de HTML, CSS e JavaScript" />
-    <meta name="keywords" content="HTML, CSS, JS" />
+    <meta
+      name="description"
+      content="Estudo de formatação de tabelas e utilização de classes."
+    />
+    <meta name="keywords" content="Tabelas, Formatação, Classes" />
     <meta http-equiv="refresh" content="25; ../08_links" />
+    <meta name="theme-color" content="#101014" />
+
     <title>07 - Formatação de Tabelas / CSS - Classes</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
     <style>
+      :root {
+        color-scheme: dark;
+        --background: #101c2b;
+        --surface: #17283b;
+        --surface-light: #20364d;
+        --surface-hover: #29445d;
+        --border: #34516a;
+        --text: #e8f1f8;
+        --text-muted: #9aafc2;
+        --accent: #36a9e8;
+        --accent-light: #75d0ff;
+        --primary: #b9e8ff;
+      }
+
       * {
         box-sizing: border-box;
         font-family: "Montserrat", sans-serif;
       }
 
       body {
+        min-width: 320px;
+        min-height: 100vh;
         margin: 0;
         padding: 0;
-        background: linear-gradient(to right, #004e64, #00a6a6);
-        color: #f5f5f5;
+        background:
+          radial-gradient(
+            ellipse at 50% 0%,
+            rgb(42 112 159 / 20%),
+            transparent 55%
+          ),
+          var(--background);
+        color: var(--text);
       }
 
       header {
-        background-color: #013a40;
-        padding: 20px;
+        position: relative;
+        overflow: hidden;
+        padding: 45px 20px 35px;
+        background:
+          linear-gradient(120deg, rgb(16 37 58 / 96%), rgb(25 65 94 / 94%)),
+          var(--surface);
+        border-bottom: 2px solid var(--accent);
         text-align: center;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 30px rgb(0 0 0 / 30%);
       }
 
       .cabecalho-1 {
-        font-size: 28px;
-        color: #caffbf;
         margin: 0;
+        color: var(--accent-light);
+        font-size: clamp(1.5rem, 4vw, 2rem);
+        font-weight: 800;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        text-shadow: 0 0 18px rgb(54 169 232 / 30%);
       }
 
       .cabecalho-2 {
         display: block;
-        color: #a0ffe6;
-        font-size: 14px;
-        margin-top: 8px;
+        margin-top: 12px;
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        font-weight: 500;
       }
 
       hr.linha {
-        border: none;
+        width: min(80%, 700px);
         height: 2px;
-        background-color: #a0c4ff;
-        margin: 15px auto;
-        width: 80%;
+        margin: 24px auto 0;
+        border: none;
+        background: linear-gradient(
+          to right,
+          transparent,
+          var(--accent),
+          var(--accent-light),
+          transparent
+        );
+        box-shadow: 0 0 12px rgb(54 169 232 / 45%);
       }
 
       section {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 30px;
-        gap: 30px;
+        align-items: flex-start;
+        gap: 35px;
+        padding: 55px 24px;
       }
 
       table {
+        min-width: 300px;
         border-collapse: collapse;
-        background-color: #ffffff;
-        color: #2d3142;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        transition: transform 0.3s ease;
+        overflow: hidden;
+        background: var(--surface);
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        box-shadow: 0 12px 35px rgb(0 0 0 / 25%);
+        transition:
+          transform 250ms ease,
+          box-shadow 250ms ease,
+          border-color 250ms ease;
       }
 
       table:hover {
-        transform: scale(1.03);
+        transform: translateY(-5px);
+        border-color: var(--accent);
+        box-shadow: 0 18px 40px rgb(0 0 0 / 35%);
       }
 
       td {
-        border: 1px solid #9a8c98;
-        padding: 8px 16px;
+        padding: 12px 17px;
+        border: 1px solid var(--border);
         text-align: center;
-        transition: background 0.3s;
+        font-size: 0.82rem;
+        transition:
+          background 200ms ease,
+          color 200ms ease;
       }
 
       td:hover {
-        background-color: #2d3142;
-        color: #ffffff;
+        background-color: var(--surface-hover);
+        color: var(--accent-light);
       }
 
       .titulo-1 {
-        background-color: #5f0f40;
-        color: #ffdde1;
-        font-size: 20px;
-        font-weight: bold;
+        padding: 17px;
+        background: linear-gradient(110deg, #12618c, #218fc2);
+        color: #ffffff;
+        font-size: 1.05rem;
+        font-weight: 800;
         font-style: italic;
+        letter-spacing: 0.04em;
         text-align: center;
+        text-shadow: 0 1px 5px rgb(0 0 0 / 25%);
       }
 
       .titulo-2 {
-        background-color: #e0e0e0;
-        color: #5f0f40;
-        font-size: 14px;
-        font-weight: bold;
+        background-color: #243e56;
+        color: var(--accent-light);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
       }
 
       .colaborador {
-        background-color: #f8f9fa;
-        color: #114b5f;
+        background-color: #17283b;
+        color: #e8f1f8;
+        font-weight: 600;
       }
 
       .salario {
-        background-color: #edf6f9;
-        color: #006d77;
+        background-color: #1d3045;
+        color: #75d0ff;
+        font-variant-numeric: tabular-nums;
       }
 
       .funcao {
-        background-color: #edf6f9;
-        color: #780000;
+        background-color: #192c40;
+        color: #b1c4d5;
+      }
+
+      @media (max-width: 700px) {
+        section {
+          flex-direction: column;
+          align-items: center;
+          gap: 30px;
+          padding: 35px 16px;
+        }
+
+        table {
+          width: 100%;
+          min-width: 0;
+          font-size: 0.75rem;
+        }
+
+        td {
+          padding: 10px 8px;
+          font-size: 0.72rem;
+        }
+
+        .titulo-1 {
+          font-size: 0.95rem;
+        }
+
+        .cabecalho-2 {
+          line-height: 1.7;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        table:hover {
+          transform: none;
+        }
       }
     </style>
   </head>
+
   <body>
     <header>
       <h2 class="cabecalho-1">Módulo de HTML</h2>
-      <span class="cabecalho-2"
-        >Realizado por Alan Ryan na data de 20 de setembro de 2024.</span
-      >
+      <span class="cabecalho-2">
+        Realizado por Alan Ryan na data de 20 de setembro de 2024.
+      </span>
       <hr class="linha" />
     </header>
 
     <section>
-      <!-- Tabela 1 -->
       <table>
         <tr>
           <td colspan="3" class="titulo-1">Tabela de Colaboradores</td>
@@ -190,7 +297,6 @@
         </tr>
       </table>
 
-      <!-- Tabela 2 -->
       <table>
         <tr>
           <td colspan="3" class="titulo-1">Tabela de Artistas</td>
@@ -219,7 +325,7 @@
         </tr>
         <tr>
           <td class="colaborador">Joan Jett</td>
-          <td class="salario">Joan Jett & The Blackhearts</td>
+          <td class="salario">Joan Jett &amp; The Blackhearts</td>
           <td class="funcao">Blackheart Records</td>
         </tr>
         <tr>
