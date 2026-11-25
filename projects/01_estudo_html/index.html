@@ -1,167 +1,385 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="author" content="Alan Ryan da Silva Domingues" />
     <meta
       name="description"
-      content="Esta página foi criada para estudo HTML"
+      content="Estudo de estruturação de textos, listas HTML e organização hierárquica de conteúdos literários, com estilização CSS e layout responsivo."
     />
-    <meta name="keywords" content="HTML" />
-    <meta http-equiv="Refresh" content="25; ../02_textos_listas" />
+    <meta
+      name="keywords"
+      content="HTML, Textos, Listas, Listas Aninhadas, CSS, Estilização, Literatura, Shakespeare, Kahlil Gibran"
+    />
+    <meta name="theme-color" content="#f0f8ff" />
+    <meta http-equiv="refresh" content="25; ../02_textos_listas" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>01 - Estudo de HTML</title>
 
     <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(to right, #e0f7fa, #f1f8e9);
-        margin: 0;
-        padding: 20px;
-        color: #333;
+      :root {
+        --background: #f0f8ff;
+        --surface: #ffffff;
+        --surface-light: #e6f2ff;
+        --surface-hover: #d0ebff;
+
+        --border: #b8d4e8;
+
+        --text: #333333;
+        --text-muted: #555555;
+
+        --accent: #2a4d69;
+        --accent-light: #397ba5;
+
+        --radius: 10px;
+        --shadow: 0 5px 18px rgb(42 77 105 / 10%);
       }
 
-      h1 {
-        color: #00796b;
-        border-bottom: 3px solid #004d40;
-        padding-bottom: 10px;
+      * {
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        padding: 40px;
+        background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      header {
+        padding: 10px 20px 0;
         text-align: center;
       }
 
-      h2,
-      h3,
-      h4 {
-        color: #004d40;
+      .header-title {
+        margin: 0;
+        color: var(--accent);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
+      }
+
+      .header-subtitle {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 5px 12px;
+        background: var(--surface-light);
+        border-radius: 6px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-style: italic;
+      }
+
+      .divider {
+        width: 80%;
+        margin: 20px auto;
+        border: 1px solid #aaa;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 24px;
+        width: min(100%, 1100px);
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+
+      .content-card {
+        min-width: 0;
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition:
+          transform 250ms ease,
+          border-color 250ms ease,
+          box-shadow 250ms ease;
+      }
+
+      .content-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-light);
+        box-shadow: 0 8px 22px rgb(42 77 105 / 15%);
+      }
+
+      .card-title {
+        margin: 0;
+        padding: 15px 20px;
+        background: linear-gradient(110deg, #2a4d69, #397ba5);
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        font-style: italic;
+        letter-spacing: 0.04em;
+      }
+
+      .card-content {
+        padding: 24px;
+      }
+
+      .author-list,
+      .author-list ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .author-list > li + li {
+        margin-top: 28px;
+      }
+
+      .author-name {
+        margin: 0 0 16px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--border);
+        color: var(--accent);
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .work-list {
+        padding-left: 20px !important;
+        border-left: 3px solid var(--border);
+      }
+
+      .work-list > li + li {
         margin-top: 20px;
       }
 
-      ul {
-        list-style-type: none;
-        padding-left: 0;
+      .work-title {
+        margin: 0 0 14px;
+        color: var(--accent-light);
+        font-size: 1rem;
+        font-weight: 700;
       }
 
-      ul > li > h2,
-      h3,
-      h4 {
-        margin-bottom: 5px;
+      .poem {
+        padding: 18px 20px;
+        background: #f5faff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
       }
 
-      ul li ul {
-        margin-left: 20px;
+      .poem p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.8;
       }
 
-      p {
-        margin: 2px 0;
-        line-height: 1.5;
+      .poem p + p {
+        margin-top: 5px;
       }
 
-      hr {
-        border: none;
-        border-top: 1px solid #ccc;
-        margin: 20px 0;
+      .poem u {
+        color: var(--accent);
+        font-weight: 600;
+        text-decoration-color: var(--accent-light);
+        text-underline-offset: 3px;
       }
 
       .footer {
-        margin-top: 40px;
-        font-size: 0.9em;
-        color: #777;
+        width: min(100%, 1100px);
+        margin: 20px auto 0;
+        padding: 20px;
+        border-top: 1px solid var(--border);
+        color: var(--text-muted);
+        font-size: 0.8rem;
         text-align: center;
       }
 
-      .highlight {
-        background-color: #c8e6c9;
-        padding: 4px 8px;
-        border-radius: 4px;
-        display: inline-block;
-        margin-top: 10px;
+      @media (max-width: 760px) {
+        body {
+          padding: 28px 20px;
+        }
+
+        main {
+          width: 100%;
+          gap: 22px;
+          padding: 20px 0;
+        }
+
+        .card-content {
+          padding: 20px;
+        }
+
+        .poem {
+          padding: 16px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        body {
+          padding: 24px 12px;
+        }
+
+        header {
+          padding: 5px 10px 0;
+        }
+
+        .card-content {
+          padding: 16px;
+        }
+
+        .card-title {
+          padding: 13px;
+          font-size: 0.88rem;
+        }
+
+        .author-name {
+          font-size: 1.1rem;
+        }
+
+        .work-title {
+          font-size: 0.92rem;
+        }
+
+        .poem {
+          padding: 13px;
+        }
+
+        .poem p {
+          font-size: 0.82rem;
+        }
+
+        .header-subtitle {
+          font-size: 0.75rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .content-card:hover {
+          transform: none;
+        }
       }
     </style>
   </head>
+
   <body>
-    <h1>Módulo de HTML</h1>
-    <p class="highlight">
-      Realizado por Alan Ryan na data 6 de setembro de 2024.
-    </p>
-    <hr />
+    <header>
+      <h1 class="header-title">Módulo de HTML</h1>
 
-    <ul>
-      <li><h2>Autores</h2></li>
-      <ul>
-        <li>
-          <h3>Shakespeare</h3>
-          <ul>
+      <span class="header-subtitle">
+        Realizado por Alan Ryan na data de 6 de setembro de 2024.
+      </span>
+
+      <hr class="divider" />
+    </header>
+
+    <main>
+      <article class="content-card">
+        <h2 class="card-title">Autores</h2>
+
+        <div class="card-content">
+          <ul class="author-list">
             <li>
-              <h4>O Mercador de Veneza</h4>
-              <p>Nem tudo o que luz é ouro,</p>
-              <p>proclamam sábios em coro</p>
-              <p>muita gente acaba em choro,</p>
-              <p>por só procurar tesouro.</p>
-              <p>mausoléus são comedouro</p>
-              <p>de vermes em fervedouro.</p>
-              <p>se houvesse sabedoria</p>
-              <p>nessa vossa cortesia,</p>
-              <p>a consulta não faria</p>
-              <p>turvar-vos a fantasia.</p>
-              <p>passai bem; vossa ousadia</p>
-              <p>foi castigada; está fria.</p>
-              <p>é certo; agora não rio;</p>
-              <p>adeus, calor; venha o frio.</p>
+              <h3 class="author-name">Shakespeare</h3>
+
+              <ul class="work-list">
+                <li>
+                  <h4 class="work-title">O Mercador de Veneza</h4>
+
+                  <div class="poem">
+                    <p>Nem tudo o que luz é ouro,</p>
+                    <p>proclamam sábios em coro</p>
+                    <p>muita gente acaba em choro,</p>
+                    <p>por só procurar tesouro.</p>
+                    <p>mausoléus são comedouro</p>
+                    <p>de vermes em fervedouro.</p>
+                    <p>se houvesse sabedoria</p>
+                    <p>nessa vossa cortesia,</p>
+                    <p>a consulta não faria</p>
+                    <p>turvar-vos a fantasia.</p>
+                    <p>passai bem; vossa ousadia</p>
+                    <p>foi castigada; está fria.</p>
+                    <p>é certo; agora não rio;</p>
+                    <p>adeus, calor; venha o frio.</p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <h3 class="author-name">Kahlil Gibran</h3>
+
+              <ul class="work-list">
+                <li>
+                  <h4 class="work-title">O Profeta - 1923</h4>
+
+                  <div class="poem">
+                    <p>
+                      <u>
+                        E uma mulher que acalentava um bebê disse, Fale-nos de
+                        Crianças:
+                      </u>
+                    </p>
+
+                    <p>E ele disse:</p>
+                    <p>Tuas crianças não são tuas crianças.</p>
+                    <p>
+                      Elas são os filhos e filhas da Vida que anseia por si.
+                    </p>
+                    <p>Elas vieram através de ti mas não de ti,</p>
+                    <p>
+                      E a despeito de estarem contigo elas não te pertencem.
+                    </p>
+                    <p>Tu podes dar-lhes teu amor mas não teus pensamentos,</p>
+                    <p>Pois elas têm seus próprios pensamentos.</p>
+                    <p>Tu podes hospedar seus corpos mas não suas almas,</p>
+                    <p>
+                      Pois suas almas habitam a casa do amanhã, que tu não podes
+                      visitar, mesmo em teus sonhos.
+                    </p>
+                    <p>
+                      Tu podes empenhar-te para seres como elas, mas não tentes
+                      fazê-las serem como tu,
+                    </p>
+                    <p>
+                      Pois a vida não caminha para trás nem coabita com o Ontem.
+                    </p>
+                    <p>
+                      Tu és o arco do qual tuas crianças, como flechas vivas,
+                      são impulsionadas.
+                    </p>
+                    <p>
+                      O Arqueiro vê a marca sobre a trajetória do Infinito, e
+                      Ele te dobra com Seu Poder para que tuas flechas sigam
+                      velozes e para longe.
+                    </p>
+                    <p>
+                      Deixes que a flexão na mão do arqueiro seja para o
+                      contentamento e a felicidade;
+                    </p>
+                    <p>
+                      Pois assim como Ele ama a flecha que voa, Ele ama também o
+                      arco que seja firme.
+                    </p>
+                  </div>
+                </li>
+              </ul>
             </li>
           </ul>
-        </li>
-        <li>
-          <h3>Kahlil Gibran</h3>
-          <ul>
-            <li>
-              <h4>O Profeta - 1923</h4>
-              <p>
-                <u
-                  >E uma mulher que acalentava um bebê disse, Fale-nos de
-                  Crianças:</u
-                >
-              </p>
-              <p>E ele disse:</p>
-              <p>Tuas crianças não são tuas crianças.</p>
-              <p>Elas são os filhos e filhas da Vida que anseia por si.</p>
-              <p>Elas vieram através de ti mas não de ti,</p>
-              <p>E a despeito de estarem contigo elas não te pertencem.</p>
-              <p>Tu podes dar-lhes teu amor mas não teus pensamentos,</p>
-              <p>Pois elas têm seus próprios pensamentos.</p>
-              <p>Tu podes hospedar seus corpos mas não suas almas,</p>
-              <p>
-                Pois suas almas habitam a casa do amanhã, que tu não podes
-                visitar, mesmo em teus sonhos.
-              </p>
-              <p>
-                Tu podes empenhar-te para seres como elas, mas não tentes
-                fazê-las serem como tu,
-              </p>
-              <p>Pois a vida não caminha para trás nem coabita com o Ontem.</p>
-              <p>
-                Tu és o arco do qual tuas crianças, como flechas vivas, são
-                impulsionadas.
-              </p>
-              <p>
-                O Arqueiro vê a marca sobre a trajetória do Infinito, e Ele te
-                dobra com Seu Poder para que tuas flechas sigam velozes e para
-                longe.
-              </p>
-              <p>
-                Deixes que a flexão na mão do arqueiro seja para o contentamento
-                e a felicidade;
-              </p>
-              <p>
-                Pois assim como Ele ama a flecha que voa, Ele ama também o arco
-                que seja firme.
-              </p>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </ul>
+        </div>
+      </article>
+    </main>
 
-    <div class="footer">
+    <footer class="footer">
       &copy; 2024 Alan Ryan da Silva Domingues. Página criada para fins
       educacionais.
-    </div>
+    </footer>
   </body>
 </html>
