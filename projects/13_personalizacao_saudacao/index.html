@@ -1,88 +1,201 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
-    <!-- ===== TITLE and META ===== -->
-    <title>13 - Personalização de Saudação</title>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta http-equiv="Refresh" content="25; ../14_lista_de_tarefas" />
+    <meta name="author" content="Alan Ryan da Silva Domingues" />
     <meta
-      name="viewport"
-      content="width=device-width,maximum-scale=0.9,user-scalable=0"
+      name="description"
+      content="Projeto de personalização de saudação utilizando HTML, CSS e JavaScript, com interação dinâmica e estilização responsiva."
     />
-    <meta name="keywords" content="Personalização de Saudação" />
-    <meta name="Author" content="Alan Ryan da Silva Domingues" />
-    <meta content="#333333" name="theme-color" />
-    <meta name="robots" content="index, follow" />
-    <!-- ==== OPEN GRAPH and SECURITY ==== -->
-    <meta property="og:title" content="Personalização de Saudação" />
-    <meta property="og:type" content="website" />
-    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
-    <meta http-equiv="X-Frame-Options" content="DENY" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <!-- ==== MICROSOFT TILE ==== -->
-    <meta name="application-name" content="Personalização de Saudação" />
-    <meta name="msapplication-TileColor" content="#FFFFFF" />
-    <!-- ===== CSS ===== -->
+    <meta
+      name="keywords"
+      content="HTML, CSS, JavaScript, Personalização de Saudação, Interatividade, Design Responsivo"
+    />
+    <meta name="theme-color" content="#f0f8ff" />
+    <meta http-equiv="refresh" content="25; ../14_lista_de_tarefas" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>13 - Personalização de Saudação</title>
+
     <style>
+      :root {
+        --background: #f0f8ff;
+        --surface: #ffffff;
+        --surface-light: #e6f2ff;
+        --surface-hover: #d0ebff;
+
+        --border: #b8d4e8;
+
+        --text: #333333;
+        --text-muted: #555555;
+
+        --accent: #2a4d69;
+        --accent-light: #397ba5;
+
+        --radius: 10px;
+        --shadow: 0 5px 18px rgb(42 77 105 / 10%);
+      }
+
+      * {
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
       body {
-        font-family: Arial, sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-width: 320px;
+        min-height: 100vh;
         margin: 0;
-        background-color: #331f19;
+        padding: 24px;
+        background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
+        color: var(--text);
+        line-height: 1.6;
       }
+
       .container {
+        width: min(100%, 480px);
+        padding: 32px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
         text-align: center;
-        background-color: #cbbba7;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition:
+          transform 250ms ease,
+          border-color 250ms ease,
+          box-shadow 250ms ease;
       }
+
+      .container:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-light);
+        box-shadow: 0 8px 22px rgb(42 77 105 / 15%);
+      }
+
       h1 {
-        color: #331f19;
+        margin: 0;
+        color: var(--accent);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
       }
+
       p {
-        color: #331f19;
-        font-size: 1.1em;
+        margin: 12px 0 20px;
+        color: var(--text-muted);
+        font-size: 0.95rem;
       }
+
       .saudacao {
-        font-size: 1.5em;
-        color: #60041a;
-        margin-top: 10px;
+        padding: 16px;
+        background: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--accent);
+        font-size: 1.5rem;
+        font-weight: 600;
+        transition:
+          background-color 200ms ease,
+          color 200ms ease;
       }
+
       button {
-        background-color: #60041a;
-        color: #f4f0ea;
-        padding: 10px 20px;
+        margin-top: 22px;
+        padding: 12px 24px;
+        background: linear-gradient(110deg, #2a4d69, #397ba5);
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 600;
         cursor: pointer;
-        font-size: 1em;
-        margin-top: 15px;
+        transition:
+          transform 200ms ease,
+          box-shadow 200ms ease,
+          background 200ms ease;
       }
+
       button:hover {
-        background-color: #a34743;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgb(42 77 105 / 20%);
+        background: linear-gradient(110deg, #397ba5, #2a4d69);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      button:focus-visible {
+        outline: 3px solid var(--accent-light);
+        outline-offset: 4px;
+      }
+
+      @media (max-width: 420px) {
+        body {
+          padding: 16px;
+        }
+
+        .container {
+          padding: 24px 18px;
+        }
+
+        p {
+          font-size: 0.85rem;
+        }
+
+        .saudacao {
+          font-size: 1.25rem;
+        }
+
+        button {
+          width: 100%;
+          padding: 11px 16px;
+          font-size: 0.85rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .container:hover,
+        button:hover {
+          transform: none;
+        }
       }
     </style>
   </head>
+
   <body>
-    <!-- ===== CONTEÚDO ===== -->
-    <div class="container">
-      <h1>Boas vindas!</h1>
+    <main class="container">
+      <h1>Boas-vindas!</h1>
+
       <p>Vamos personalizar sua saudação usando JavaScript!</p>
-      <div class="saudacao" id="mensagemSaudacao">Olá, visitante!</div>
-      <button onClick="mudarNome()">Personalizar saudação</button>
-    </div>
+
+      <div class="saudacao" id="mensagemSaudacao" aria-live="polite">
+        Olá, visitante!
+      </div>
+
+      <button type="button" id="botaoSaudacao">Personalizar saudação</button>
+    </main>
+
+    <script>
+      function mudarNome() {
+        const nome = "Alan";
+
+        document.getElementById("mensagemSaudacao").textContent =
+          "Olá, " + nome + "!";
+      }
+
+      document
+        .getElementById("botaoSaudacao")
+        .addEventListener("click", mudarNome);
+    </script>
   </body>
-  <!-- ===== SCRIPT ===== -->
-  <script defer>
-    function mudarNome() {
-      let nome = "Alan";
-      document.getElementById("mensagemSaudacao").textContent =
-        "Olá, " + nome + "!";
-    }
-  </script>
 </html>
