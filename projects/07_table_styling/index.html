@@ -11,112 +11,80 @@
       name="keywords"
       content="HTML, Tabelas, Formatação de Tabelas, CSS, Classes CSS, Estilização, Organização de Dados, Design Responsivo"
     />
-    <meta name="theme-color" content="#101c2b" />
+    <meta name="theme-color" content="#f0f8ff" />
     <meta http-equiv="refresh" content="25; ../08_links" />
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>07 - Table Styling</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-
     <style>
       :root {
-        color-scheme: dark;
+        --background: #f0f8ff;
+        --surface: #ffffff;
+        --surface-light: #e6f2ff;
+        --surface-hover: #d0ebff;
 
-        --background: #101c2b;
-        --surface: #17283b;
-        --surface-light: #20364d;
-        --surface-hover: #29445d;
+        --border: #b8d4e8;
 
-        --border: #34516a;
+        --text: #333333;
+        --text-muted: #555555;
 
-        --text: #e8f1f8;
-        --text-muted: #9aafc2;
-
-        --accent: #36a9e8;
-        --accent-light: #75d0ff;
+        --accent: #2a4d69;
+        --accent-light: #397ba5;
 
         --radius: 10px;
-        --shadow: 0 12px 30px rgb(0 0 0 / 22%);
+        --shadow: 0 5px 18px rgb(42 77 105 / 10%);
       }
 
       * {
         box-sizing: border-box;
-        font-family: "Montserrat", sans-serif;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
       body {
         min-width: 320px;
         min-height: 100vh;
         margin: 0;
-        background:
-          radial-gradient(
-            ellipse at 50% 0%,
-            rgb(42 112 159 / 18%),
-            transparent 55%
-          ),
-          var(--background);
+        padding: 40px;
+        background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
         color: var(--text);
+        line-height: 1.6;
       }
 
       header {
-        padding: 35px 20px 28px;
-        background: linear-gradient(
-          120deg,
-          rgb(16 37 58 / 96%),
-          rgb(25 65 94 / 94%)
-        );
-        border-bottom: 2px solid var(--accent);
+        padding: 10px 20px 0;
         text-align: center;
-        box-shadow: 0 8px 25px rgb(0 0 0 / 25%);
       }
 
       .cabecalho-1 {
         margin: 0;
-        color: var(--accent-light);
-        font-size: clamp(1.4rem, 3vw, 1.9rem);
-        font-weight: 800;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        text-shadow: 0 0 18px rgb(54 169 232 / 30%);
+        color: var(--accent);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
       }
 
       .cabecalho-2 {
         display: block;
         margin-top: 10px;
         color: var(--text-muted);
-        font-size: 0.75rem;
-        font-weight: 500;
-        line-height: 1.6;
+        font-size: 0.85rem;
+        font-style: italic;
       }
 
       .linha {
-        width: min(75%, 550px);
-        height: 2px;
-        margin: 20px auto 0;
-        border: none;
-        background: linear-gradient(
-          to right,
-          transparent,
-          var(--accent),
-          var(--accent-light),
-          transparent
-        );
+        width: 80%;
+        margin: 20px auto;
+        border: 1px solid #aaa;
       }
 
       main {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 24px;
-        width: min(100% - 40px, 1100px);
+        width: min(100%, 1100px);
         margin: 0 auto;
-        padding: 38px 0;
+        padding: 20px 0;
       }
 
       .tabela-card {
@@ -134,8 +102,8 @@
 
       .tabela-card:hover {
         transform: translateY(-3px);
-        border-color: var(--accent);
-        box-shadow: 0 16px 35px rgb(0 0 0 / 30%);
+        border-color: var(--accent-light);
+        box-shadow: 0 8px 22px rgb(42 77 105 / 15%);
       }
 
       .tabela-card--completa {
@@ -164,7 +132,7 @@
 
       th {
         background: var(--surface-light);
-        color: var(--accent-light);
+        color: var(--accent);
         font-size: 0.68rem;
         font-weight: 700;
         letter-spacing: 0.06em;
@@ -173,39 +141,39 @@
 
       .titulo-1 {
         padding: 15px;
-        background: linear-gradient(110deg, #12618c, #218fc2);
+        background: linear-gradient(110deg, #2a4d69, #397ba5);
         color: #ffffff;
         font-size: 0.95rem;
-        font-weight: 800;
+        font-weight: 700;
         font-style: italic;
         letter-spacing: 0.04em;
         text-align: center;
       }
 
       .colaborador {
-        background: var(--surface);
-        color: var(--text);
+        background: #f5faff;
+        color: var(--accent);
         font-weight: 600;
       }
 
       .salario {
-        background: #1d3045;
-        color: var(--accent-light);
+        background: #eaf5ff;
+        color: #245d83;
         font-variant-numeric: tabular-nums;
       }
 
       .funcao {
-        background: #192c40;
-        color: #b1c4d5;
+        background: #f0f8ff;
+        color: var(--text-muted);
       }
 
       tbody tr {
-        transition: background 200ms ease;
+        transition: background-color 200ms ease;
       }
 
       tbody tr:hover td {
         background-color: var(--surface-hover);
-        color: var(--accent-light);
+        color: var(--accent);
       }
 
       .tabela-card--completa table {
@@ -223,11 +191,15 @@
       }
 
       @media (max-width: 760px) {
+        body {
+          padding: 28px 20px;
+        }
+
         main {
           grid-template-columns: 1fr;
-          width: min(100% - 32px, 540px);
+          width: 100%;
           gap: 22px;
-          padding: 28px 0;
+          padding: 20px 0;
         }
 
         .tabela-card--completa {
@@ -247,12 +219,15 @@
       }
 
       @media (max-width: 420px) {
+        body {
+          padding: 24px 12px;
+        }
+
         header {
-          padding: 28px 15px 22px;
+          padding: 5px 10px 0;
         }
 
         main {
-          width: calc(100% - 24px);
           gap: 18px;
         }
 
@@ -263,7 +238,7 @@
         }
 
         .cabecalho-2 {
-          font-size: 0.68rem;
+          font-size: 0.75rem;
         }
       }
 
