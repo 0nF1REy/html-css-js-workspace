@@ -6,172 +6,402 @@
     <meta name="author" content="Alan Ryan da Silva Domingues" />
     <meta
       name="description"
-      content="Página do módulo de HTML dedicada à apresentação de imagens de bandas e capas de álbuns musicais, com estilização em CSS, efeitos interativos de hover e animação suave de entrada."
+      content="Estudo de imagens com HTML e CSS, explorando imagens de bandas musicais, capas de álbuns, organização visual, responsividade e efeitos de interação."
     />
     <meta
       name="keywords"
-      content="módulo de HTML, imagens em HTML, bandas musicais, capas de álbuns, ELP, Emerson Lake and Palmer, Os Mutantes, Queen, REO Speedwagon, CSS, efeitos hover, animação de entrada, desenvolvimento web"
+      content="Imagens, Bandas Musicais, Capas de Álbuns, ELP, Os Mutantes, Queen, REO Speedwagon, CSS, Responsividade"
     />
+    <meta name="theme-color" content="#f0f8ff" />
     <meta http-equiv="refresh" content="25; ../10_interactive_cards" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <style>
+      :root {
+        --background: #f0f8ff;
+        --surface: #ffffff;
+        --surface-light: #e6f2ff;
+        --surface-hover: #d0ebff;
+
+        --border: #b8d4e8;
+
+        --text: #333333;
+        --text-muted: #555555;
+
+        --accent: #2a4d69;
+        --accent-light: #397ba5;
+
+        --radius: 10px;
+        --shadow: 0 5px 18px rgb(42 77 105 / 10%);
+      }
+
       * {
-        margin: 0;
-        padding: 0;
         box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
       body {
-        font-family: Arial, sans-serif;
-        background: url("assets/images/roxinho-bolinha.png");
-        color: #fff;
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        padding: 40px;
+        background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
+        color: var(--text);
+        line-height: 1.6;
       }
 
-      header,
-      footer {
-        background: url("assets/images/rotated-square.png") repeat-x;
+      header {
+        padding: 10px 20px 0;
         text-align: center;
-        padding: 1rem;
       }
 
-      header h2 {
-        color: khaki;
-        text-decoration: underline;
-        font-size: 2rem;
-        margin-bottom: 0.5rem;
+      .header-title {
+        margin: 0;
+        color: var(--accent);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
       }
 
-      header span {
-        color: #adff2f;
-        font-size: 1rem;
+      .header-subtitle {
+        display: block;
+        margin-top: 10px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-style: italic;
+      }
+
+      .divider {
+        width: 80%;
+        margin: 20px auto;
+        border: 1px solid #aaa;
       }
 
       main {
-        background: url("assets/images/cubo-3d.png");
-        padding: 2rem 0;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-        gap: 1rem;
+        display: grid;
+        gap: 28px;
+        width: min(100%, 1100px);
+        margin: 0 auto;
+        padding: 20px 0;
       }
 
-      section {
+      .gallery-section {
+        min-width: 0;
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+      }
+
+      .section-title {
+        margin: 0;
+        padding: 15px;
+        background: linear-gradient(110deg, #2a4d69, #397ba5);
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
         text-align: center;
-        padding: 2rem 1rem;
       }
 
-      .banda {
-        width: 350px;
-        height: 200px;
+      .gallery-content {
+        padding: 25px;
+      }
+
+      .band-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .album-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 20px;
+      }
+
+      .gallery-item {
+        min-width: 0;
+        margin: 0;
+        overflow: hidden;
+        background: var(--surface-light);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        transition:
+          transform 250ms ease,
+          border-color 250ms ease,
+          box-shadow 250ms ease;
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent-light);
+        box-shadow: 0 8px 22px rgb(42 77 105 / 15%);
+      }
+
+      .gallery-image {
+        display: block;
+        width: 100%;
         object-fit: cover;
-        margin: 10px;
-        border-radius: 10px;
-        transition:
-          transform 0.3s,
-          box-shadow 0.3s;
+        transition: transform 300ms ease;
       }
 
-      .banda:hover {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+      .gallery-item:hover .gallery-image {
+        transform: scale(1.04);
       }
 
-      .fotos {
-        width: 200px;
-        border: 5px solid black;
-        cursor: pointer;
-        border-radius: 10px;
-        transition:
-          transform 0.3s,
-          border-color 0.3s;
+      .band-image {
+        aspect-ratio: 16 / 9;
       }
 
-      .fotos:hover {
-        border-color: red;
-        transform: scale(1.1);
+      .album-image {
+        aspect-ratio: 1;
       }
 
-      footer {
-        color: #adff2f;
-        padding: 1rem;
-        font-size: 0.9rem;
+      figcaption {
+        min-height: 65px;
+        padding: 12px;
+        color: var(--text-muted);
+        text-align: center;
       }
 
-      hr {
-        border: none;
-        height: 2px;
-        background: paleturquoise;
-        margin: 1rem 0;
-        width: 80%;
-        margin-inline: auto;
+      .image-title {
+        display: block;
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+
+      .image-description {
+        display: block;
+        margin-top: 3px;
+        font-size: 0.75rem;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          padding: 28px 20px;
+        }
+
+        .gallery-content {
+          padding: 20px;
+        }
+
+        .album-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .band-grid {
+          gap: 16px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 24px 12px;
+        }
+
+        header {
+          padding: 5px 10px 0;
+        }
+
+        .gallery-content {
+          padding: 15px;
+        }
+
+        .band-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .album-grid {
+          gap: 12px;
+        }
+
+        figcaption {
+          min-height: 60px;
+          padding: 10px 5px;
+        }
+
+        .image-title {
+          font-size: 0.78rem;
+        }
+
+        .image-description {
+          font-size: 0.7rem;
+        }
+
+        .header-subtitle {
+          font-size: 0.75rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .gallery-item:hover {
+          transform: none;
+        }
+
+        .gallery-item:hover .gallery-image {
+          transform: none;
+        }
       }
     </style>
   </head>
+
   <body>
-    <!-- Cabeçalho -->
     <header>
-      <h2>Módulo de HTML</h2>
-      <span>Realizado por Alan Ryan na data de 21 de setembro de 2024.</span>
-      <hr />
+      <h1 class="header-title">Módulo de HTML</h1>
+
+      <span class="header-subtitle">
+        Realizado por Alan Ryan na data de 21 de setembro de 2024.
+      </span>
+
+      <hr class="divider" />
     </header>
 
-    <!-- Conteúdo principal -->
-    <section>
-      <div>
-        <img class="banda" src="./assets/images/elp.jpg" alt="ELP" />
-        <img
-          class="banda"
-          src="./assets/images/os-mutantes.webp"
-          alt="Os Mutantes"
-        />
-      </div>
+    <main>
+      <section class="gallery-section">
+        <h2 class="section-title">Bandas Musicais</h2>
 
-      <main>
-        <img
-          class="fotos"
-          src="./assets/images/A-Night-at-the Opera.jpeg"
-          alt="Queen - A Night at the Opera"
-        />
-        <img
-          class="fotos"
-          src="./assets/images/Brain-Salad-Surgery.jpeg"
-          alt="ELP - Brain Salad Surgery"
-        />
-        <img
-          class="fotos"
-          src="./assets/images/Tudo-foi-feito-pelo-Sol.jpeg"
-          alt="Os Mutantes - Tudo foi feito pelo Sol"
-        />
-        <img
-          class="fotos"
-          src="./assets/images/Wheels-Are-Turnin.jpeg"
-          alt="REO Speedwagon - Wheels Are Turnin"
-        />
-      </main>
+        <div class="gallery-content">
+          <div class="band-grid">
+            <figure class="gallery-item">
+              <img
+                class="gallery-image band-image"
+                src="./assets/images/elp.jpg"
+                alt="Integrantes da banda Emerson, Lake and Palmer"
+                loading="lazy"
+                decoding="async"
+              />
 
-      <div>
-        <img class="banda" src="./assets/images/queen.webp" alt="Queen" />
-        <img
-          class="banda"
-          src="./assets/images/reo-speedwagon.jpg"
-          alt="REO Speedwagon"
-        />
-      </div>
-    </section>
+              <figcaption>
+                <span class="image-title">Emerson, Lake and Palmer</span>
+                <span class="image-description">Rock progressivo</span>
+              </figcaption>
+            </figure>
 
-    <!-- Rodapé -->
-    <footer>
-      <small>&copy; 2024 Alan Ryan</small>
-    </footer>
+            <figure class="gallery-item">
+              <img
+                class="gallery-image band-image"
+                src="./assets/images/os-mutantes.webp"
+                alt="Integrantes da banda brasileira Os Mutantes"
+                loading="lazy"
+                decoding="async"
+              />
 
-    <script>
-      // Efeito suave de entrada
-      document.addEventListener("DOMContentLoaded", () => {
-        document.body.style.opacity = 0;
-        setTimeout(() => {
-          document.body.style.transition = "opacity 1.5s ease-in-out";
-          document.body.style.opacity = 1;
-        }, 100);
-      });
-    </script>
+              <figcaption>
+                <span class="image-title">Os Mutantes</span>
+                <span class="image-description">Rock psicodélico</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                class="gallery-image band-image"
+                src="./assets/images/queen.webp"
+                alt="Integrantes da banda Queen"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <figcaption>
+                <span class="image-title">Queen</span>
+                <span class="image-description">Rock</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                class="gallery-image band-image"
+                src="./assets/images/reo-speedwagon.jpg"
+                alt="Integrantes da banda REO Speedwagon"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <figcaption>
+                <span class="image-title">REO Speedwagon</span>
+                <span class="image-description">Rock</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-section">
+        <h2 class="section-title">Capas de Álbuns</h2>
+
+        <div class="gallery-content">
+          <div class="album-grid">
+            <figure class="gallery-item">
+              <img
+                class="gallery-image album-image"
+                src="./assets/images/a-night-at-the-opera.jpeg"
+                alt="Capa do álbum A Night at the Opera, do Queen"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <figcaption>
+                <span class="image-title">A Night at the Opera</span>
+                <span class="image-description">Queen</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                class="gallery-image album-image"
+                src="./assets/images/Brain-Salad-Surgery.jpeg"
+                alt="Capa do álbum Brain Salad Surgery, do Emerson, Lake and Palmer"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <figcaption>
+                <span class="image-title">Brain Salad Surgery</span>
+                <span class="image-description">Emerson, Lake and Palmer</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                class="gallery-image album-image"
+                src="./assets/images/Tudo-foi-feito-pelo-Sol.jpeg"
+                alt="Capa do álbum Tudo Foi Feito Pelo Sol, de Os Mutantes"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <figcaption>
+                <span class="image-title">Tudo Foi Feito Pelo Sol</span>
+                <span class="image-description">Os Mutantes</span>
+              </figcaption>
+            </figure>
+
+            <figure class="gallery-item">
+              <img
+                class="gallery-image album-image"
+                src="./assets/images/Wheels-Are-Turnin.jpeg"
+                alt="Capa do álbum Wheels Are Turnin', do REO Speedwagon"
+                loading="lazy"
+                decoding="async"
+              />
+
+              <figcaption>
+                <span class="image-title">Wheels Are Turnin'</span>
+                <span class="image-description">REO Speedwagon</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+    </main>
   </body>
 </html>
