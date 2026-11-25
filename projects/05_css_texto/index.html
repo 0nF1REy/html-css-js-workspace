@@ -1,128 +1,272 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
+    <title>05 - CSS/Texto</title>
     <meta charset="UTF-8" />
     <meta name="author" content="Alan Ryan da Silva Domingues" />
     <meta
       name="description"
-      content="Esta página foi criada para estudo HTML"
+      content="Estudo de formatação de textos com CSS, explorando propriedades tipográficas, alinhamento, cores, espaçamento e destaques."
     />
-    <meta name="keywords" content="HTML,CSS" />
-    <meta http-equiv="Refresh" content="25; ../06_rgb_color_mixer" />
-    <title>05 - CSS/Texto</title>
+    <meta
+      name="keywords"
+      content="Formatação de Textos, CSS, Tipografia, Alinhamento, Cores, Destaques"
+    />
+    <meta name="theme-color" content="#f0f8ff" />
+    <meta http-equiv="refresh" content="25; ../06_rgb_color_mixer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+      :root {
+        --background: #f0f8ff;
+        --surface: #ffffff;
+        --surface-light: #e6f2ff;
+        --surface-hover: #d0ebff;
+
+        --border: #b8d4e8;
+
+        --text: #333333;
+        --text-muted: #555555;
+
+        --accent: #2a4d69;
+        --accent-light: #397ba5;
+
+        --radius: 10px;
+        --shadow: 0 5px 18px rgb(42 77 105 / 10%);
+      }
+
       * {
         box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-        color: #fff;
-        padding: 30px;
-        transition: background 0.5s ease;
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
+        padding: 40px;
+        background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
+        color: var(--text);
+        line-height: 1.6;
       }
 
-      h1 {
+      header {
+        padding: 10px 20px 0;
         text-align: center;
-        font-size: 40px;
-        color: #ffd700;
-        margin-bottom: 10px;
-        text-decoration: underline;
       }
 
-      span {
+      .header-title {
+        margin: 0;
+        color: var(--accent);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
+      }
+
+      .header-subtitle {
         display: block;
-        text-align: center;
-        color: #adff2f;
-        font-weight: bold;
-        margin-bottom: 20px;
-      }
-
-      hr {
-        border: 1px solid #48d1cc;
-        margin: 20px auto;
-        width: 80%;
-      }
-
-      h2 {
-        color: #ff6347;
-        font-size: 32px;
-        text-align: center;
+        margin-top: 10px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
         font-style: italic;
-        text-transform: uppercase;
-        margin: 30px 0 10px;
-        letter-spacing: 3px;
       }
 
-      p {
-        color: #e0ffff;
-        font-size: 18px;
+      .divider {
+        width: 80%;
+        margin: 20px auto;
+        border: 1px solid #aaa;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        width: min(100%, 1100px);
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+
+      .text-card {
+        min-width: 0;
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition:
+          transform 250ms ease,
+          border-color 250ms ease,
+          box-shadow 250ms ease;
+      }
+
+      .text-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-light);
+        box-shadow: 0 8px 22px rgb(42 77 105 / 15%);
+      }
+
+      .text-title {
+        padding: 15px;
+        background: linear-gradient(110deg, #2a4d69, #397ba5);
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        font-style: italic;
+        letter-spacing: 0.04em;
+        text-align: center;
+      }
+
+      .text-content {
+        padding: 25px;
+      }
+
+      .text-content p {
+        margin: 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.8;
         text-align: justify;
-        margin: 0 auto 30px;
-        line-height: 1.7;
-        max-width: 800px;
-        background-color: rgba(255, 255, 255, 0.05);
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
       }
 
-      span.destaque {
-        color: #ffeb3b;
-        font-weight: bold;
+      .text-content strong {
+        color: var(--accent);
+        font-weight: 700;
+      }
+
+      .text-content em {
+        color: var(--accent-light);
+        font-style: italic;
+      }
+
+      .highlight {
+        color: #245d83;
+        font-weight: 700;
         text-decoration: underline;
+        text-decoration-color: var(--border);
+        text-underline-offset: 3px;
       }
 
       footer {
+        padding: 15px 0;
+        color: var(--text-muted);
+        font-size: 0.75rem;
         text-align: center;
-        font-size: 14px;
-        color: #ccc;
-        margin-top: 40px;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          padding: 28px 20px;
+        }
+
+        main {
+          grid-template-columns: 1fr;
+          width: 100%;
+          gap: 22px;
+          padding: 20px 0;
+        }
+
+        .text-content {
+          padding: 22px;
+        }
+
+        .text-title {
+          padding: 13px;
+          font-size: 0.88rem;
+        }
+      }
+
+      @media (max-width: 420px) {
+        body {
+          padding: 24px 12px;
+        }
+
+        header {
+          padding: 5px 10px 0;
+        }
+
+        main {
+          gap: 18px;
+        }
+
+        .text-content {
+          padding: 18px;
+        }
+
+        .text-content p {
+          font-size: 0.85rem;
+        }
+
+        .header-subtitle {
+          font-size: 0.75rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .text-card:hover {
+          transform: none;
+        }
       }
     </style>
   </head>
+
   <body>
-    <h1>Módulo de HTML</h1>
-    <span>Realizado por Alan Ryan na data 14 de setembro de 2024.</span>
-    <hr />
+    <header>
+      <h1 class="header-title">Módulo de HTML</h1>
 
-    <h2>Formatação CSS para textos</h2>
-    <p>
-      O álbum <strong>Quartz</strong> de 1977, produzido por
-      <span class="destaque">Tony Iommi</span> do Black Sabbath, combina o hard
-      rock dos anos 70 com elementos de heavy metal. Destaque para faixas como
-      <em>"Mainline Riders"</em> e <em>"Devil's Brew"</em>, que trazem riffs
-      potentes e temáticas sombrias. Apesar de não ter sido um sucesso
-      comercial, o álbum influenciou o movimento New Wave of British Heavy Metal
-      (NWOBHM), e continua relevante pela sua mistura única de estilos e pela
-      habilidade técnica da banda.
-    </p>
+      <span class="header-subtitle">
+        Realizado por Alan Ryan na data de 14 de setembro de 2024.
+      </span>
 
-    <h2>Título 2</h2>
-    <p>
-      <strong>Stand Up and Fight</strong> (1980), o segundo álbum da banda
-      britânica Quartz, é uma obra representativa do movimento NWOBHM, com um
-      som mais agressivo e pesado em comparação ao seu disco de estreia. Com
-      faixas como
-      <span class="destaque"
-        >"Stand Up and Fight", "Charlie Snow" e "Stoking Up the Fires of
-        Hell"</span
-      >, o álbum mistura riffs fortes e uma energia rebelde característica do
-      heavy metal da época. Embora não tenha alcançado grande sucesso comercial,
-      ele é considerado uma peça importante na consolidação do metal britânico.
-    </p>
+      <hr class="divider" />
+    </header>
 
-    <footer>Página atualiza automaticamente em 25 segundos.</footer>
+    <main>
+      <article class="text-card">
+        <div class="text-title">Quartz (1977)</div>
 
-    <script>
-      document.body.style.opacity = 0;
-      window.onload = () => {
-        document.body.style.transition = "opacity 1.5s ease-in-out";
-        document.body.style.opacity = 1;
-      };
-    </script>
+        <div class="text-content">
+          <p>
+            O álbum <strong>Quartz</strong>, lançado em 1977 pela banda
+            britânica de hard rock <strong>Quartz</strong>, combina elementos do
+            hard rock dos anos 70 com influências do heavy metal. Produzido por
+            <span class="highlight">Tony Iommi</span>, guitarrista do Black
+            Sabbath, o disco apresenta faixas como <em>"Mainline Riders"</em> e
+            <em>"Devil's Brew"</em>, marcadas por riffs potentes e atmosferas
+            sombrias. Apesar de não ter alcançado grande sucesso comercial na
+            época, o álbum é associado à cena britânica que antecedeu a
+            consolidação da New Wave of British Heavy Metal (NWOBHM), destacando
+            a identidade musical da banda.
+          </p>
+        </div>
+      </article>
+
+      <article class="text-card">
+        <div class="text-title">Stand Up and Fight (1980)</div>
+
+        <div class="text-content">
+          <p>
+            <strong>Stand Up and Fight</strong> (1980), o segundo álbum da banda
+            britânica <strong>Quartz</strong>, representa uma fase mais
+            agressiva e pesada de sua sonoridade, em sintonia com o movimento
+            New Wave of British Heavy Metal (NWOBHM). Faixas como
+            <span class="highlight">"Stand Up and Fight"</span>,
+            <span class="highlight">"Charlie Snow"</span> e
+            <span class="highlight">"Stoking Up the Fires of Hell"</span>
+            combinam riffs marcantes com a energia característica do heavy metal
+            britânico do período. Embora não tenha obtido grande repercussão
+            comercial, o trabalho permanece como parte da trajetória da banda na
+            cena metal dos anos 80.
+          </p>
+        </div>
+      </article>
+    </main>
+
+    <footer>Estudo de formatação de textos com propriedades CSS.</footer>
   </body>
 </html>
