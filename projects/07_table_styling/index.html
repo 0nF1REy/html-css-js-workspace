@@ -56,7 +56,7 @@
         text-align: center;
       }
 
-      .cabecalho-1 {
+      .header-title {
         margin: 0;
         color: var(--accent);
         font-size: clamp(1.5rem, 3vw, 2rem);
@@ -64,7 +64,7 @@
         text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
       }
 
-      .cabecalho-2 {
+      .header-subtitle {
         display: block;
         margin-top: 10px;
         color: var(--text-muted);
@@ -72,7 +72,7 @@
         font-style: italic;
       }
 
-      .linha {
+      .divider {
         width: 80%;
         margin: 20px auto;
         border: 1px solid #aaa;
@@ -87,7 +87,7 @@
         padding: 20px 0;
       }
 
-      .tabela-card {
+      .table-card {
         min-width: 0;
         overflow: hidden;
         background: var(--surface);
@@ -100,17 +100,17 @@
           box-shadow 250ms ease;
       }
 
-      .tabela-card:hover {
+      .table-card:hover {
         transform: translateY(-3px);
         border-color: var(--accent-light);
         box-shadow: 0 8px 22px rgb(42 77 105 / 15%);
       }
 
-      .tabela-card--completa {
+      .table-card--full {
         grid-column: 1 / -1;
       }
 
-      .tabela-wrapper {
+      .table-wrapper {
         width: 100%;
         overflow-x: auto;
       }
@@ -139,7 +139,7 @@
         text-transform: uppercase;
       }
 
-      .titulo-1 {
+      .table-title {
         padding: 15px;
         background: linear-gradient(110deg, #2a4d69, #397ba5);
         color: #ffffff;
@@ -150,19 +150,19 @@
         text-align: center;
       }
 
-      .colaborador {
+      .employee {
         background: #f5faff;
         color: var(--accent);
         font-weight: 600;
       }
 
-      .salario {
+      .salary {
         background: #eaf5ff;
         color: #245d83;
         font-variant-numeric: tabular-nums;
       }
 
-      .funcao {
+      .role {
         background: #f0f8ff;
         color: var(--text-muted);
       }
@@ -176,17 +176,17 @@
         color: var(--accent);
       }
 
-      .tabela-card--completa table {
+      .table-card--full table {
         min-width: 900px;
       }
 
-      .tabela-card--completa th,
-      .tabela-card--completa td {
+      .table-card--full th,
+      .table-card--full td {
         padding: 13px 12px;
         font-size: 0.75rem;
       }
 
-      .tabela-card--completa td {
+      .table-card--full td {
         overflow-wrap: break-word;
       }
 
@@ -202,7 +202,7 @@
           padding: 20px 0;
         }
 
-        .tabela-card--completa {
+        .table-card--full {
           grid-column: auto;
         }
 
@@ -212,7 +212,7 @@
           font-size: 0.72rem;
         }
 
-        .titulo-1 {
+        .table-title {
           padding: 13px;
           font-size: 0.88rem;
         }
@@ -237,7 +237,7 @@
           font-size: 0.65rem;
         }
 
-        .cabecalho-2 {
+        .header-subtitle {
           font-size: 0.75rem;
         }
       }
@@ -250,7 +250,7 @@
           transition-duration: 0.01ms !important;
         }
 
-        .tabela-card:hover {
+        .table-card:hover {
           transform: none;
         }
       }
@@ -259,22 +259,22 @@
 
   <body>
     <header>
-      <h1 class="cabecalho-1">Módulo de HTML</h1>
+      <h1 class="header-title">Módulo de HTML</h1>
 
-      <span class="cabecalho-2">
+      <span class="header-subtitle">
         Realizado por Alan Ryan na data de 20 de setembro de 2024.
       </span>
 
-      <hr class="linha" />
+      <hr class="divider" />
     </header>
 
     <main>
-      <article class="tabela-card">
-        <div class="tabela-wrapper">
+      <article class="table-card">
+        <div class="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th colspan="3" class="titulo-1">Tabela de Colaboradores</th>
+                <th colspan="3" class="table-title">Tabela de Colaboradores</th>
               </tr>
               <tr>
                 <th>Colaborador</th>
@@ -285,66 +285,66 @@
 
             <tbody>
               <tr>
-                <td class="colaborador">Arthur</td>
-                <td class="salario">R$ 3.500,00</td>
-                <td class="funcao">Minerador</td>
+                <td class="employee">Arthur</td>
+                <td class="salary">R$ 3.500,00</td>
+                <td class="role">Minerador</td>
               </tr>
               <tr>
-                <td class="colaborador">Beatriz</td>
-                <td class="salario">R$ 8.900,00</td>
-                <td class="funcao">Advogada</td>
+                <td class="employee">Beatriz</td>
+                <td class="salary">R$ 8.900,00</td>
+                <td class="role">Advogada</td>
               </tr>
               <tr>
-                <td class="colaborador">Carlos</td>
-                <td class="salario">R$ 7.800,00</td>
-                <td class="funcao">Engenheiro Civil</td>
+                <td class="employee">Carlos</td>
+                <td class="salary">R$ 7.800,00</td>
+                <td class="role">Engenheiro Civil</td>
               </tr>
               <tr>
-                <td class="colaborador">Eduardo</td>
-                <td class="salario">R$ 9.642,00</td>
-                <td class="funcao">Piloto de Avião</td>
+                <td class="employee">Eduardo</td>
+                <td class="salary">R$ 9.642,00</td>
+                <td class="role">Piloto de Avião</td>
               </tr>
               <tr>
-                <td class="colaborador">Layla</td>
-                <td class="salario">R$ 5.340,00</td>
-                <td class="funcao">Designer</td>
+                <td class="employee">Layla</td>
+                <td class="salary">R$ 5.340,00</td>
+                <td class="role">Designer</td>
               </tr>
               <tr>
-                <td class="colaborador">Mariana</td>
-                <td class="salario">R$ 4.200,00</td>
-                <td class="funcao">Enfermeira</td>
+                <td class="employee">Mariana</td>
+                <td class="salary">R$ 4.200,00</td>
+                <td class="role">Enfermeira</td>
               </tr>
               <tr>
-                <td class="colaborador">Ricardo</td>
-                <td class="salario">R$ 6.500,00</td>
-                <td class="funcao">Analista de TI</td>
+                <td class="employee">Ricardo</td>
+                <td class="salary">R$ 6.500,00</td>
+                <td class="role">Analista de TI</td>
               </tr>
               <tr>
-                <td class="colaborador">Sarah</td>
-                <td class="salario">R$ 2.850,00</td>
-                <td class="funcao">Assistente Social</td>
+                <td class="employee">Sarah</td>
+                <td class="salary">R$ 2.850,00</td>
+                <td class="role">Assistente Social</td>
               </tr>
               <tr>
-                <td class="colaborador">Valentina</td>
-                <td class="salario">R$ 3.800,00</td>
-                <td class="funcao">Arquiteta</td>
+                <td class="employee">Valentina</td>
+                <td class="salary">R$ 3.800,00</td>
+                <td class="role">Arquiteta</td>
               </tr>
               <tr>
-                <td class="colaborador">Yuna</td>
-                <td class="salario">R$ 5.000,00</td>
-                <td class="funcao">Psicóloga</td>
+                <td class="employee">Yuna</td>
+                <td class="salary">R$ 5.000,00</td>
+                <td class="role">Psicóloga</td>
               </tr>
             </tbody>
           </table>
         </div>
       </article>
 
-      <article class="tabela-card">
-        <div class="tabela-wrapper">
+      <article class="table-card">
+        <div class="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th colspan="3" class="titulo-1">Tabela de Artistas</th>
+                <th colspan="3" class="table-title">Tabela de Artistas</th>
               </tr>
               <tr>
                 <th>Artista</th>
@@ -355,62 +355,62 @@
 
             <tbody>
               <tr>
-                <td class="colaborador">Baby Consuelo</td>
-                <td class="salario">Os Novos Baianos</td>
-                <td class="funcao">Atlantic</td>
+                <td class="employee">Baby Consuelo</td>
+                <td class="salary">Os Novos Baianos</td>
+                <td class="role">Atlantic</td>
               </tr>
               <tr>
-                <td colspan="2" class="colaborador">Chico Buarque</td>
-                <td class="funcao">Philips</td>
+                <td colspan="2" class="employee">Chico Buarque</td>
+                <td class="role">Philips</td>
               </tr>
               <tr>
-                <td colspan="2" class="colaborador">Elvis Presley</td>
-                <td class="funcao">RCA Victor</td>
+                <td colspan="2" class="employee">Elvis Presley</td>
+                <td class="role">RCA Victor</td>
               </tr>
               <tr>
-                <td colspan="2" class="colaborador">Frank Sinatra</td>
-                <td class="funcao">Columbia</td>
+                <td colspan="2" class="employee">Frank Sinatra</td>
+                <td class="role">Columbia</td>
               </tr>
               <tr>
-                <td class="colaborador">Joan Jett</td>
-                <td class="salario">Joan Jett &amp; The Blackhearts</td>
-                <td class="funcao">Blackheart Records</td>
+                <td class="employee">Joan Jett</td>
+                <td class="salary">Joan Jett &amp; The Blackhearts</td>
+                <td class="role">Blackheart Records</td>
               </tr>
               <tr>
-                <td colspan="2" class="colaborador">Nara Leão</td>
-                <td class="funcao">Philips</td>
+                <td colspan="2" class="employee">Nara Leão</td>
+                <td class="role">Philips</td>
               </tr>
               <tr>
-                <td class="colaborador">Nena Kerner</td>
-                <td class="salario">Nena</td>
-                <td class="funcao">CBS</td>
+                <td class="employee">Nena Kerner</td>
+                <td class="salary">Nena</td>
+                <td class="role">CBS</td>
               </tr>
               <tr>
-                <td class="colaborador">Noel Rosa</td>
-                <td class="salario">Bando De Tangarás</td>
-                <td class="funcao">Victor</td>
+                <td class="employee">Noel Rosa</td>
+                <td class="salary">Bando De Tangarás</td>
+                <td class="role">Victor</td>
               </tr>
               <tr>
-                <td class="colaborador">Rita Lee</td>
-                <td class="salario">Os Mutantes</td>
-                <td class="funcao">Som Livre</td>
+                <td class="employee">Rita Lee</td>
+                <td class="salary">Os Mutantes</td>
+                <td class="role">Som Livre</td>
               </tr>
               <tr>
-                <td class="colaborador">Suzi Quatro</td>
-                <td class="salario">The Pleasure Seekers</td>
-                <td class="funcao">RAK</td>
+                <td class="employee">Suzi Quatro</td>
+                <td class="salary">The Pleasure Seekers</td>
+                <td class="role">RAK</td>
               </tr>
             </tbody>
           </table>
         </div>
       </article>
 
-      <article class="tabela-card tabela-card--completa">
-        <div class="tabela-wrapper">
+      <article class="table-card table-card--full">
+        <div class="table-wrapper">
           <table>
             <thead>
               <tr>
-                <th colspan="8" class="titulo-1">Tabela de Bandas</th>
+                <th colspan="8" class="table-title">Tabela de Bandas</th>
               </tr>
               <tr>
                 <th>Band</th>
@@ -426,44 +426,44 @@
 
             <tbody>
               <tr>
-                <td class="colaborador">Aphrodite's Child</td>
-                <td class="funcao">Demis Roussos, Lucas Sideras</td>
-                <td class="funcao">Silver Koulouris</td>
-                <td class="funcao">Demis Roussos, Harris Chalkitis</td>
-                <td class="funcao">Lucas Sideras, Harris Chalkitis</td>
-                <td class="salario">666</td>
-                <td class="funcao">Gérard Fallec</td>
-                <td class="salario">1972</td>
+                <td class="employee">Aphrodite's Child</td>
+                <td class="role">Demis Roussos, Lucas Sideras</td>
+                <td class="role">Silver Koulouris</td>
+                <td class="role">Demis Roussos, Harris Chalkitis</td>
+                <td class="role">Lucas Sideras, Harris Chalkitis</td>
+                <td class="salary">666</td>
+                <td class="role">Gérard Fallec</td>
+                <td class="salary">1972</td>
               </tr>
               <tr>
-                <td class="colaborador">Scorpions</td>
-                <td class="funcao">Klaus Meine</td>
-                <td class="funcao">Rudolf Schenker</td>
-                <td class="funcao">Lothar Heimberg</td>
-                <td class="funcao">Wolfgang Dziony</td>
-                <td class="salario">Lonesome Crow</td>
-                <td class="funcao">Conny Plank</td>
-                <td class="salario">1972</td>
+                <td class="employee">Scorpions</td>
+                <td class="role">Klaus Meine</td>
+                <td class="role">Rudolf Schenker</td>
+                <td class="role">Lothar Heimberg</td>
+                <td class="role">Wolfgang Dziony</td>
+                <td class="salary">Lonesome Crow</td>
+                <td class="role">Conny Plank</td>
+                <td class="salary">1972</td>
               </tr>
               <tr>
-                <td class="colaborador">Thin Lizzy</td>
-                <td class="funcao">Phil Lynott</td>
-                <td class="funcao">Eric Bell</td>
-                <td class="funcao">Phil Lynott</td>
-                <td class="funcao">Brian Downey</td>
-                <td class="salario">Shades Of A Blue Orphanage</td>
-                <td class="funcao">Brian Dee</td>
-                <td class="salario">1972</td>
+                <td class="employee">Thin Lizzy</td>
+                <td class="role">Phil Lynott</td>
+                <td class="role">Eric Bell</td>
+                <td class="role">Phil Lynott</td>
+                <td class="role">Brian Downey</td>
+                <td class="salary">Shades Of A Blue Orphanage</td>
+                <td class="role">Brian Dee</td>
+                <td class="salary">1972</td>
               </tr>
               <tr>
-                <td class="colaborador">Yes</td>
-                <td class="funcao">Jon Anderson</td>
-                <td class="funcao">Steve Howe</td>
-                <td class="funcao">Chris Squire</td>
-                <td class="funcao">Bill Bruford</td>
-                <td class="salario">Close To The Edge</td>
-                <td class="funcao">Eddy Offord</td>
-                <td class="salario">1972</td>
+                <td class="employee">Yes</td>
+                <td class="role">Jon Anderson</td>
+                <td class="role">Steve Howe</td>
+                <td class="role">Chris Squire</td>
+                <td class="role">Bill Bruford</td>
+                <td class="salary">Close To The Edge</td>
+                <td class="role">Eddy Offord</td>
+                <td class="salary">1972</td>
               </tr>
             </tbody>
           </table>
