@@ -6,15 +6,16 @@
     <meta name="author" content="Alan Ryan da Silva Domingues" />
     <meta
       name="description"
-      content="Estudo de listas HTML ordenadas e não ordenadas, listas aninhadas e interatividade com JavaScript."
+      content="Estudo de listas ordenadas, não ordenadas e aninhadas por meio de diferentes categorias e exemplos."
     />
     <meta
       name="keywords"
-      content="HTML, Listas HTML, Listas Ordenadas, Listas Não Ordenadas, Listas Aninhadas, CSS, JavaScript"
+      content="Listas, Listas Ordenadas, Listas Não Ordenadas, Listas Aninhadas"
     />
     <meta name="theme-color" content="#f0f8ff" />
     <meta http-equiv="refresh" content="25; ../03_modulo_html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <style>
       :root {
         --background: #f0f8ff;
@@ -115,21 +116,21 @@
         padding: 25px 35px;
       }
 
-      .brand-list,
-      .model-list,
-      .version-list {
+      .category-list,
+      .subcategory-list,
+      .example-list {
         padding-left: 25px;
       }
 
-      .brand-list {
+      .category-list {
         list-style-type: circle;
       }
 
-      .model-list {
+      .subcategory-list {
         list-style-type: decimal;
       }
 
-      .version-list {
+      .example-list {
         list-style-type: square;
       }
 
@@ -143,20 +144,20 @@
         cursor: pointer;
       }
 
-      .brand-list > li {
+      .category-list > li {
         margin: 8px 0;
         color: var(--accent);
         font-weight: 600;
       }
 
-      .model-list > li {
+      .subcategory-list > li {
         margin: 4px 0;
         color: var(--text-muted);
         font-size: 0.9rem;
         font-weight: 400;
       }
 
-      .version-list > li {
+      .example-list > li {
         margin: 3px 0;
         color: var(--text-muted);
         font-size: 0.85rem;
@@ -204,9 +205,9 @@
           padding: 18px 15px;
         }
 
-        .brand-list,
-        .model-list,
-        .version-list {
+        .category-list,
+        .subcategory-list,
+        .example-list {
           padding-left: 22px;
         }
 
@@ -229,6 +230,7 @@
         }
       }
     </style>
+
     <script>
       window.addEventListener("DOMContentLoaded", () => {
         const listItems = document.querySelectorAll("li");
@@ -236,12 +238,13 @@
         listItems.forEach((item) => {
           item.addEventListener("click", (event) => {
             event.stopPropagation();
-            alert("Você clicou em: " + item.textContent.trim());
+            alert("Você clicou em: " + item.firstChild.textContent.trim());
           });
         });
       });
     </script>
   </head>
+
   <body>
     <header>
       <h1 class="header-title">Módulo de HTML</h1>
@@ -253,39 +256,125 @@
 
     <main>
       <article class="list-card">
-        <div class="card-title">Listas de Fabricantes e Modelos</div>
+        <div class="card-title">Organização de Categorias</div>
+
         <div class="list-content">
-          <ul class="brand-list">
+          <ul class="category-list">
             <li>
-              Fiat
-              <ol class="model-list">
-                <li>Linea</li>
-                <li>Bravo</li>
-              </ol>
-            </li>
-            <li>
-              Ford
-              <ol class="model-list">
-                <li>Focus</li>
-                <li>Fiesta</li>
-              </ol>
-            </li>
-            <li>
-              GM
-              <ol class="model-list">
-                <li>Onix</li>
-                <li>Sonic</li>
-              </ol>
-            </li>
-            <li>
-              VW
-              <ol class="model-list">
+              Biblioteca
+              <ol class="subcategory-list">
                 <li>
-                  Gol
-                  <ul class="version-list">
-                    <li>Trend</li>
-                    <li>I Trend</li>
-                    <li>Power</li>
+                  Ficção
+                  <ul class="example-list">
+                    <li>Romance</li>
+                    <li>Fantasia</li>
+                    <li>Ficção científica</li>
+                  </ul>
+                </li>
+                <li>
+                  Não ficção
+                  <ul class="example-list">
+                    <li>História</li>
+                    <li>Biografia</li>
+                    <li>Ciência</li>
+                  </ul>
+                </li>
+                <li>
+                  Referência
+                  <ul class="example-list">
+                    <li>Dicionários</li>
+                    <li>Enciclopédias</li>
+                    <li>Atlas</li>
+                  </ul>
+                </li>
+              </ol>
+            </li>
+
+            <li>
+              Tecnologias
+              <ol class="subcategory-list">
+                <li>
+                  Desenvolvimento Web
+                  <ul class="example-list">
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                  </ul>
+                </li>
+                <li>
+                  Linguagens de Programação
+                  <ul class="example-list">
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>Go</li>
+                  </ul>
+                </li>
+                <li>
+                  Ferramentas
+                  <ul class="example-list">
+                    <li>Git</li>
+                    <li>Docker</li>
+                    <li>Visual Studio Code</li>
+                  </ul>
+                </li>
+              </ol>
+            </li>
+
+            <li>
+              Geografia
+              <ol class="subcategory-list">
+                <li>
+                  América do Sul
+                  <ul class="example-list">
+                    <li>Brasil</li>
+                    <li>Argentina</li>
+                    <li>Chile</li>
+                  </ul>
+                </li>
+                <li>
+                  Europa
+                  <ul class="example-list">
+                    <li>Alemanha</li>
+                    <li>França</li>
+                    <li>Itália</li>
+                  </ul>
+                </li>
+                <li>
+                  Ásia
+                  <ul class="example-list">
+                    <li>Japão</li>
+                    <li>China</li>
+                    <li>Coreia do Sul</li>
+                  </ul>
+                </li>
+              </ol>
+            </li>
+
+            <li>
+              Música
+              <ol class="subcategory-list">
+                <li>
+                  Rock
+                  <ul class="example-list">
+                    <li>The Beatles</li>
+                    <li>Queen</li>
+                    <li>Pink Floyd</li>
+                  </ul>
+                </li>
+                <li>
+                  Pop
+                  <ul class="example-list">
+                    <li>Madonna</li>
+                    <li>Michael Jackson</li>
+                    <li>ABBA</li>
+                  </ul>
+                </li>
+                <li>
+                  Jazz
+                  <ul class="example-list">
+                    <li>Miles Davis</li>
+                    <li>Ella Fitzgerald</li>
+                    <li>John Coltrane</li>
                   </ul>
                 </li>
               </ol>
@@ -294,8 +383,7 @@
         </div>
       </article>
     </main>
-    <footer>
-      Estudo de HTML — Listas ordenadas, não ordenadas e aninhadas.
-    </footer>
+
+    <footer>Estudo de listas ordenadas, não ordenadas e aninhadas.</footer>
   </body>
 </html>
