@@ -1,125 +1,312 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>02 - Textos/Listas</title>
     <meta name="author" content="Alan Ryan da Silva Domingues" />
     <meta
       name="description"
-      content="Esta página foi criada para estudo HTML"
+      content="Estudo de listas HTML ordenadas e não ordenadas, listas aninhadas e interatividade com JavaScript."
     />
-    <meta name="keywords" content="HTML" />
-    <meta http-equiv="Refresh" content="25; ../03_modulo_html" />
+    <meta
+      name="keywords"
+      content="HTML, Listas HTML, Listas Ordenadas, Listas Não Ordenadas, Listas Aninhadas, CSS, JavaScript"
+    />
+    <meta name="theme-color" content="#f0f8ff" />
+    <meta http-equiv="refresh" content="25; ../03_modulo_html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>02 - Textos e Listas</title>
 
     <style>
-      body {
+      :root {
+        --background: #f0f8ff;
+        --surface: #ffffff;
+        --surface-light: #e6f2ff;
+        --surface-hover: #d0ebff;
+
+        --border: #b8d4e8;
+
+        --text: #333333;
+        --text-muted: #555555;
+
+        --accent: #2a4d69;
+        --accent-light: #397ba5;
+
+        --radius: 10px;
+        --shadow: 0 5px 18px rgb(42 77 105 / 10%);
+      }
+
+      * {
+        box-sizing: border-box;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
-        color: #333;
+      }
+
+      body {
+        min-width: 320px;
+        min-height: 100vh;
+        margin: 0;
         padding: 40px;
+        background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
+        color: var(--text);
         line-height: 1.6;
       }
 
-      h1 {
+      header {
+        padding: 10px 20px 0;
         text-align: center;
-        color: #2a4d69;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
       }
 
-      hr {
+      .header-title {
+        margin: 0;
+        color: var(--accent);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
+      }
+
+      .header-subtitle {
+        display: block;
+        margin-top: 10px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-style: italic;
+      }
+
+      .divider {
+        width: 80%;
         margin: 20px auto;
         border: 1px solid #aaa;
-        width: 80%;
       }
 
-      ul,
-      ol {
-        margin-left: 30px;
-        padding-left: 20px;
+      main {
+        width: min(100%, 900px);
+        margin: 0 auto;
+        padding: 20px 0;
       }
 
-      ul[type="circle"] li {
-        margin: 8px 0;
+      .list-card {
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition:
+          transform 250ms ease,
+          border-color 250ms ease,
+          box-shadow 250ms ease;
       }
 
-      ul[type="square"] li {
-        margin: 4px 0;
+      .list-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-light);
+        box-shadow: 0 8px 22px rgb(42 77 105 / 15%);
+      }
+
+      .card-title {
+        padding: 15px;
+        background: linear-gradient(110deg, #2a4d69, #397ba5);
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        font-style: italic;
+        letter-spacing: 0.04em;
+        text-align: center;
+      }
+
+      .list-content {
+        padding: 25px 35px;
+      }
+
+      .brand-list,
+      .model-list,
+      .version-list {
+        padding-left: 25px;
+      }
+
+      .brand-list {
+        list-style-type: circle;
+      }
+
+      .model-list {
+        list-style-type: decimal;
+      }
+
+      .version-list {
+        list-style-type: square;
       }
 
       li {
-        transition: background-color 0.3s ease, transform 0.2s ease;
-        padding: 5px;
-        border-radius: 5px;
-      }
-
-      li:hover {
-        background-color: #d0ebff;
-        transform: translateX(5px);
+        padding: 7px 10px;
+        border-radius: 6px;
+        transition:
+          background-color 200ms ease,
+          color 200ms ease,
+          transform 200ms ease;
         cursor: pointer;
       }
 
-      .info {
+      .brand-list > li {
+        margin: 8px 0;
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .model-list > li {
+        margin: 4px 0;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        font-weight: 400;
+      }
+
+      .version-list > li {
+        margin: 3px 0;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        font-weight: 400;
+      }
+
+      li:hover {
+        background-color: var(--surface-hover);
+        color: var(--accent);
+        transform: translateX(4px);
+      }
+
+      footer {
+        padding: 15px 0;
+        color: var(--text-muted);
+        font-size: 0.75rem;
         text-align: center;
-        font-style: italic;
-        margin-bottom: 20px;
-        color: #444;
+      }
+
+      @media (max-width: 760px) {
+        body {
+          padding: 28px 20px;
+        }
+
+        main {
+          width: 100%;
+          padding: 20px 0;
+        }
+
+        .list-content {
+          padding: 22px 25px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        body {
+          padding: 24px 12px;
+        }
+
+        header {
+          padding: 5px 10px 0;
+        }
+
+        .list-content {
+          padding: 18px 15px;
+        }
+
+        .brand-list,
+        .model-list,
+        .version-list {
+          padding-left: 22px;
+        }
+
+        .header-subtitle {
+          font-size: 0.75rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+
+        .list-card:hover,
+        li:hover {
+          transform: none;
+        }
       }
     </style>
 
     <script>
-      window.onload = function () {
+      window.addEventListener("DOMContentLoaded", () => {
         const listItems = document.querySelectorAll("li");
+
         listItems.forEach((item) => {
-          item.addEventListener("click", () => {
+          item.addEventListener("click", (event) => {
+            event.stopPropagation();
             alert("Você clicou em: " + item.textContent.trim());
           });
         });
-      };
+      });
     </script>
   </head>
 
   <body>
-    <h1>Módulo de HTML</h1>
-    <div class="info">
-      Realizado por Alan Ryan na data 6 de setembro de 2024.
-    </div>
-    <hr />
+    <header>
+      <h1 class="header-title">Módulo de HTML</h1>
 
-    <ul type="circle">
-      <li>
-        Fiat
-        <ol>
-          <li>Linea</li>
-          <li>Bravo</li>
-        </ol>
-      </li>
-      <li>
-        Ford
-        <ol>
-          <li>Focus</li>
-          <li>Fiesta</li>
-        </ol>
-      </li>
-      <li>
-        GM
-        <ol>
-          <li>Onix</li>
-          <li>Sonic</li>
-        </ol>
-      </li>
-      <li>
-        VW
-        <ol>
-          <li>
-            Gol
-            <ul type="square">
-              <li>Trend</li>
-              <li>I Trend</li>
-              <li>Power</li>
-            </ul>
-          </li>
-        </ol>
-      </li>
-    </ul>
+      <span class="header-subtitle">
+        Realizado por Alan Ryan na data de 6 de setembro de 2024.
+      </span>
+
+      <hr class="divider" />
+    </header>
+
+    <main>
+      <article class="list-card">
+        <div class="card-title">Listas de Fabricantes e Modelos</div>
+
+        <div class="list-content">
+          <ul class="brand-list">
+            <li>
+              Fiat
+              <ol class="model-list">
+                <li>Linea</li>
+                <li>Bravo</li>
+              </ol>
+            </li>
+
+            <li>
+              Ford
+              <ol class="model-list">
+                <li>Focus</li>
+                <li>Fiesta</li>
+              </ol>
+            </li>
+
+            <li>
+              GM
+              <ol class="model-list">
+                <li>Onix</li>
+                <li>Sonic</li>
+              </ol>
+            </li>
+
+            <li>
+              VW
+              <ol class="model-list">
+                <li>
+                  Gol
+                  <ul class="version-list">
+                    <li>Trend</li>
+                    <li>I Trend</li>
+                    <li>Power</li>
+                  </ul>
+                </li>
+              </ol>
+            </li>
+          </ul>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      Estudo de HTML — Listas ordenadas, não ordenadas e aninhadas.
+    </footer>
   </body>
 </html>
