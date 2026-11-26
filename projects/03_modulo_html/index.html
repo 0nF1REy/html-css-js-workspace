@@ -1,134 +1,294 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <title>03 - HTML</title>
-    <meta name="Author" content="Alan Ryan da Silva Domingues" />
+    <meta name="author" content="Alan Ryan da Silva Domingues" />
     <meta
       name="description"
-      content="Esta página foi criada para estudo HTML"
+      content="Estudo de elementos HTML com listas de definição, explorando a organização e apresentação de informações sobre meios de transporte."
     />
-    <meta name="keywords" content="HTML, estudo, Alan Ryan" />
+    <meta
+      name="keywords"
+      content="HTML, Listas de Definição, Description List, Carros, Aviões, Organização de Conteúdo"
+    />
+    <meta name="theme-color" content="#f0f8ff" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>03 - HTML</title>
+
     <style>
+      :root {
+        --background: #f0f8ff;
+        --surface: #ffffff;
+        --surface-light: #e6f2ff;
+        --surface-hover: #d0ebff;
+
+        --border: #b8d4e8;
+
+        --text: #333333;
+        --text-muted: #555555;
+
+        --accent: #2a4d69;
+        --accent-light: #397ba5;
+
+        --radius: 10px;
+        --shadow: 0 5px 18px rgb(42 77 105 / 10%);
+      }
+
+      * {
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
       body {
-        font-family: Arial, sans-serif;
-        background: linear-gradient(to right, #e0f7fa, #e1bee7);
+        display: flex;
+        flex-direction: column;
+        min-width: 320px;
+        min-height: 100vh;
         margin: 0;
-        padding: 20px;
-        color: #333;
-        animation: fadeIn 1.5s ease-in;
-      }
-
-      h1 {
-        color: #4a148c;
-        text-align: center;
-        font-size: 2.5em;
-        margin-bottom: 10px;
-      }
-
-      hr {
-        border: none;
-        border-top: 2px solid #4a148c;
-        margin: 20px 0;
-      }
-
-      dl {
-        max-width: 800px;
-        margin: 0 auto;
-        background: #ffffffdd;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      dt {
-        font-weight: bold;
-        font-size: 1.3em;
-        margin-top: 15px;
-        color: #006064;
-      }
-
-      dd {
-        margin: 10px 0 20px 20px;
+        padding: 40px;
+        background: linear-gradient(to bottom, #f0f8ff, #e6f2ff);
+        color: var(--text);
         line-height: 1.6;
       }
 
-      .autor {
+      header {
+        padding: 10px 20px 0;
         text-align: center;
-        margin-bottom: 15px;
+      }
+
+      .header-title {
+        margin: 0;
+        color: var(--accent);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgb(0 0 0 / 10%);
+      }
+
+      .header-subtitle {
+        display: block;
+        margin-top: 10px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
         font-style: italic;
-        color: #616161;
       }
 
-      #timer {
+      .divider {
+        width: 80%;
+        margin: 20px auto;
+        border: 1px solid #aaa;
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+        width: min(100%, 1100px);
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+
+      .content-card {
+        min-width: 0;
+        overflow: hidden;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        transition:
+          transform 250ms ease,
+          border-color 250ms ease,
+          box-shadow 250ms ease;
+      }
+
+      .content-card:hover {
+        transform: translateY(-3px);
+        border-color: var(--accent-light);
+        box-shadow: 0 8px 22px rgb(42 77 105 / 15%);
+      }
+
+      .card-title {
+        margin: 0;
+        padding: 15px;
+        background: linear-gradient(110deg, #2a4d69, #397ba5);
+        color: #ffffff;
+        font-size: 0.95rem;
+        font-weight: 700;
+        font-style: italic;
+        letter-spacing: 0.04em;
         text-align: center;
-        margin-top: 20px;
-        font-size: 1.2em;
-        color: #d32f2f;
-        font-weight: bold;
       }
 
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-          transform: translateY(-10px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .content-list {
+        margin: 0;
+        padding: 20px;
       }
 
-      @media (max-width: 600px) {
+      .content-list dt {
+        margin: 0 0 10px;
+        color: var(--accent);
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+
+      .content-list dd {
+        margin: 0;
+        padding: 14px;
+        background: #f5faff;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        line-height: 1.8;
+        text-align: justify;
+      }
+
+      .timer {
+        width: fit-content;
+        margin: auto auto 0;
+        padding: 12px 22px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-align: center;
+      }
+
+      @media (max-width: 760px) {
         body {
-          padding: 10px;
+          padding: 28px 20px;
         }
 
-        h1 {
-          font-size: 2em;
+        main {
+          grid-template-columns: 1fr;
+          width: 100%;
+          gap: 22px;
+          padding: 20px 0;
+        }
+
+        .content-list {
+          padding: 18px;
+        }
+
+        .content-list dd {
+          font-size: 0.82rem;
+        }
+
+        .timer {
+          margin-top: 10px;
+        }
+      }
+
+      @media (max-width: 420px) {
+        body {
+          padding: 24px 12px;
+        }
+
+        header {
+          padding: 5px 10px 0;
+        }
+
+        main {
+          gap: 18px;
+        }
+
+        .content-list {
+          padding: 14px;
+        }
+
+        .content-list dd {
+          padding: 12px;
+          font-size: 0.78rem;
+        }
+
+        .header-subtitle {
+          font-size: 0.75rem;
+        }
+
+        .timer {
+          padding: 10px 16px;
+          font-size: 0.78rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+        }
+
+        .content-card:hover {
+          transform: none;
         }
       }
     </style>
   </head>
+
   <body>
-    <h1>Módulo de HTML</h1>
-    <div class="autor">
-      Realizado por Alan Ryan na data 8 de setembro de 2024.
+    <header>
+      <h1 class="header-title">Módulo de HTML</h1>
+
+      <span class="header-subtitle">
+        Realizado por Alan Ryan na data de 8 de setembro de 2024.
+      </span>
+
+      <hr class="divider" />
+    </header>
+
+    <main>
+      <article class="content-card">
+        <h2 class="card-title">Meio de Transporte Terrestre</h2>
+
+        <dl class="content-list">
+          <dt>Carro</dt>
+          <dd>
+            Os carros são um dos meios de transporte mais utilizados em todo o
+            mundo, proporcionando mobilidade e conveniência para milhões de
+            pessoas diariamente. Ao longo dos anos, eles evoluíram
+            significativamente, incorporando tecnologias avançadas, como
+            sistemas de navegação, inteligência artificial e motorizações
+            elétricas, para reduzir emissões de poluentes e aumentar a
+            eficiência. Atualmente, a indústria automotiva está passando por uma
+            transformação em direção à sustentabilidade, com o crescimento dos
+            carros elétricos e híbridos, além de inovações como a condução
+            autônoma. Os carros modernos também oferecem maior segurança, com
+            sistemas de frenagem automática, controle de estabilidade e outros
+            recursos que visam proteger os ocupantes.
+          </dd>
+        </dl>
+      </article>
+
+      <article class="content-card">
+        <h2 class="card-title">Meio de Transporte Aéreo</h2>
+
+        <dl class="content-list">
+          <dt>Avião</dt>
+          <dd>
+            Os aviões revolucionaram a forma como as pessoas viajam e como
+            mercadorias são transportadas. Desde o primeiro voo dos irmãos
+            Wright em 1903, a aviação evoluiu significativamente, tornando-se
+            uma das indústrias mais avançadas tecnologicamente no mundo. Aviões
+            modernos são capazes de transportar centenas de passageiros e
+            toneladas de carga a grandes distâncias, cruzando continentes e
+            oceanos em poucas horas. A aviação comercial é fundamental para a
+            economia global, conectando pessoas e promovendo o turismo e o
+            comércio. Além disso, a aviação militar desempenha um papel crucial
+            na defesa e segurança de muitos países.
+          </dd>
+        </dl>
+      </article>
+    </main>
+
+    <div class="timer" id="timer" role="status" aria-live="polite">
+      Redirecionando em 25 segundos...
     </div>
-    <hr />
-
-    <dl>
-      <dt>Carro</dt>
-      <dd>
-        Os carros são um dos meios de transporte mais utilizados em todo o
-        mundo, proporcionando mobilidade e conveniência para milhões de pessoas
-        diariamente. Ao longo dos anos, eles evoluíram significativamente,
-        incorporando tecnologias avançadas, como sistemas de navegação,
-        inteligência artificial e motorizações elétricas, para reduzir emissões
-        de poluentes e aumentar a eficiência. Atualmente, a indústria automotiva
-        está passando por uma transformação em direção à sustentabilidade, com o
-        crescimento dos carros elétricos e híbridos, além de inovações como a
-        condução autônoma. Os carros modernos também oferecem maior segurança,
-        com sistemas de frenagem automática, controle de estabilidade e outros
-        recursos que visam proteger os ocupantes.
-      </dd>
-
-      <dt>Avião</dt>
-      <dd>
-        Os aviões revolucionaram a forma como as pessoas viajam e como
-        mercadorias são transportadas. Desde o primeiro voo dos irmãos Wright em
-        1903, a aviação evoluiu significativamente, tornando-se uma das
-        indústrias mais avançadas tecnologicamente no mundo. Aviões modernos são
-        capazes de transportar centenas de passageiros e toneladas de carga a
-        grandes distâncias, cruzando continentes e oceanos em poucas horas. A
-        aviação comercial é fundamental para a economia global, conectando
-        pessoas e promovendo o turismo e o comércio. Além disso, a aviação
-        militar desempenha um papel crucial na defesa e segurança de muitos
-        países.
-      </dd>
-    </dl>
-
-    <div id="timer">Redirecionando em 25 segundos...</div>
 
     <script>
       let tempo = 25;
@@ -136,6 +296,7 @@
 
       const contador = setInterval(() => {
         tempo--;
+
         if (tempo > 0) {
           timerElement.textContent = `Redirecionando em ${tempo} segundos...`;
         } else {
