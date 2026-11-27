@@ -12,7 +12,6 @@
       content="HTML, Tabelas, Formatação de Tabelas, CSS, Classes CSS, Estilização, Organização de Dados, Design Responsivo"
     />
     <meta name="theme-color" content="#f0f8ff" />
-    <meta http-equiv="refresh" content="25; ../05_css_texto" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>04 - Tabelas</title>
@@ -42,6 +41,8 @@
       }
 
       body {
+        display: flex;
+        flex-direction: column;
         min-width: 320px;
         min-height: 100vh;
         margin: 0;
@@ -176,6 +177,20 @@
         color: var(--accent);
       }
 
+      .timer {
+        width: fit-content;
+        margin: auto auto 0;
+        padding: 12px 22px;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        color: var(--accent);
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-align: center;
+      }
+
       @media (max-width: 760px) {
         body {
           padding: 28px 20px;
@@ -197,6 +212,10 @@
         .table-title {
           padding: 13px;
           font-size: 0.88rem;
+        }
+
+        .timer {
+          margin-top: 10px;
         }
       }
 
@@ -222,6 +241,11 @@
         .header-subtitle {
           font-size: 0.75rem;
         }
+
+        .timer {
+          padding: 10px 16px;
+          font-size: 0.78rem;
+        }
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -230,6 +254,8 @@
         *::after {
           scroll-behavior: auto !important;
           transition-duration: 0.01ms !important;
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
         }
 
         .table-card:hover {
@@ -427,5 +453,26 @@
         </div>
       </article>
     </main>
+
+    <footer class="timer" id="timer" role="status" aria-live="polite">
+      Redirecionando em 25 segundos...
+    </footer>
+
+    <script>
+      let tempo = 25;
+      const timerElement = document.getElementById("timer");
+
+      const contador = setInterval(() => {
+        tempo--;
+
+        if (tempo > 0) {
+          timerElement.textContent = `Redirecionando em ${tempo} segundos...`;
+        } else {
+          clearInterval(contador);
+          timerElement.textContent = "Redirecionando agora...";
+          window.location.href = "../05_css_texto";
+        }
+      }, 1000);
+    </script>
   </body>
 </html>
