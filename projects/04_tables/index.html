@@ -459,16 +459,16 @@
     </footer>
 
     <script>
-      let tempo = 25;
+      let timeRemaining = 25;
       const timerElement = document.getElementById("timer");
 
-      const contador = setInterval(() => {
-        tempo--;
+      const countdown = setInterval(() => {
+        timeRemaining--;
 
-        if (tempo > 0) {
-          timerElement.textContent = `Redirecionando em ${tempo} segundos...`;
+        if (timeRemaining > 0) {
+          timerElement.textContent = `Redirecionando em ${timeRemaining} segundos...`;
         } else {
-          clearInterval(contador);
+          clearInterval(countdown);
           timerElement.textContent = "Redirecionando agora...";
           window.location.href = "../05_css_texto";
         }
